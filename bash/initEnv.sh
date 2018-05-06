@@ -9,7 +9,22 @@ rm -rf $ETCD_HOME
 mkdir -p $ETCD_HOME
 nohup /opt/etcd/etcd   --listen-client-urls $CLIENT_URL     --advertise-client-urls $CLIENT_URL  --data-dir $ETCD_HOME/data > $ETCD_HOME/etcd.log 2>&1 &
 echo $! > $ETCD_HOME/run.pid
-
+            ATTEMPTS=0
+            MAX_ATTEMPTS=10
+            while true; do
+                echo "Trying to connect $IP_ADDR:$PORT..."
+                nc -v -n -w 1 --send-only $IP_ADDR $PORT < /dev/null
+                if [[ $? -eq 0 ]]; then
+                    break 
+                fi
+                if [[ $ATTEMPTS -eq $MAX_ATTEMPTS ]]; then
+                    echo "Cannot connect to port $PORT after $ATTEMPTS attempts."
+                    exit 1
+                fi
+                ATTEMPTS=$((ATTEMPTS+1))
+                echo "Waiting for 5 seconds... ($ATTEMPTS/$MAX_ATTEMPTS)"
+                sleep 5
+            done
 
 # start provider for small,middle and large
 
