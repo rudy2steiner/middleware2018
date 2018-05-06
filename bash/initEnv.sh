@@ -50,7 +50,7 @@ echo $! > $ETCD_HOME/run.pid
 
                 echo $r1, $r2, $r3
                 if [[ $r1 -eq 0 && $r2 -eq 0 && $r3 -eq 0 ]]; then
-                    exit 0
+                    break 
                 fi
                 if [[ $ATTEMPTS -eq $MAX_ATTEMPTS ]]; then
                     echo "Cannot connect to some of the ports 20889, 20890, 20891 after $ATTEMPTS attempts."

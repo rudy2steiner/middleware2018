@@ -7,7 +7,7 @@
             cat ~/.passwd | sudo -S -p '' docker logs $CID > ~/workspace/provider/1000/2000/consumer/logs/docker.log
             cat ~/.passwd | sudo -S -p '' docker rm $CID
             rm -f $CID_FILE
-            exit 0
+            
 # Stop provider services.
 # Script to execute:
 
