@@ -1,0 +1,604 @@
+[root@tcentos workflow]#  pipenv run python bootstrap.py -p provider
+[INFO] >>> Fetch task.
+[DEBUG] fetch task url = http://localhost:3000/race/task/fetchTask
+[DEBUG] request data = {'token': '******', 'raceId': '231655', 'daemonid': 'tcentos[tbd94xi]'}
+127.0.0.1 - - [06/May/2018 10:31:22] "POST /race/task/fetchTask HTTP/1.1" 200 -
+[DEBUG] response data = {'errCode': 0, 'errName': None, 'errMsg': 'success', 'wrapped': True, 'data': {'teamId': 1000, 'taskid': 2000, 'gitpath': 'https://code.aliyun.com/tangrui.cn/dubbo-tianchi-demo.git', 'imagepath': 'registry.cn-hangzhou.aliyuncs.com/ocean18/dubbo-tianchi-agent-demo', 'imagerepouser': 'rudycto', 'imagerepopassword': 'rudydocker123'}}
+[INFO] task = Task(dict={'teamId': 1000, 'taskid': 2000, 'gitpath': 'https://code.aliyun.com/tangrui.cn/dubbo-tianchi-demo.git', 'imagepath': 'registry.cn-hangzhou.aliyuncs.com/ocean18/dubbo-tianchi-agent-demo', 'imagerepouser': 'rudycto', 'imagerepopassword': 'rudydocker123'})
+[INFO] local workspace = LocalHost(hostname=tcentos, home=/root/workspace/provider, lock_file=/root/workspace/provider/.lock, dockerpwd_file=/root/workspace/provider/.dockerpwd)
+[INFO] remote workspace = RemoteHost(hostname=provider.tcentos, user=root, home=~/workspace/provider, team_home=~/workspace/provider/1000, task_home=~/workspace/provider/1000/2000, lock_file=~/workspace/provider/1000/2000/.lock, dockerpwd_file=~/workspace/provider/1000/2000/.dockerpwd)
+[INFO] >>> Lock local workspace.
+[INFO] >>> Generate Docker password file.
+[INFO] >>> Create remote task home.
+[DEBUG] Script to execute:
+
+            mkdir -p ~/workspace/provider/1000/2000
+            exit 0
+
+[DEBUG] Return code = 0
+[DEBUG] The output is as following:
+
+[INFO] >>> Lock remote task home.
+[DEBUG] Script to execute:
+
+            if [[ -f ~/workspace/provider/1000/2000/.lock ]]; then
+                echo "Lock file exists."
+                exit 1
+            else
+                touch ~/workspace/provider/1000/2000/.lock
+            fi
+            exit 0
+
+[DEBUG] Return code = 0
+[DEBUG] The output is as following:
+
+[INFO] >>> Upload Docker password file.
+[DEBUG] Script to execute:
+
+            if [[ -f /root/workspace/provider/.dockerpwd ]]; then
+                scp -q                     /root/workspace/provider/.dockerpwd                     root@provider.tcentos:~/workspace/provider/1000/2000/.dockerpwd
+                rm -f /root/workspace/provider/.dockerpwd
+            else
+                echo "Docker password file not exists."
+                exit 1
+            fi
+            exit 0
+
+[DEBUG] Return code = 0
+[DEBUG] The output is as following:
+
+[INFO] >>> Login to Docker repository.
+[DEBUG] Script to execute:
+
+            cat ~/.passwd | sudo -S -p '' docker login                 -u rudycto                 -p $(cat ~/workspace/provider/1000/2000/.dockerpwd)                 registry.cn-hangzhou.aliyuncs.com
+            rm -f ~/workspace/provider/1000/2000/.dockerpwd
+            exit 0
+
+[DEBUG] Return code = 0
+[DEBUG] The output is as following:
+WARNING! Using --password via the CLI is insecure. Use --password-stdin.
+Login Succeeded
+
+[INFO] >>> Pull Docker image.
+[DEBUG] Script to execute:
+
+            cat ~/.passwd | sudo -S -p '' docker pull registry.cn-hangzhou.aliyuncs.com/ocean18/dubbo-tianchi-agent-demo
+            exit 0
+
+[DEBUG] Return code = 0
+[DEBUG] The output is as following:
+Using default tag: latest
+latest: Pulling from ocean18/dubbo-tianchi-agent-demo
+c73ab1c6897b: Pulling fs layer
+d46c559a0d2b: Pulling fs layer
+bd18549e59e9: Pulling fs layer
+a37e50450097: Pulling fs layer
+8effa4882cf5: Pulling fs layer
+d4131658bb14: Pulling fs layer
+9c60687c6166: Pulling fs layer
+40458e91cd28: Pulling fs layer
+d4131658bb14: Waiting
+9c60687c6166: Waiting
+40458e91cd28: Waiting
+a37e50450097: Waiting
+8effa4882cf5: Waiting
+bd18549e59e9: Verifying Checksum
+bd18549e59e9: Download complete
+a37e50450097: Verifying Checksum
+a37e50450097: Download complete
+c73ab1c6897b: Verifying Checksum
+c73ab1c6897b: Download complete
+d4131658bb14: Verifying Checksum
+d4131658bb14: Download complete
+9c60687c6166: Verifying Checksum
+9c60687c6166: Download complete
+40458e91cd28: Verifying Checksum
+40458e91cd28: Download complete
+c73ab1c6897b: Pull complete
+8effa4882cf5: Verifying Checksum
+8effa4882cf5: Download complete
+d46c559a0d2b: Verifying Checksum
+d46c559a0d2b: Download complete
+d46c559a0d2b: Pull complete
+bd18549e59e9: Pull complete
+a37e50450097: Pull complete
+8effa4882cf5: Pull complete
+d4131658bb14: Pull complete
+9c60687c6166: Pull complete
+40458e91cd28: Pull complete
+Digest: sha256:4a14a7b96e1cabcad1524647aaa53322430a46685da388df9ff8e8faba7e030c
+Status: Downloaded newer image for registry.cn-hangzhou.aliyuncs.com/ocean18/dubbo-tianchi-agent-demo:latest
+
+[INFO] >>> Start etcd service.
+[DEBUG] Script to execute:
+
+            # noqa: E501
+
+            ETCD_HOME=~/workspace/provider/1000/2000/etcd
+            IP_ADDR=$(ip addr show docker0 | grep 'inet\b' | awk '{print $2}' | cut -d '/' -f 1)
+            PORT=2379
+            CLIENT_URL=http://$IP_ADDR:$PORT
+
+            rm -rf $ETCD_HOME
+            mkdir -p $ETCD_HOME
+            nohup /opt/etcd/etcd                   --listen-client-urls $CLIENT_URL                   --advertise-client-urls $CLIENT_URL                   --data-dir $ETCD_HOME/data > $ETCD_HOME/etcd.log 2>&1 &
+            echo $! > $ETCD_HOME/run.pid
+
+            ATTEMPTS=0
+            MAX_ATTEMPTS=10
+            while true; do
+                echo "Trying to connect $IP_ADDR:$PORT..."
+                nc -v -n -w 1 --send-only $IP_ADDR $PORT < /dev/null
+                if [[ $? -eq 0 ]]; then
+                    exit 0
+                fi
+                if [[ $ATTEMPTS -eq $MAX_ATTEMPTS ]]; then
+                    echo "Cannot connect to port $PORT after $ATTEMPTS attempts."
+                    exit 1
+                fi
+                ATTEMPTS=$((ATTEMPTS+1))
+                echo "Waiting for 5 seconds... ($ATTEMPTS/$MAX_ATTEMPTS)"
+                sleep 5
+            done
+
+[DEBUG] Return code = 0
+[DEBUG] The output is as following:
+Trying to connect 172.17.0.1:2379...
+Ncat: Version 6.40 ( http://nmap.org/ncat )
+Ncat: Connection refused.
+Waiting for 5 seconds... (1/10)
+Trying to connect 172.17.0.1:2379...
+Ncat: Version 6.40 ( http://nmap.org/ncat )
+Ncat: Connected to 172.17.0.1:2379.
+Ncat: 0 bytes sent, 0 bytes received in 0.00 seconds.
+
+[INFO] >>> Start provider services.
+[DEBUG] Script to execute:
+
+            cd ~/workspace/provider/1000/2000
+            if [[ -d provider-small ]]; then
+                rm -rf provider-small
+            fi
+            mkdir -p provider-small/logs
+            cd provider-small
+            cat ~/.passwd | sudo -S -p '' docker run -d                 --name provider-small                 --cidfile run.cid                 --cpu-period 50000                 --cpu-quota 30000                 -m 2g                 --network host                 -v ~/workspace/provider/1000/2000/provider-small/logs:/root/logs                 registry.cn-hangzhou.aliyuncs.com/ocean18/dubbo-tianchi-agent-demo provider-small
+            cd ~/workspace/provider/1000/2000
+            if [[ -d provider-medium ]]; then
+                rm -rf provider-medium
+            fi
+            mkdir -p provider-medium/logs
+            cd provider-medium
+            cat ~/.passwd | sudo -S -p '' docker run -d                 --name provider-medium                 --cidfile run.cid                 --cpu-period 50000                 --cpu-quota 60000                 -m 4g                 --network host                 -v ~/workspace/provider/1000/2000/provider-medium/logs:/root/logs                 registry.cn-hangzhou.aliyuncs.com/ocean18/dubbo-tianchi-agent-demo provider-medium
+            cd ~/workspace/provider/1000/2000
+            if [[ -d provider-large ]]; then
+                rm -rf provider-large
+            fi
+            mkdir -p provider-large/logs
+            cd provider-large
+            cat ~/.passwd | sudo -S -p '' docker run -d                 --name provider-large                 --cidfile run.cid                 --cpu-period 50000                 --cpu-quota 90000                 -m 6g                 --network host                 -v ~/workspace/provider/1000/2000/provider-large/logs:/root/logs                 registry.cn-hangzhou.aliyuncs.com/ocean18/dubbo-tianchi-agent-demo provider-large
+            # noqa: E501
+
+            ATTEMPTS=0
+            MAX_ATTEMPTS=10
+            while true; do
+                echo "Trying to connect 127.0.0.1:20889..."
+                nc -v -n -w 1 --send-only 127.0.0.1 20889 < /dev/null; r1=$?
+
+                echo "Trying to connect 127.0.0.1:20890..."
+                nc -v -n -w 1 --send-only 127.0.0.1 20890 < /dev/null; r2=$?
+
+                echo "Trying to connect 127.0.0.1:20891..."
+                nc -v -n -w 1 --send-only 127.0.0.1 20891 < /dev/null; r3=$?
+
+                echo $r1, $r2, $r3
+                if [[ $r1 -eq 0 && $r2 -eq 0 && $r3 -eq 0 ]]; then
+                    exit 0
+                fi
+                if [[ $ATTEMPTS -eq $MAX_ATTEMPTS ]]; then
+                    echo "Cannot connect to some of the ports 20889, 20890, 20891 after $ATTEMPTS attempts."
+                    exit 1
+                fi
+                ATTEMPTS=$((ATTEMPTS+1))
+                echo "Waiting for 5 seconds... ($ATTEMPTS/$MAX_ATTEMPTS)"
+                sleep 5
+            done
+
+[DEBUG] Return code = 0
+[DEBUG] The output is as following:
+20cc8ce0cb53fb33a86c7a1e1cf39a9244dbbb9c863bbec93ce299f1ce918650
+c06612b148a5b79865e5efdf77c83d9888748d11212b169595086498d949c563
+f8cdc961f231db288e1e7e45c7bcd387ee2d988a2a62647a2e3af961dc2ea4b5
+Trying to connect 127.0.0.1:20889...
+Ncat: Version 6.40 ( http://nmap.org/ncat )
+Ncat: Connection refused.
+Trying to connect 127.0.0.1:20890...
+Ncat: Version 6.40 ( http://nmap.org/ncat )
+Ncat: Connection refused.
+Trying to connect 127.0.0.1:20891...
+1, 1, 1
+Waiting for 5 seconds... (1/10)
+Ncat: Version 6.40 ( http://nmap.org/ncat )
+Ncat: Connection refused.
+Trying to connect 127.0.0.1:20889...
+Ncat: Version 6.40 ( http://nmap.org/ncat )
+Ncat: Connection refused.
+Trying to connect 127.0.0.1:20890...
+Ncat: Version 6.40 ( http://nmap.org/ncat )
+Ncat: Connection refused.
+Trying to connect 127.0.0.1:20891...
+1, 1, 1
+Waiting for 5 seconds... (2/10)
+Ncat: Version 6.40 ( http://nmap.org/ncat )
+Ncat: Connection refused.
+Trying to connect 127.0.0.1:20889...
+Ncat: Version 6.40 ( http://nmap.org/ncat )
+Ncat: Connection refused.
+Trying to connect 127.0.0.1:20890...
+Ncat: Version 6.40 ( http://nmap.org/ncat )
+Ncat: Connection refused.
+Trying to connect 127.0.0.1:20891...
+1, 1, 1
+Waiting for 5 seconds... (3/10)
+Ncat: Version 6.40 ( http://nmap.org/ncat )
+Ncat: Connection refused.
+Trying to connect 127.0.0.1:20889...
+Ncat: Version 6.40 ( http://nmap.org/ncat )
+Ncat: Connection refused.
+Trying to connect 127.0.0.1:20890...
+Ncat: Version 6.40 ( http://nmap.org/ncat )
+Ncat: Connection refused.
+Trying to connect 127.0.0.1:20891...
+1, 1, 1
+Waiting for 5 seconds... (4/10)
+Ncat: Version 6.40 ( http://nmap.org/ncat )
+Ncat: Connection refused.
+Trying to connect 127.0.0.1:20889...
+Ncat: Version 6.40 ( http://nmap.org/ncat )
+Ncat: Connection refused.
+Trying to connect 127.0.0.1:20890...
+Ncat: Version 6.40 ( http://nmap.org/ncat )
+Ncat: Connection refused.
+Trying to connect 127.0.0.1:20891...
+1, 1, 1
+Waiting for 5 seconds... (5/10)
+Ncat: Version 6.40 ( http://nmap.org/ncat )
+Ncat: Connection refused.
+Trying to connect 127.0.0.1:20889...
+Ncat: Version 6.40 ( http://nmap.org/ncat )
+Ncat: Connection refused.
+Trying to connect 127.0.0.1:20890...
+Ncat: Version 6.40 ( http://nmap.org/ncat )
+Ncat: Connected to 127.0.0.1:20890.
+Trying to connect 127.0.0.1:20891...
+1, 0, 0
+Waiting for 5 seconds... (6/10)
+Ncat: 0 bytes sent, 0 bytes received in 0.00 seconds.
+Ncat: Version 6.40 ( http://nmap.org/ncat )
+Ncat: Connected to 127.0.0.1:20891.
+Ncat: 0 bytes sent, 0 bytes received in 0.01 seconds.
+Trying to connect 127.0.0.1:20889...
+Ncat: Version 6.40 ( http://nmap.org/ncat )
+Ncat: Connected to 127.0.0.1:20889.
+Ncat: 0 bytes sent, 0 bytes received in 0.01 seconds.
+Trying to connect 127.0.0.1:20890...
+Ncat: Version 6.40 ( http://nmap.org/ncat )
+Trying to connect 127.0.0.1:20891...
+0, 0, 0
+Ncat: Connected to 127.0.0.1:20890.
+Ncat: 0 bytes sent, 0 bytes received in 0.01 seconds.
+Ncat: Version 6.40 ( http://nmap.org/ncat )
+Ncat: Connected to 127.0.0.1:20891.
+Ncat: 0 bytes sent, 0 bytes received in 0.01 seconds.
+
+[INFO] >>> Start consumer service.
+[DEBUG] Script to execute:
+
+            # noqa: E501
+
+            cd ~/workspace/provider/1000/2000
+            if [[ -d consumer ]]; then
+                rm -rf consumer
+            fi
+            mkdir -p consumer/logs
+            cd consumer
+            cat ~/.passwd | sudo -S -p '' docker run -d                 --name consumer                 --cidfile run.cid                 --cpu-period 50000                 --cpu-quota 200000                 -m 4g                 --network host                 -v ~/workspace/provider/1000/2000/consumer/logs:/root/logs                 registry.cn-hangzhou.aliyuncs.com/ocean18/dubbo-tianchi-agent-demo consumer
+
+            ATTEMPTS=0
+            MAX_ATTEMPTS=10
+            while true; do
+                echo "Trying to connect 127.0.0.1:8087..."
+                nc -v -n -w 1 --send-only 127.0.0.1 8087 < /dev/null
+                if [[ $? -eq 0 ]]; then
+                    exit 0
+                fi
+                if [[ $ATTEMPTS -eq $MAX_ATTEMPTS ]]; then
+                    echo "Cannot connect to port 8087 after $ATTEMPTS attempts."
+                    exit 1
+                fi
+                ATTEMPTS=$((ATTEMPTS+1))
+                echo "Waiting for 5 seconds... ($ATTEMPTS/$MAX_ATTEMPTS)"
+                sleep 5
+            done
+
+[DEBUG] Return code = 0
+[DEBUG] The output is as following:
+5d5ade0fd9697b184ce98a3f1741069878895fabe29b26940a7e3a858c8ce3e7
+Trying to connect 127.0.0.1:8087...
+Ncat: Version 6.40 ( http://nmap.org/ncat )
+Ncat: Connection refused.
+Waiting for 5 seconds... (1/10)
+Trying to connect 127.0.0.1:8087...
+Ncat: Version 6.40 ( http://nmap.org/ncat )
+Ncat: Connection refused.
+Waiting for 5 seconds... (2/10)
+Trying to connect 127.0.0.1:8087...
+Ncat: Version 6.40 ( http://nmap.org/ncat )
+Ncat: Connected to 127.0.0.1:8087.
+Ncat: 0 bytes sent, 0 bytes received in 0.01 seconds.
+
+[INFO] >>> Warmup.
+[DEBUG] Script to execute:
+
+            sleep 5
+            wrk -t2 -c256 -d20s -T5                 --script=./benchmark/wrk.lua                 --latency http://provider.tcentos:8087/invoke
+            exit 0
+
+[DEBUG] Return code = 0
+[DEBUG] The output is as following:
+Running 20s test @ http://provider.tcentos:8087/invoke
+  2 threads and 256 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency     2.90s     1.17s    4.97s    52.23%
+    Req/Sec    35.88     29.21   181.00     84.05%
+  Latency Distribution
+     50%    2.59s 
+     75%    4.13s 
+     90%    4.52s 
+     99%    4.84s 
+  1050 requests in 20.03s, 176.66KB read
+  Socket errors: connect 0, read 0, write 0, timeout 267
+  Non-2xx or 3xx responses: 131
+Requests/sec:     52.42
+Transfer/sec:      8.82KB
+--------------------------
+Durations:       20.03s
+Requests:        1050
+Avg RT:          2900.76ms
+Max RT:          4974.38ms
+Min RT:          1135.724ms
+Error requests:  131
+Valid requests:  919
+QPS:             45.88
+--------------------------
+
+[INFO] >>> Pressure with 64 connections.
+[DEBUG] Script to execute:
+
+            sleep 5
+            wrk -t2 -c64 -d60s -T5                 --script=./benchmark/wrk.lua                 --latency http://provider.tcentos:8087/invoke
+            exit 0
+
+[DEBUG] Return code = 0
+[DEBUG] The output is as following:
+Running 1m test @ http://provider.tcentos:8087/invoke
+  2 threads and 64 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency     1.13s     1.15s    3.27s    79.87%
+    Req/Sec    30.53     16.01   141.00     66.58%
+  Latency Distribution
+     50%  220.64ms
+     75%    1.97s 
+     90%    2.97s 
+     99%    3.15s 
+  3549 requests in 1.00m, 503.41KB read
+  Socket errors: connect 0, read 0, write 0, timeout 38
+  Non-2xx or 3xx responses: 72
+Requests/sec:     59.09
+Transfer/sec:      8.38KB
+--------------------------
+Durations:       60.06s
+Requests:        3549
+Avg RT:          1132.98ms
+Max RT:          3267.059ms
+Min RT:          109.667ms
+Error requests:  72
+Valid requests:  3477
+QPS:             57.89
+--------------------------
+
+[INFO] QPS = 57.89
+[INFO] >>> Pressure with 128 connections.
+[DEBUG] Script to execute:
+
+            sleep 5
+            wrk -t2 -c128 -d60s -T5                 --script=./benchmark/wrk.lua                 --latency http://provider.tcentos:8087/invoke
+            exit 0
+
+[DEBUG] Return code = 0
+[DEBUG] The output is as following:
+Running 1m test @ http://provider.tcentos:8087/invoke
+  2 threads and 128 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency     2.11s   886.45ms   4.19s    66.04%
+    Req/Sec    29.72     13.85   160.00     77.07%
+  Latency Distribution
+     50%    1.92s 
+     75%    2.73s 
+     90%    3.55s 
+     99%    3.91s 
+  3514 requests in 1.00m, 490.79KB read
+  Socket errors: connect 0, read 0, write 0, timeout 16
+  Non-2xx or 3xx responses: 28
+Requests/sec:     58.49
+Transfer/sec:      8.17KB
+--------------------------
+Durations:       60.08s
+Requests:        3514
+Avg RT:          2106.40ms
+Max RT:          4187.304ms
+Min RT:          142.598ms
+Error requests:  28
+Valid requests:  3486
+QPS:             58.02
+--------------------------
+
+[INFO] QPS = 58.02
+[INFO] >>> Pressure with 256 connections.
+[DEBUG] Script to execute:
+
+            sleep 5
+            wrk -t2 -c256 -d60s -T5                 --script=./benchmark/wrk.lua                 --latency http://provider.tcentos:8087/invoke
+            exit 0
+
+[DEBUG] Return code = 0
+[DEBUG] The output is as following:
+Running 1m test @ http://provider.tcentos:8087/invoke
+  2 threads and 256 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency     4.17s   734.69ms   5.00s    89.42%
+    Req/Sec    29.88     12.84    60.00     73.56%
+  Latency Distribution
+     50%    4.29s 
+     75%    4.58s 
+     90%    4.81s 
+     99%    4.98s 
+  3486 requests in 1.00m, 480.01KB read
+  Socket errors: connect 0, read 0, write 0, timeout 252
+Requests/sec:     58.03
+Transfer/sec:      7.99KB
+--------------------------
+Durations:       60.07s
+Requests:        3486
+Avg RT:          4174.55ms
+Max RT:          4999.827ms
+Min RT:          120.202ms
+Error requests:  0
+Valid requests:  3486
+QPS:             58.03
+--------------------------
+
+[INFO] QPS = 58.03
+[INFO] >>> Stop consumer service.
+[DEBUG] Script to execute:
+
+            # noqa: E501
+            CID_FILE=~/workspace/provider/1000/2000/consumer/run.cid
+            CID=$(cat $CID_FILE)
+            cat ~/.passwd | sudo -S -p '' docker stop $CID
+            cat ~/.passwd | sudo -S -p '' docker logs $CID > ~/workspace/provider/1000/2000/consumer/logs/docker.log
+            cat ~/.passwd | sudo -S -p '' docker rm $CID
+            rm -f $CID_FILE
+            exit 0
+
+[DEBUG] Return code = 0
+[DEBUG] The output is as following:
+5d5ade0fd9697b184ce98a3f1741069878895fabe29b26940a7e3a858c8ce3e7
+5d5ade0fd9697b184ce98a3f1741069878895fabe29b26940a7e3a858c8ce3e7
+
+[INFO] >>> Stop provider services.
+[DEBUG] Script to execute:
+
+            # noqa: E501
+            CID_FILE=~/workspace/provider/1000/2000/provider-small/run.cid
+            CID=$(cat $CID_FILE)
+            cat ~/.passwd | sudo -S -p '' docker stop $CID
+            cat ~/.passwd | sudo -S -p '' docker logs $CID > ~/workspace/provider/1000/2000/provider-small/logs/docker.log
+            cat ~/.passwd | sudo -S -p '' docker rm $CID
+            rm -f $CID_FILE
+            # noqa: E501
+            CID_FILE=~/workspace/provider/1000/2000/provider-medium/run.cid
+            CID=$(cat $CID_FILE)
+            cat ~/.passwd | sudo -S -p '' docker stop $CID
+            cat ~/.passwd | sudo -S -p '' docker logs $CID > ~/workspace/provider/1000/2000/provider-medium/logs/docker.log
+            cat ~/.passwd | sudo -S -p '' docker rm $CID
+            rm -f $CID_FILE
+            # noqa: E501
+            CID_FILE=~/workspace/provider/1000/2000/provider-large/run.cid
+            CID=$(cat $CID_FILE)
+            cat ~/.passwd | sudo -S -p '' docker stop $CID
+            cat ~/.passwd | sudo -S -p '' docker logs $CID > ~/workspace/provider/1000/2000/provider-large/logs/docker.log
+            cat ~/.passwd | sudo -S -p '' docker rm $CID
+            rm -f $CID_FILE
+            exit 0
+
+[DEBUG] Return code = 0
+[DEBUG] The output is as following:
+20cc8ce0cb53fb33a86c7a1e1cf39a9244dbbb9c863bbec93ce299f1ce918650
+20cc8ce0cb53fb33a86c7a1e1cf39a9244dbbb9c863bbec93ce299f1ce918650
+c06612b148a5b79865e5efdf77c83d9888748d11212b169595086498d949c563
+c06612b148a5b79865e5efdf77c83d9888748d11212b169595086498d949c563
+f8cdc961f231db288e1e7e45c7bcd387ee2d988a2a62647a2e3af961dc2ea4b5
+f8cdc961f231db288e1e7e45c7bcd387ee2d988a2a62647a2e3af961dc2ea4b5
+
+[INFO] >>> Stop etcd service.
+[DEBUG] Script to execute:
+
+            PID_FILE=~/workspace/provider/1000/2000/etcd/run.pid
+            PID=$(cat $PID_FILE)
+            kill -9 $PID
+            rm -f $PID_FILE
+            exit 0
+
+[DEBUG] Return code = 0
+[DEBUG] The output is as following:
+
+[INFO] >>> Remove Docker image.
+[DEBUG] Script to execute:
+
+            cat ~/.passwd | sudo -S -p '' docker rmi registry.cn-hangzhou.aliyuncs.com/ocean18/dubbo-tianchi-agent-demo
+            exit 0
+
+[DEBUG] Return code = 0
+[DEBUG] The output is as following:
+Untagged: registry.cn-hangzhou.aliyuncs.com/ocean18/dubbo-tianchi-agent-demo:latest
+Untagged: registry.cn-hangzhou.aliyuncs.com/ocean18/dubbo-tianchi-agent-demo@sha256:4a14a7b96e1cabcad1524647aaa53322430a46685da388df9ff8e8faba7e030c
+Deleted: sha256:b57a4b21f877488ca2a788bf131181c4ec56d43ffdc3d76457e01b22ea9588dc
+Deleted: sha256:95992bafc6023e33efe20ef608d65c81fab448162062ad269e9e1a4f098a8e60
+Deleted: sha256:a770e14014cb605deacf4c62a0aa49a62687a167ea08e740ecfea9310dfb5749
+Deleted: sha256:e7cd0cdb7388ac911f507ffe13baba6ead11f0814f58fd0686a977b53b78de93
+Deleted: sha256:f5518c941d749a14341ff08714e01f952ff5ec7fd303c1d18e56cbc9dd948a7e
+Deleted: sha256:e75440cb83e9bb56b58de91a26b583105038069301e9d70baecd421dfa94c026
+Deleted: sha256:e07c327419d7763ca8aee89299b5e73a3e51c546c128c9ebf59add8c2f282bd8
+Deleted: sha256:0b617c42b6eedb7b10430620d1d63934e8f5e41bb838b1764d2b59dde44ba834
+Deleted: sha256:e1df5dc88d2cc2cd9a1b1680ec3cb92a2dc924a0205125d85da0c61083b4e87d
+
+[INFO] >>> Unlock remote task home.
+[DEBUG] Script to execute:
+
+            if [[ -f ~/workspace/provider/1000/2000/.lock ]]; then
+                rm -f ~/workspace/provider/1000/2000/.lock
+            fi
+            exit 0
+
+[DEBUG] Return code = 0
+[DEBUG] The output is as following:
+
+[INFO] >>> Unlock local workspace.
+[INFO] >>> Collect data.
+[INFO] Best result: 58.03 QPS with 256 connections.
+[DEBUG] Script to execute:
+
+            cd ~/workspace/provider/1000/2000
+            tar -czf ../logs.tar.gz *
+            exit 0
+
+[DEBUG] Return code = 0
+[DEBUG] The output is as following:
+
+[DEBUG] Script to execute:
+
+            # noqa: E501
+
+            scp root@provider.tcentos:~/workspace/provider/1000/2000/../logs.tar.gz /root/workspace/provider
+            echo 1000/2000 > /root/workspace/provider/.osspath
+            exit 0
+
+[DEBUG] Return code = 0
+[DEBUG] The output is as following:
+
+[INFO] Time used: 0:06:50.464652
+[INFO] >>> Update task.
+[DEBUG] fetch task url = http://localhost:3000/race/task/updateTask
+[DEBUG] request data = {'token': '******', 'taskid': 2000, 'daemonid': 'tcentos[tbd94xi]', 'status': 0, 'isvalid': 1, 'message': 'Success', 'rank': 58.03, 'scoreJson': {'qps': 58.03}}
+127.0.0.1 - - [06/May/2018 10:38:13] "POST /race/task/updateTask HTTP/1.1" 200 -
+[DEBUG] response data = {'errCode': 0, 'errName': None, 'errMsg': 'success', 'wrapped': True, 'data': {'teamId': 1000, 'taskid': 2000, 'gitpath': 'https://code.aliyun.com/tangrui.cn/dubbo-tianchi-demo.git', 'imagepath': 'registry.cn-hangzhou.aliyuncs.com/ocean18/dubbo-tianchi-agent-demo', 'imagerepouser': 'rudycto', 'imagerepopassword': 'rudydocker123'}}

@@ -1,0 +1,135 @@
+
+netstat -ntlp 查看开发端口
+  -Detcd.url=http://140.143.90.42:2379a
+  
+agent config:  
+-Dtype=provider -Dserver.port=30000 -Ddubbo.protocol.port=20889 -Dlogs.dir=/home/middle2018/logs -Detcd.url=http://140.143.90.42:2379
+-Dtype=consumer -Dserver.port=20000 -Dlogs.dir=/home/middle2018/logs -Detcd.url=http://140.143.90.42:2379
+
+provider config:
+-Ddubbo.protocol.port=20889 -Ddubbo.application.qos.enable=false -Dlogs.dir=/home/middle2018/logs
+
+curl http://140.143.90.42:2379/v2/members
+
+curl http://localhost:2379/v2/members 
+
+curl http://47.105.58.23:2379/v2/members 
+curl http://172.17.0.1:2379/v2/members 
+curl http://47.105.60.6:2379/v2/members 
+47.105.60.6
+47.105.58.23
+firewalld 
+
+etcd 单机配置
+/opt/etcd/etcd  --name my-etcd-1 
+       --listen-client-urls http://0.0.0.0:2379 
+       --advertise-client-urls http://0.0.0.0:2379
+       --listen-peer-urls http://0.0.0.0:2380 
+       --initial-advertise-peer-urls http://0.0.0.0:2380 
+       --initial-cluster my-etcd-1=http://0.0.0.0:2380&
+       
+/opt/etcd/etcd --name my-etcd-1  --listen-client-urls http://0.0.0.0:2379 --advertise-client-urls http://0.0.0.0:2379       
+/opt/etcd/etcd --name my-etcd-1  --listen-client-urls http://172.17.0.1:2379 --advertise-client-urls http://172.17.0.1:2379
+    
+       
+       windows:
+       netstat -ano | tasklist |find 8436|taskkill /pid xxx /f
+       
+wrk \
+homebrew
+docker ce
+
+docker命令之push
+docker pull 
+镜像仓库
+rudycto
+rudydoker123
+
+安装python 3.6 pip3  setuptools
+
+centos7设置ssh免密码登陆
+
+curl -c 140.143.90.42:3000
+
+ssh root@47.105.58.23
+容器，镜像
+
+阿里云 
+私有   172.31.235.164
+
+docker 
+删除网桥：
+ifconfig docker0 down
+
+docker 四种网络启动模式：
+
+ip addr
+docker启动： 
+systemctl start docker
+docker run imageid
+docker run -t -i -d  --name provider-small --cidfile run.cid    --cpu-period 50000  --cpu-quota 30000  -m 2g   --network host -v ~/workspace/provider/1000/2000/provider-small/logs:/root/logs  registry.cn-hangzhou.aliyuncs.com/tianchi4-docker/dubbo-tianchi-demo provider-small
+
+aliyun hostname:
+izm5egc9hxl84unee6aondz
+
+tail -n 100 workspace/provider/1000/2000/provider-samll/provider.log
+
+ wrk -t2 -c256 -d20s -T5                 --script=./benchmark/wrk.lua                 --latency http://provider.vm_0_4_centos:8087/invoke
+  wrk -t2 -c256 -d20s -T5                 --script=./benchmark/wrk.lua                 --latency http://47.105.58.23:8087/invoke
+  wrk -t2 -c256 -d20s -T5                 --script=./benchmark/wrk.lua                 --latency http://www.baidu.com:80
+启动压测：
+  启动
+  /mock/server.py 
+  pipenv install  
+  pipenv run python bootstrap.py -p provider
+  
+docker 镜像制作：
+
+1:docker attach
+
+docker commit  
+dcoker inspect
+2 docker file
+ docker image内容查看：
+ docker run -t -i wangjin/dubbo-tianchi-demo /bin/bash
+ 
+FROM/RUN/COPY
+
+set -ex 
+docker build -t="image_name"  
+docker build -t="wangjin/dubbo-tianchi-demo"  --no-cache .
+ 
+ docker 推到阿里docker hub: 
+ docker login --username=rudycto registry.cn-hangzhou.aliyuncs.com
+ docker tage imageId registry.cn-hangzhou.aliyuncs.com/ocean18/dubbo-tianchi-agent-demo:latest
+ docker push registry.cn-hangzhou.aliyuncs.com/ocean18/dubbo-tianchi-agent-demo:latest
+ 
+ 坑：
+ 
+ 1 服务起来全部connection refused
+ 2 观察docke启动
+ docker rm provider-small
+ rm run.id
+docker run -t -i registry.cn-hangzhou.aliyuncs.com/tianchi4-docker/dubbo-tianchi-demo provider-small
+
+docker run -i 67debb0133cc  provider-small
+
+docker run -it —entrypoint=“” <image> bash
+
+docker run -it —entrypoint=“” registry.cn-hangzhou.aliyuncs.com/tianchi4-docker/dubbo-tianchi-demo provider-small
+
+批量停止、删除
+docker stop  $(docker ps -a|awk '{print $1}')
+docker rm  $(docker ps -a|awk '{print $1}')
+
+git config --global user.name "rudy"
+git config --global user.email "rudysteiner@163.com"
+ssh-keygen -t rsa -C "rudysteiner@163.com"
+-------------------
+技术调研
+
+
+
+
+
+
