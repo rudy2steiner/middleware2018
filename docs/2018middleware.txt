@@ -3,6 +3,9 @@ netstat -ntlp 查看开发端口
   -Detcd.url=http://140.143.90.42:2379a
   
 agent config:  
+ small :-Dcpu.period=50000 -Dprovider.cpu.quota=30000 -Dprovider.memory=2g
+ medium :-Dcpu.period=50000 -Dprovider.cpu.quota=60000 -Dprovider.memory=4g
+ large :-Dcpu.period=50000 -Dprovider.cpu.quota=90000 -Dprovider.memory=6g
 -Dtype=provider -Dserver.port=30000 -Ddubbo.protocol.port=20889 -Dlogs.dir=/home/middle2018/logs -Detcd.url=http://140.143.90.42:2379
 -Dtype=consumer -Dserver.port=20000 -Dlogs.dir=/home/middle2018/logs -Detcd.url=http://140.143.90.42:2379
 
@@ -10,8 +13,20 @@ provider config:
 -Ddubbo.protocol.port=20889 -Ddubbo.application.qos.enable=false -Dlogs.dir=/home/middle2018/logs
 
 curl http://140.143.90.42:2379/v2/members
+curl -X GET http://140.143.90.42::2379/v2/keys/aa?consistent=true&wait=true 
 
+watch
+curl -X GET http://140.143.90.42::2379/v2/keys/aa?consistent=true&wait=true 
+set 
+curl -X PUT http://140.143.90.42:2379/v2/keys/aa -d value=999 
+get 
+curl -X GET http://140.143.90.42:2379/v2/keys/aa
+/dubbomesh/com.alibaba.dubbo.performance.demo.provider.IHelloService/169.254.107.180:30000
 curl http://localhost:2379/v2/members 
+
+etcd 设成v3版本和v2的区别
+ETCDCTL_API=3
+
 
 curl http://47.105.58.23:2379/v2/members 
 curl http://172.17.0.1:2379/v2/members 
@@ -127,6 +142,10 @@ git config --global user.email "rudysteiner@163.com"
 ssh-keygen -t rsa -C "rudysteiner@163.com"
 -------------------
 技术调研
+
+ git clone https://github.com/coreos/jetcd.git
+ 
+ https://github.com/coreos/jetcd
 
 
 
