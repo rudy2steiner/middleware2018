@@ -1,0 +1,38 @@
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::        (v1.5.7.RELEASE)
+
+2018-05-12 14:47:36.245 [main] INFO  com.alibaba.dubbo.performance.demo.agent.AgentApp - Starting AgentApp on ocean with PID 29623 (/root/dists/mesh-agent.jar started by root in /home/devspace/middleware2018/bash)
+2018-05-12 14:47:36.251 [main] INFO  com.alibaba.dubbo.performance.demo.agent.AgentApp - No active profile set, falling back to default profiles: default
+2018-05-12 14:47:36.370 [background-preinit] INFO  org.hibernate.validator.internal.util.Version - HV000001: Hibernate Validator 5.3.5.Final
+2018-05-12 14:47:36.405 [main] INFO  o.s.b.c.e.AnnotationConfigEmbeddedWebApplicationContext - Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@1ee0005: startup date [Sat May 12 14:47:36 CST 2018]; root of context hierarchy
+2018-05-12 14:47:38.101 [main] INFO  org.xnio - XNIO version 3.3.8.Final
+2018-05-12 14:47:38.115 [main] INFO  org.xnio.nio - XNIO NIO Implementation Version 3.3.8.Final
+2018-05-12 14:47:38.175 [main] WARN  io.undertow.websockets.jsr - UT026009: XNIO worker was not set on WebSocketDeploymentInfo, the default worker will be used
+2018-05-12 14:47:38.175 [main] WARN  io.undertow.websockets.jsr - UT026010: Buffer pool was not set on WebSocketDeploymentInfo, the default pool will be used
+2018-05-12 14:47:38.191 [main] INFO  io.undertow.servlet - Initializing Spring embedded WebApplicationContext
+2018-05-12 14:47:38.191 [main] INFO  org.springframework.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 1805 ms
+2018-05-12 14:47:38.271 [main] INFO  o.s.boot.web.servlet.ServletRegistrationBean - Mapping servlet: 'dispatcherServlet' to [/]
+2018-05-12 14:47:38.275 [main] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'characterEncodingFilter' to: [/*]
+2018-05-12 14:47:38.276 [main] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2018-05-12 14:47:38.276 [main] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'httpPutFormContentFilter' to: [/*]
+2018-05-12 14:47:38.277 [main] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'requestContextFilter' to: [/*]
+2018-05-12 14:47:38.685 [main] INFO  c.a.d.performance.demo.agent.registry.EtcdRegistry - Register a new service at{ key:/dubbomesh/com.alibaba.dubbo.performance.demo.provider.IHelloService/127.0.1.1:30000 ,value:{"cpu.period":50000,"provider.memory":2,"provider.cpu.quota":30000}}
+2018-05-12 14:47:38.701 [pool-1-thread-1] INFO  c.a.d.performance.demo.agent.registry.EtcdClient - KeepAlive lease:7587830154169847577; Hex format:694d6352bb4a8f19
+2018-05-12 14:47:39.132 [main] INFO  o.s.w.s.m.m.a.RequestMappingHandlerAdapter - Looking for @ControllerAdvice: org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@1ee0005: startup date [Sat May 12 14:47:36 CST 2018]; root of context hierarchy
+2018-05-12 14:47:39.184 [main] INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[]}" onto public java.lang.Object com.alibaba.dubbo.performance.demo.agent.HelloController.invoke(java.lang.String,java.lang.String,java.lang.String,java.lang.String) throws java.lang.Exception
+2018-05-12 14:47:39.188 [main] INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2018-05-12 14:47:39.188 [main] INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+2018-05-12 14:47:39.210 [main] INFO  o.s.web.servlet.handler.SimpleUrlHandlerMapping - Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-05-12 14:47:39.210 [main] INFO  o.s.web.servlet.handler.SimpleUrlHandlerMapping - Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-05-12 14:47:39.240 [main] INFO  o.s.web.servlet.handler.SimpleUrlHandlerMapping - Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-05-12 14:47:39.403 [main] INFO  o.s.jmx.export.annotation.AnnotationMBeanExporter - Registering beans for JMX exposure on startup
+2018-05-12 14:47:39.449 [main] INFO  o.s.b.c.e.u.UndertowEmbeddedServletContainer - Undertow started on port(s) 30000 (http)
+2018-05-12 14:47:39.454 [main] INFO  com.alibaba.dubbo.performance.demo.agent.AgentApp - Started AgentApp in 3.671 seconds (JVM running for 4.438)
+2018-05-12 14:47:58.082 [Thread-2] INFO  o.s.b.c.e.AnnotationConfigEmbeddedWebApplicationContext - Closing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@1ee0005: startup date [Sat May 12 14:47:36 CST 2018]; root of context hierarchy
+2018-05-12 14:47:58.084 [Thread-2] INFO  o.s.jmx.export.annotation.AnnotationMBeanExporter - Unregistering JMX-exposed beans on shutdown
