@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if [[ ! -x "$(command -v ./start-agent.sh)" ]]; then
+if [[ ! -x "$(command -v ./start_agent.sh)" ]]; then
   echo "[ERROR] start-agent.sh is not executable."
   exit 1
 fi
@@ -48,4 +48,4 @@ else
   exit 1
 fi
 pwd
-./start-agent.sh "$@"
+./start_agent.sh "$@"

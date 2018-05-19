@@ -205,3 +205,9 @@ key:rudy
   -Ddispatch=0
    taskId=368104,teamId=150641 Success
   https://middlewarerace2018.oss-cn-hangzhou.aliyuncs.com/150641/368104/logs.tar.gz
+  taskId=368269,teamId=150641 Success
+   https://middlewarerace2018.oss-cn-hangzhou.aliyuncs.com/150641/368269/logs.tar.gz
+
+ -Dtype=provider -Dserver.port=30000 -Dcpu.period=50000 -Dprovider.cpu.quota=30000 -Dprovider.memory=2 -Ddubbo.protocol.port=20889 -Dlogs.dir=/home/middle2018/logs/provider -Detcd.url=http://140.143.90.42:2379
+
+ -Dtype=consumer -Dserver.port=20000 -Dlogs.dir=/home/middle2018/logs/consumer -Ddispatch=0 -Detcd.url=http://140.143.90.42:2379
