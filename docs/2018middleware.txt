@@ -92,12 +92,13 @@ tail -n 100 workspace/provider/1000/2000/provider-samll/provider.log
  wrk -t2 -c256 -d20s -T5                 --script=./benchmark/wrk.lua                 --latency http://provider.vm_0_4_centos:8087/invoke
   wrk -t2 -c256 -d20s -T5                 --script=./benchmark/wrk.lua                 --latency http://47.105.58.23:8087/invoke
   wrk -t2 -c256 -d20s -T5                 --script=./benchmark/wrk.lua                 --latency http://www.baidu.com:80
-����ѹ�⣺
-  ����
+
   /mock/server.py
   pipenv install
   pipenv run python bootstrap.py -p provider
+local:jd desktop
 
+  pipenv run python3 bootstrap.py -p provider
 docker ����������
 
 1:docker attach
@@ -105,7 +106,7 @@ docker ����������
 docker commit
 dcoker inspect
 2 docker file
- docker image���ݲ鿴��
+ docker image
  docker run -t -i wangjin/dubbo-tianchi-demo /bin/bash
 
 FROM/RUN/COPY
@@ -113,16 +114,14 @@ FROM/RUN/COPY
 set -ex
 docker build -t="image_name"
 docker build -t="wangjin/dubbo-tianchi-demo"  --no-cache .
-
- docker �Ƶ�����docker hub:
+docker build -t="wangjin/dubbo-tianchi-demo" .
+ docker image build and push:
+ docker build -t="wangjin/dubbo-tianchi-agent-demo"  --no-cache .
  docker login --username=rudycto registry.cn-hangzhou.aliyuncs.com
- docker tage imageId registry.cn-hangzhou.aliyuncs.com/ocean18/dubbo-tianchi-agent-demo:latest
+ docker tag imageId registry.cn-hangzhou.aliyuncs.com/ocean18/dubbo-tianchi-agent-demo:latest
  docker push registry.cn-hangzhou.aliyuncs.com/ocean18/dubbo-tianchi-agent-demo:latest
 
- �ӣ�
 
- 1 ��������ȫ��connection refused
- 2 �۲�docke����
  docker rm provider-small
  rm run.id
 docker run -t -i registry.cn-hangzhou.aliyuncs.com/tianchi4-docker/dubbo-tianchi-demo provider-small
@@ -136,7 +135,7 @@ docker run -it ��entrypoint=���� registry.cn-hangzhou.aliyuncs.com/t
 ����ֹͣ��ɾ��
 docker stop  $(docker ps -a|awk '{print $1}')
 docker rm  $(docker ps -a|awk '{print $1}')
-
+docker rim $(docker images|awk '{print $2}')
 git config --global user.name "rudy"
 git config --global user.email "rudysteiner@163.com"
 ssh-keygen -t rsa -C "rudysteiner@163.com"
@@ -148,11 +147,15 @@ ssh-keygen -t rsa -C "rudysteiner@163.com"
  https://github.com/coreos/jetcd
 
  SERVICE_HOME=/home/devspace/services/
- AGENT_HOME=/home/devspace/agent-demo/
 cp $SERVICE_HOME/mesh-consumer/target/mesh-consumer-1.0-SNAPSHOT.jar /root/dists/mesh-consumer.jar
 cp $SERVICE_HOME/mesh-provider/target/mesh-provider-1.0-SNAPSHOT.jar /root/dists/mesh-provider.jar
+ AGENT_HOME=/home/devspace/agent-demo/
 cp $AGENT_HOME/mesh-agent/target/mesh-agent-1.0-SNAPSHOT.jar /root/dists/mesh-agent.jar
 
+
+: Goverment
+ AGENT_HOME=/home/devspace/aliware/agent-demo/
+ cp $AGENT_HOME/mesh-agent/target/mesh-agent-1.0-SNAPSHOT.jar /root/dists/mesh-agent.jar
 cp $AGENT_HOME/mesh-agent/target/
 
 
@@ -180,3 +183,25 @@ kill -9 $(ps -ef|grep mesh|awk '{print $2}')
 
  #!/bin/bash
 ./start-service.sh provider-small
+./start-service.sh provider-medium
+./start-service.sh provider-large
+./start-service.sh consumer
+
+boot service
+docker run -it --entrypoint="" <imagepath> bash
+docker time wrong
+//spring framework
+  undertow
+
+
+#yourkit 12
+key:rudy
+07c970aa7bebce79f78b10601ca4c8f45b8efe8560f36ff80b76cb6d8539e845d46319aea061655290cc2dd75a4955bf821bd36c994f7bf4e283403812b5e78ea22430b70f5bd5b154cca4d7673ab4c39602d95243c5c7b92e4fb43bf60f8787e56052152369a0c840ac06e88e3e28b90934ee31eb3efdd317d5df8d34d376b0e46cdf8f6cef48cdf8ffd18541757ff2f93fa44e43b2a4c87a2cac3d51fb0424a632243818ab669fb116f140cfccffabdbcba0af4ba0d6d63c7a6c2ecb485120af69c468602a10bddc353a498b05e637f4e7f5574e566e16ee27f34026d6b011cbe4d7f627dcda2019d35dd414a8b7a765fcb4259c237a2e335c4c8f6761ffacd00fd006fb006e
+
+-agentpath:/home/soft/YourKit-JavaProfiler-2017.02/bin/linux-x86-64/libyjpagent.so=disablestacktelemetry,exceptions=disable,delay=10000
+
+
+# balance index
+  -Ddispatch=0
+   taskId=368104,teamId=150641 Success
+  https://middlewarerace2018.oss-cn-hangzhou.aliyuncs.com/150641/368104/logs.tar.gz
