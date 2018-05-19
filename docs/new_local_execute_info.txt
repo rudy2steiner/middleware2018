@@ -1,0 +1,485 @@
+[INFO] >>> Fetch task.
+[DEBUG] fetch task url = http://localhost:3000/race/task/fetchTask
+[DEBUG] request data = {'token': '******', 'raceId': '231657', 'daemonid': 'tcentos[70fXs92]'}
+127.0.0.1 - - [19/May/2018 15:11:24] "POST /race/task/fetchTask HTTP/1.1" 200 -
+[DEBUG] response data = {'errCode': 0, 'errName': None, 'errMsg': 'success', 'wrapped': True, 'data': {'teamId': 1000, 'taskid': 2000, 'gitpath': 'https://code.aliyun.com/middlewarerace2018/agent-demo.git', 'imagepath': 'registry.cn-hangzhou.aliyuncs.com/ocean18/dubbo-tianchi-agent-demo', 'imagerepouser': 'rudycto', 'imagerepopassword': 'rudydocker123'}}
+[INFO] task = Task(dict={'teamId': 1000, 'taskid': 2000, 'gitpath': 'https://code.aliyun.com/middlewarerace2018/agent-demo.git', 'imagepath': 'registry.cn-hangzhou.aliyuncs.com/ocean18/dubbo-tianchi-agent-demo', 'imagerepouser': 'rudycto', 'imagerepopassword': 'rudydocker123'})
+[INFO] local workspace = LocalHost(hostname=tcentos, home=/root/workspace/provider, lock_file=/root/workspace/provider/.lock, dockerpwd_file=/root/workspace/provider/.dockerpwd)
+[INFO] remote workspace = RemoteHost(hostname=provider.tcentos, user=root, home=~/workspace/provider, team_home=~/workspace/provider/1000, task_home=~/workspace/provider/1000/2000, lock_file=~/workspace/provider/1000/2000/.lock, dockerpwd_file=~/workspace/provider/1000/2000/.dockerpwd)
+[INFO] >>> Lock local workspace.
+[INFO] >>> Generate Docker password file.
+[INFO] >>> Create remote task home.
+[DEBUG] Script to execute:
+
+            mkdir -p ~/workspace/provider/1000/2000
+            exit 0
+
+[DEBUG] Return code = 0
+[DEBUG] The output is as following:
+
+[INFO] >>> Lock remote task home.
+[DEBUG] Script to execute:
+
+            if [[ -f ~/workspace/provider/1000/2000/.lock ]]; then
+                echo "Lock file exists."
+                exit 1
+            else
+                touch ~/workspace/provider/1000/2000/.lock
+            fi
+            exit 0
+
+[DEBUG] Return code = 0
+[DEBUG] The output is as following:
+
+[INFO] >>> Upload Docker password file.
+[DEBUG] Script to execute:
+
+            if [[ -f /root/workspace/provider/.dockerpwd ]]; then
+                scp -q                     /root/workspace/provider/.dockerpwd                     root@provider.tcentos:~/workspace/provider/1000/2000/.dockerpwd
+                rm -f /root/workspace/provider/.dockerpwd
+            else
+                echo "Docker password file not exists."
+                exit 1
+            fi
+            exit 0
+
+[DEBUG] Return code = 0
+[DEBUG] The output is as following:
+
+[INFO] >>> Login to Docker repository.
+[DEBUG] Script to execute:
+
+            cat ~/.passwd | sudo -S -p '' docker login                 -u rudycto                 -p $(cat ~/workspace/provider/1000/2000/.dockerpwd)                 registry.cn-hangzhou.aliyuncs.com
+            rm -f ~/workspace/provider/1000/2000/.dockerpwd
+            exit 0
+
+[DEBUG] Return code = 0
+[DEBUG] The output is as following:
+WARNING! Using --password via the CLI is insecure. Use --password-stdin.
+Login Succeeded
+
+[INFO] >>> Pull Docker images.
+[DEBUG] Script to execute:
+
+            cat ~/.passwd | sudo -S -p '' docker pull registry.cn-hangzhou.aliyuncs.com/ocean18/dubbo-tianchi-agent-demo
+            cat ~/.passwd | sudo -S -p '' docker pull registry.cn-hangzhou.aliyuncs.com/aliware2018/alpine-etcd
+            cat ~/.passwd | sudo -S -p '' docker pull registry.cn-hangzhou.aliyuncs.com/aliware2018/alpine-nmap-ncat
+
+[DEBUG] Return code = 0
+[DEBUG] The output is as following:
+Using default tag: latest
+latest: Pulling from ocean18/dubbo-tianchi-agent-demo
+cc1a78bfd46b: Pulling fs layer
+7012b8a74a3f: Pulling fs layer
+a9454f33a104: Pulling fs layer
+10f76973a77a: Pulling fs layer
+f0bd1ac8bfaf: Pulling fs layer
+7a30d4113e36: Pulling fs layer
+fa68e734de49: Pulling fs layer
+c6bbda1fb5b8: Pulling fs layer
+10f76973a77a: Waiting
+f0bd1ac8bfaf: Waiting
+7a30d4113e36: Waiting
+fa68e734de49: Waiting
+c6bbda1fb5b8: Waiting
+a9454f33a104: Verifying Checksum
+a9454f33a104: Download complete
+10f76973a77a: Verifying Checksum
+10f76973a77a: Download complete
+f0bd1ac8bfaf: Verifying Checksum
+f0bd1ac8bfaf: Download complete
+7a30d4113e36: Verifying Checksum
+7a30d4113e36: Download complete
+fa68e734de49: Verifying Checksum
+fa68e734de49: Download complete
+c6bbda1fb5b8: Verifying Checksum
+c6bbda1fb5b8: Download complete
+cc1a78bfd46b: Verifying Checksum
+cc1a78bfd46b: Download complete
+cc1a78bfd46b: Pull complete
+7012b8a74a3f: Verifying Checksum
+7012b8a74a3f: Download complete
+7012b8a74a3f: Pull complete
+a9454f33a104: Pull complete
+10f76973a77a: Pull complete
+f0bd1ac8bfaf: Pull complete
+7a30d4113e36: Pull complete
+fa68e734de49: Pull complete
+c6bbda1fb5b8: Pull complete
+Digest: sha256:a9efc2148d3851fb565af76971e0398ca2a4769d4016d405f3ab12f3a863f43d
+Status: Downloaded newer image for registry.cn-hangzhou.aliyuncs.com/ocean18/dubbo-tianchi-agent-demo:latest
+Using default tag: latest
+latest: Pulling from aliware2018/alpine-etcd
+ff3a5c916c92: Pulling fs layer
+b6c8a18d466f: Pulling fs layer
+bab68923f148: Pulling fs layer
+bab68923f148: Verifying Checksum
+bab68923f148: Download complete
+ff3a5c916c92: Verifying Checksum
+ff3a5c916c92: Download complete
+ff3a5c916c92: Pull complete
+b6c8a18d466f: Verifying Checksum
+b6c8a18d466f: Download complete
+b6c8a18d466f: Pull complete
+bab68923f148: Pull complete
+Digest: sha256:aa6389d2ac369ef302c403873f4a9f9cdb9cba39678c9f53743d99296f6c04db
+Status: Downloaded newer image for registry.cn-hangzhou.aliyuncs.com/aliware2018/alpine-etcd:latest
+Using default tag: latest
+latest: Pulling from aliware2018/alpine-nmap-ncat
+ff3a5c916c92: Already exists
+da22f0c2269c: Pulling fs layer
+da22f0c2269c: Verifying Checksum
+da22f0c2269c: Pull complete
+Digest: sha256:d04328ee217f00e0c1d0f27452a55e816753225df47731575e2d041e8623fb35
+Status: Downloaded newer image for registry.cn-hangzhou.aliyuncs.com/aliware2018/alpine-nmap-ncat:latest
+
+[INFO] >>> Check signatures.
+[DEBUG] Script to execute:
+
+            # noqa: E501
+
+            if [[ -f /tmp/run.cid ]]; then
+                cat ~/.passwd | sudo -S -p '' rm /tmp/run.cid
+            fi
+
+            cat ~/.passwd | sudo -S -p '' docker run --rm -i --entrypoint='' registry.cn-hangzhou.aliyuncs.com/ocean18/dubbo-tianchi-agent-demo bash -c 'sha256sum -c < <(echo e5b85c5f7f20b41a2f8572186d3d20f66676c70b325593822dbae773925c9e05  /root/dists/mesh-consumer.jar)'
+            [[ $? -ne 0 ]] && cat ~/.passwd | sudo -S -p '' docker stop $CID && exit 101
+
+            cat ~/.passwd | sudo -S -p '' docker run --rm -i --entrypoint='' registry.cn-hangzhou.aliyuncs.com/ocean18/dubbo-tianchi-agent-demo bash -c 'sha256sum -c < <(echo 7860506063345ef99d58059a2c4aa2c2b536e688e75933ac6abf07f1c4b783cb  /root/dists/mesh-provider.jar)'
+            [[ $? -ne 0 ]] && cat ~/.passwd | sudo -S -p '' docker stop $CID && exit 102
+
+            cat ~/.passwd | sudo -S -p '' docker run --rm -i --entrypoint='' registry.cn-hangzhou.aliyuncs.com/ocean18/dubbo-tianchi-agent-demo bash -c 'sha256sum -c < <(echo 6480f20e4cd8222eea7fe9e93db0e81d851fa90dde8e279669c648933e928c5a  /usr/local/bin/docker-entrypoint.sh)'
+            [[ $? -ne 0 ]] && cat ~/.passwd | sudo -S -p '' docker stop $CID && exit 103
+
+
+[DEBUG] Return code = 1
+[DEBUG] The output is as following:
+/root/dists/mesh-consumer.jar: OK
+/root/dists/mesh-provider.jar: OK
+/usr/local/bin/docker-entrypoint.sh: OK
+
+[INFO] >>> Create Docker network.
+[DEBUG] Script to execute:
+
+            # noqa: E501
+
+            CID=$(cat ~/.passwd | sudo -S -p '' docker network ls --filter name=benchmarker -q)
+            if [[ "$CID" != "" ]]; then
+                echo "[WARN] Network named 'benchmarker' already exists, skip creating."
+                exit 0
+            fi
+            cat ~/.passwd | sudo -S -p '' docker network create                 --driver=bridge                 --subnet=10.10.10.0/24                 --gateway=10.10.10.1                 -o "com.docker.network.bridge.name"="benchmarker"                 -o "com.docker.network.bridge.enable_icc"="true"                 benchmarker
+            cat ~/.passwd | sudo -S -p '' ifconfig benchmarker 10.10.10.1 netmask 255.255.255.0
+
+[DEBUG] Return code = 0
+[DEBUG] The output is as following:
+[WARN] Network named 'benchmarker' already exists, skip creating.
+
+[INFO] >>> Start etcd service.
+[DEBUG] Script to execute:
+
+            # noqa: E501
+
+            ETCD_HOME=~/workspace/provider/1000/2000/etcd
+            rm -rf $ETCD_HOME
+            mkdir -p $ETCD_HOME/logs
+            cat ~/.passwd | sudo -S -p '' docker run -d                 --name=etcd                 --cidfile=$ETCD_HOME/run.cid                 --cpu-period=50000                 --cpu-quota=20000                 --memory=1g                 --network=benchmarker                 -v $ETCD_HOME/logs:/root/logs                 registry.cn-hangzhou.aliyuncs.com/aliware2018/alpine-etcd
+
+            echo $IP_ADDR
+            ATTEMPTS=0
+            MAX_ATTEMPTS=12
+            while true; do
+                echo "Trying to connect etcd..."
+                cat ~/.passwd | sudo -S -p ''                     docker run --rm --network=benchmarker registry.cn-hangzhou.aliyuncs.com/aliware2018/alpine-nmap-ncat                     ncat -v -w 1 --send-only etcd 2379
+                if [[ $? -eq 0 ]]; then
+                    exit 0
+                fi
+                if [[ $ATTEMPTS -eq $MAX_ATTEMPTS ]]; then
+                    echo "Cannot connect to etcd service after $ATTEMPTS attempts."
+                    exit 1
+                fi
+                ATTEMPTS=$((ATTEMPTS+1))
+                echo "Waiting for 5 seconds... ($ATTEMPTS/$MAX_ATTEMPTS)"
+                sleep 5
+            done
+
+[DEBUG] Return code = 0
+[DEBUG] The output is as following:
+5c8364280b509b7f36fc35d00f4da8606872aaffa091b1ff1b557fb68c070ca3
+
+Trying to connect etcd...
+Ncat: Version 7.60 ( https://nmap.org/ncat )
+Ncat: Connected to 10.10.10.2:2379.
+Ncat: 0 bytes sent, 0 bytes received in 0.01 seconds.
+
+[INFO] >>> Start provider services.
+[DEBUG] Script to execute:
+
+            PROVIDER_HOME=~/workspace/provider/1000/2000/provider-small
+            rm -rf $PROVIDER_HOME
+            mkdir -p $PROVIDER_HOME/logs
+            cat ~/.passwd | sudo -S -p '' docker run -d                 --name=provider-small                 --cidfile=$PROVIDER_HOME/run.cid                 --cpu-period=50000                 --cpu-quota=30000                 --memory=2g                 --network=benchmarker                 -v $PROVIDER_HOME/logs:/root/logs                 registry.cn-hangzhou.aliyuncs.com/ocean18/dubbo-tianchi-agent-demo provider-small
+            PROVIDER_HOME=~/workspace/provider/1000/2000/provider-medium
+            rm -rf $PROVIDER_HOME
+            mkdir -p $PROVIDER_HOME/logs
+            cat ~/.passwd | sudo -S -p '' docker run -d                 --name=provider-medium                 --cidfile=$PROVIDER_HOME/run.cid                 --cpu-period=50000                 --cpu-quota=60000                 --memory=4g                 --network=benchmarker                 -v $PROVIDER_HOME/logs:/root/logs                 registry.cn-hangzhou.aliyuncs.com/ocean18/dubbo-tianchi-agent-demo provider-medium
+            PROVIDER_HOME=~/workspace/provider/1000/2000/provider-large
+            rm -rf $PROVIDER_HOME
+            mkdir -p $PROVIDER_HOME/logs
+            cat ~/.passwd | sudo -S -p '' docker run -d                 --name=provider-large                 --cidfile=$PROVIDER_HOME/run.cid                 --cpu-period=50000                 --cpu-quota=90000                 --memory=6g                 --network=benchmarker                 -v $PROVIDER_HOME/logs:/root/logs                 registry.cn-hangzhou.aliyuncs.com/ocean18/dubbo-tianchi-agent-demo provider-large
+            # noqa: E501
+
+            ATTEMPTS=0
+            MAX_ATTEMPTS=12
+            while true; do
+                echo "Trying to connect provider-small..."
+                cat ~/.passwd | sudo -S -p ''                     docker run --rm --network=benchmarker registry.cn-hangzhou.aliyuncs.com/aliware2018/alpine-nmap-ncat                     ncat -v -w 1 --send-only provider-small 20880; r1=$?
+
+                echo "Trying to connect provider-medium..."
+                cat ~/.passwd | sudo -S -p ''                     docker run --rm --network=benchmarker registry.cn-hangzhou.aliyuncs.com/aliware2018/alpine-nmap-ncat                     ncat -v -w 1 --send-only provider-medium 20880; r2=$?
+
+                echo "Trying to connect provider-large..."
+                cat ~/.passwd | sudo -S -p ''                     docker run --rm --network=benchmarker registry.cn-hangzhou.aliyuncs.com/aliware2018/alpine-nmap-ncat                     ncat -v -w 1 --send-only provider-large 20880; r3=$?
+
+                if [[ $r1 -eq 0 && $r2 -eq 0 && $r3 -eq 0 ]]; then
+                    exit 0
+                fi
+                if [[ $ATTEMPTS -eq $MAX_ATTEMPTS ]]; then
+                    echo "Cannot connect to some of the provider services after $ATTEMPTS attempts."
+                    exit 1
+                fi
+                ATTEMPTS=$((ATTEMPTS+1))
+                echo "Waiting for 5 seconds... ($ATTEMPTS/$MAX_ATTEMPTS)"
+                sleep 5
+            done
+
+[DEBUG] Return code = 0
+[DEBUG] The output is as following:
+be181e8985c2fa8c16faecc6f25432f2256b9518c722c86deaa4c83ef729951b
+c9fb38557f3db2504d124b6a513cca129b9e00eb16a253138c06f31699dc93f3
+9980f63bb9493460c15bac7871776c520c3ba0136a0dde7fdd7fe891d338df40
+Trying to connect provider-small...
+Ncat: Version 7.60 ( https://nmap.org/ncat )
+Ncat: Connection refused.
+Trying to connect provider-medium...
+Ncat: Version 7.60 ( https://nmap.org/ncat )
+Ncat: Connection refused.
+Trying to connect provider-large...
+Ncat: Version 7.60 ( https://nmap.org/ncat )
+Ncat: Connection refused.
+Waiting for 5 seconds... (1/12)
+Trying to connect provider-small...
+Ncat: Version 7.60 ( https://nmap.org/ncat )
+Ncat: Connection refused.
+Trying to connect provider-medium...
+Ncat: Version 7.60 ( https://nmap.org/ncat )
+Ncat: Connection refused.
+Trying to connect provider-large...
+Ncat: Version 7.60 ( https://nmap.org/ncat )
+Ncat: Connection refused.
+Waiting for 5 seconds... (2/12)
+Trying to connect provider-small...
+Ncat: Version 7.60 ( https://nmap.org/ncat )
+Ncat: Connection refused.
+Trying to connect provider-medium...
+Ncat: Version 7.60 ( https://nmap.org/ncat )
+Ncat: Connected to 10.10.10.4:20880.
+Ncat: 0 bytes sent, 0 bytes received in 0.03 seconds.
+Trying to connect provider-large...
+Ncat: Version 7.60 ( https://nmap.org/ncat )
+Ncat: Connected to 10.10.10.5:20880.
+Ncat: 0 bytes sent, 0 bytes received in 0.03 seconds.
+Waiting for 5 seconds... (3/12)
+Trying to connect provider-small...
+Ncat: Version 7.60 ( https://nmap.org/ncat )
+Ncat: Connected to 10.10.10.3:20880.
+Ncat: 0 bytes sent, 0 bytes received in 0.01 seconds.
+Trying to connect provider-medium...
+Ncat: Version 7.60 ( https://nmap.org/ncat )
+Ncat: Connected to 10.10.10.4:20880.
+Ncat: 0 bytes sent, 0 bytes received in 0.01 seconds.
+Trying to connect provider-large...
+Ncat: Version 7.60 ( https://nmap.org/ncat )
+Ncat: Connected to 10.10.10.5:20880.
+Ncat: 0 bytes sent, 0 bytes received in 0.01 seconds.
+
+[INFO] >>> Start consumer service.
+[DEBUG] Script to execute:
+
+            # noqa: E501
+
+            CONSUMER_HOME=~/workspace/provider/1000/2000/consumer
+            rm -rf $CONSUMER_HOME
+            mkdir -p $CONSUMER_HOME/logs
+            cat ~/.passwd | sudo -S -p '' docker run -d                 --name=consumer                 --cidfile=$CONSUMER_HOME/run.cid                 --cpu-period=50000                 --cpu-quota=180000                 --memory=3g                 --network=benchmarker                 -v $CONSUMER_HOME/logs:/root/logs                 -p 80:8087                 registry.cn-hangzhou.aliyuncs.com/ocean18/dubbo-tianchi-agent-demo consumer
+
+            ATTEMPTS=0
+            MAX_ATTEMPTS=12
+            while true; do
+                echo "Trying to connect consumer..."
+                cat ~/.passwd | sudo -S -p ''                     docker run --rm --network=benchmarker registry.cn-hangzhou.aliyuncs.com/aliware2018/alpine-nmap-ncat                     ncat -v -w 1 --send-only consumer 8087
+                if [[ $? -eq 0 ]]; then
+                    exit 0
+                fi
+                if [[ $ATTEMPTS -eq $MAX_ATTEMPTS ]]; then
+                    echo "Cannot connect to consumer service after $ATTEMPTS attempts."
+                    exit 1
+                fi
+                ATTEMPTS=$((ATTEMPTS+1))
+                echo "Waiting for 5 seconds... ($ATTEMPTS/$MAX_ATTEMPTS)"
+                sleep 5
+            done
+
+[DEBUG] Return code = 0
+[DEBUG] The output is as following:
+b8ce2bc53fdf7d190adbd9d98fd09996b40f081c996142914a874957f01211c4
+Trying to connect consumer...
+Ncat: Version 7.60 ( https://nmap.org/ncat )
+Ncat: Connection refused.
+Waiting for 5 seconds... (1/12)
+Trying to connect consumer...
+Ncat: Version 7.60 ( https://nmap.org/ncat )
+Ncat: Connection refused.
+Waiting for 5 seconds... (2/12)
+Trying to connect consumer...
+Ncat: Version 7.60 ( https://nmap.org/ncat )
+Ncat: Connected to 10.10.10.6:8087.
+Ncat: 0 bytes sent, 0 bytes received in 0.01 seconds.
+
+[INFO] >>> Warmup.
+[DEBUG] Script to execute:
+
+            sleep 5
+            wrk -t2 -c256 -d20s -T5                 --script=./benchmark/wrk.lua                 --latency http://provider.tcentos/invoke
+            exit 0
+
+[DEBUG] Return code = 0
+[DEBUG] The output is as following:
+Running 20s test @ http://provider.tcentos/invoke
+  2 threads and 256 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency     2.01s   823.84ms   4.95s    71.94%
+    Req/Sec    64.48     46.05   260.00     74.38%
+  Latency Distribution
+     50%    1.74s
+     75%    2.49s
+     90%    3.31s
+     99%    4.42s
+  1857 requests in 20.04s, 255.70KB read
+  Socket errors: connect 0, read 0, write 0, timeout 257
+Requests/sec:     92.69
+Transfer/sec:     12.76KB
+--------------------------
+Durations:       20.04s
+Requests:        1857
+Avg RT:          2014.34ms
+Max RT:          4947.043ms
+Min RT:          497.871ms
+Error requests:  0
+Valid requests:  1857
+QPS:             92.69
+--------------------------
+
+[INFO] >>> Pressure with 64 connections.
+[DEBUG] Script to execute:
+
+            sleep 5
+            wrk -t2 -c64 -d60s -T5                 --script=./benchmark/wrk.lua                 --latency http://provider.tcentos/invoke
+            exit 0
+
+[DEBUG] Return code = 0
+[DEBUG] The output is as following:
+Running 1m test @ http://provider.tcentos/invoke
+  2 threads and 64 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency   212.05ms   95.86ms 911.94ms   84.75%
+    Req/Sec   154.79     65.43   320.00     65.36%
+  Latency Distribution
+     50%  180.32ms
+     75%  242.39ms
+     90%  342.36ms
+     99%  572.38ms
+  18458 requests in 1.00m, 2.48MB read
+Requests/sec:    307.35
+Transfer/sec:     42.32KB
+--------------------------
+Durations:       60.06s
+Requests:        18458
+Avg RT:          212.05ms
+Max RT:          911.941ms
+Min RT:          109.712ms
+Error requests:  0
+Valid requests:  18458
+QPS:             307.35
+--------------------------
+
+[INFO] QPS = 307.35
+[INFO] >>> Pressure with 128 connections.
+[DEBUG] Script to execute:
+
+            sleep 5
+            wrk -t2 -c128 -d60s -T5                 --script=./benchmark/wrk.lua                 --latency http://provider.tcentos/invoke
+            exit 0
+
+[DEBUG] Return code = 0
+[DEBUG] The output is as following:
+Running 1m test @ http://provider.tcentos/invoke
+  2 threads and 128 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency   158.95ms   49.17ms 608.81ms   88.36%
+    Req/Sec   409.32    107.14   640.00     68.74%
+  Latency Distribution
+     50%  143.02ms
+     75%  172.98ms
+     90%  215.98ms
+     99%  358.67ms
+  48611 requests in 1.00m, 6.54MB read
+Requests/sec:    809.52
+Transfer/sec:    111.47KB
+--------------------------
+Durations:       60.05s
+Requests:        48611
+Avg RT:          158.95ms
+Max RT:          608.812ms
+Min RT:          108.502ms
+Error requests:  0
+Valid requests:  48611
+QPS:             809.52
+--------------------------
+
+[INFO] QPS = 809.52
+[INFO] >>> Pressure with 256 connections.
+[DEBUG] Script to execute:
+
+            sleep 5
+            wrk -t2 -c256 -d60s -T5                 --script=./benchmark/wrk.lua                 --latency http://provider.tcentos/invoke
+            exit 0
+
+[DEBUG] Return code = 0
+[DEBUG] The output is as following:
+Running 1m test @ http://provider.tcentos/invoke
+  2 threads and 256 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency   270.89ms  251.43ms   4.67s    91.14%
+    Req/Sec   551.30    166.01     1.21k    73.95%
+  Latency Distribution
+     50%  190.46ms
+     75%  297.99ms
+     90%  459.80ms
+     99%    1.23s
+  65714 requests in 1.00m, 8.84MB read
+  Socket errors: connect 0, read 0, write 0, timeout 4
+Requests/sec:   1094.36
+Transfer/sec:    150.69KB
+--------------------------
+Durations:       60.05s
+Requests:        65714
+Avg RT:          270.89ms
+Max RT:          4668.679ms
+Min RT:          108.776ms
+Error requests:  0
+Valid requests:  65714
+QPS:             1094.36
+--------------------------
+
+[INFO] QPS = 1094.36
