@@ -13,7 +13,8 @@ echo $! > $ETCD_HOME/run.pid
             MAX_ATTEMPTS=10
             while true; do
                 echo "Trying to connect $IP_ADDR:$PORT..."
-                nc -v -n -w 1 --send-only $IP_ADDR $PORT < /dev/null
+                nc -v -n -w 1 $IP_ADDR $PORT </dev/null
+#		nc -v -n -w 1 --send-only $IP_ADDR $PORT < /dev/null
                 if [[ $? -eq 0 ]]; then
                     break 
                 fi

@@ -1,0 +1,432 @@
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::        (v1.5.7.RELEASE)
+
+2018-05-12 14:47:36.245 [main] INFO  com.alibaba.dubbo.performance.demo.agent.AgentApp - Starting AgentApp on ocean with PID 29623 (/root/dists/mesh-agent.jar started by root in /home/devspace/middleware2018/bash)
+2018-05-12 14:47:36.251 [main] INFO  com.alibaba.dubbo.performance.demo.agent.AgentApp - No active profile set, falling back to default profiles: default
+2018-05-12 14:47:36.370 [background-preinit] INFO  org.hibernate.validator.internal.util.Version - HV000001: Hibernate Validator 5.3.5.Final
+2018-05-12 14:47:36.405 [main] INFO  o.s.b.c.e.AnnotationConfigEmbeddedWebApplicationContext - Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@1ee0005: startup date [Sat May 12 14:47:36 CST 2018]; root of context hierarchy
+2018-05-12 14:47:38.101 [main] INFO  org.xnio - XNIO version 3.3.8.Final
+2018-05-12 14:47:38.115 [main] INFO  org.xnio.nio - XNIO NIO Implementation Version 3.3.8.Final
+2018-05-12 14:47:38.175 [main] WARN  io.undertow.websockets.jsr - UT026009: XNIO worker was not set on WebSocketDeploymentInfo, the default worker will be used
+2018-05-12 14:47:38.175 [main] WARN  io.undertow.websockets.jsr - UT026010: Buffer pool was not set on WebSocketDeploymentInfo, the default pool will be used
+2018-05-12 14:47:38.191 [main] INFO  io.undertow.servlet - Initializing Spring embedded WebApplicationContext
+2018-05-12 14:47:38.191 [main] INFO  org.springframework.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 1805 ms
+2018-05-12 14:47:38.271 [main] INFO  o.s.boot.web.servlet.ServletRegistrationBean - Mapping servlet: 'dispatcherServlet' to [/]
+2018-05-12 14:47:38.275 [main] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'characterEncodingFilter' to: [/*]
+2018-05-12 14:47:38.276 [main] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2018-05-12 14:47:38.276 [main] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'httpPutFormContentFilter' to: [/*]
+2018-05-12 14:47:38.277 [main] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'requestContextFilter' to: [/*]
+2018-05-12 14:47:38.685 [main] INFO  c.a.d.performance.demo.agent.registry.EtcdRegistry - Register a new service at{ key:/dubbomesh/com.alibaba.dubbo.performance.demo.provider.IHelloService/127.0.1.1:30000 ,value:{"cpu.period":50000,"provider.memory":2,"provider.cpu.quota":30000}}
+2018-05-12 14:47:38.701 [pool-1-thread-1] INFO  c.a.d.performance.demo.agent.registry.EtcdClient - KeepAlive lease:7587830154169847577; Hex format:694d6352bb4a8f19
+2018-05-12 14:47:39.132 [main] INFO  o.s.w.s.m.m.a.RequestMappingHandlerAdapter - Looking for @ControllerAdvice: org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@1ee0005: startup date [Sat May 12 14:47:36 CST 2018]; root of context hierarchy
+2018-05-12 14:47:39.184 [main] INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[]}" onto public java.lang.Object com.alibaba.dubbo.performance.demo.agent.HelloController.invoke(java.lang.String,java.lang.String,java.lang.String,java.lang.String) throws java.lang.Exception
+2018-05-12 14:47:39.188 [main] INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2018-05-12 14:47:39.188 [main] INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+2018-05-12 14:47:39.210 [main] INFO  o.s.web.servlet.handler.SimpleUrlHandlerMapping - Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-05-12 14:47:39.210 [main] INFO  o.s.web.servlet.handler.SimpleUrlHandlerMapping - Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-05-12 14:47:39.240 [main] INFO  o.s.web.servlet.handler.SimpleUrlHandlerMapping - Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-05-12 14:47:39.403 [main] INFO  o.s.jmx.export.annotation.AnnotationMBeanExporter - Registering beans for JMX exposure on startup
+2018-05-12 14:47:39.449 [main] INFO  o.s.b.c.e.u.UndertowEmbeddedServletContainer - Undertow started on port(s) 30000 (http)
+2018-05-12 14:47:39.454 [main] INFO  com.alibaba.dubbo.performance.demo.agent.AgentApp - Started AgentApp in 3.671 seconds (JVM running for 4.438)
+2018-05-12 14:47:58.082 [Thread-2] INFO  o.s.b.c.e.AnnotationConfigEmbeddedWebApplicationContext - Closing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@1ee0005: startup date [Sat May 12 14:47:36 CST 2018]; root of context hierarchy
+2018-05-12 14:47:58.084 [Thread-2] INFO  o.s.jmx.export.annotation.AnnotationMBeanExporter - Unregistering JMX-exposed beans on shutdown
+Usage: java [-options] class [args...]
+           (to execute a class)
+   or  java [-options] -jar jarfile [args...]
+           (to execute a jar file)
+where options include:
+    -d32	  use a 32-bit data model if available
+    -d64	  use a 64-bit data model if available
+    -server	  to select the "server" VM
+                  The default VM is server,
+                  because you are running on a server-class machine.
+
+
+    -cp <class search path of directories and zip/jar files>
+    -classpath <class search path of directories and zip/jar files>
+                  A : separated list of directories, JAR archives,
+                  and ZIP archives to search for class files.
+    -D<name>=<value>
+                  set a system property
+    -verbose:[class|gc|jni]
+                  enable verbose output
+    -version      print product version and exit
+    -version:<value>
+                  Warning: this feature is deprecated and will be removed
+                  in a future release.
+                  require the specified version to run
+    -showversion  print product version and continue
+    -jre-restrict-search | -no-jre-restrict-search
+                  Warning: this feature is deprecated and will be removed
+                  in a future release.
+                  include/exclude user private JREs in the version search
+    -? -help      print this help message
+    -X            print help on non-standard options
+    -ea[:<packagename>...|:<classname>]
+    -enableassertions[:<packagename>...|:<classname>]
+                  enable assertions with specified granularity
+    -da[:<packagename>...|:<classname>]
+    -disableassertions[:<packagename>...|:<classname>]
+                  disable assertions with specified granularity
+    -esa | -enablesystemassertions
+                  enable system assertions
+    -dsa | -disablesystemassertions
+                  disable system assertions
+    -agentlib:<libname>[=<options>]
+                  load native agent library <libname>, e.g. -agentlib:hprof
+                  see also, -agentlib:jdwp=help and -agentlib:hprof=help
+    -agentpath:<pathname>[=<options>]
+                  load native agent library by full pathname
+    -javaagent:<jarpath>[=<options>]
+                  load Java programming language agent, see java.lang.instrument
+    -splash:<imagepath>
+                  show splash screen with specified image
+See http://www.oracle.com/technetwork/java/javase/documentation/index.html for more details.
+Usage: java [-options] class [args...]
+           (to execute a class)
+   or  java [-options] -jar jarfile [args...]
+           (to execute a jar file)
+where options include:
+    -d32	  use a 32-bit data model if available
+    -d64	  use a 64-bit data model if available
+    -server	  to select the "server" VM
+                  The default VM is server,
+                  because you are running on a server-class machine.
+
+
+    -cp <class search path of directories and zip/jar files>
+    -classpath <class search path of directories and zip/jar files>
+                  A : separated list of directories, JAR archives,
+                  and ZIP archives to search for class files.
+    -D<name>=<value>
+                  set a system property
+    -verbose:[class|gc|jni]
+                  enable verbose output
+    -version      print product version and exit
+    -version:<value>
+                  Warning: this feature is deprecated and will be removed
+                  in a future release.
+                  require the specified version to run
+    -showversion  print product version and continue
+    -jre-restrict-search | -no-jre-restrict-search
+                  Warning: this feature is deprecated and will be removed
+                  in a future release.
+                  include/exclude user private JREs in the version search
+    -? -help      print this help message
+    -X            print help on non-standard options
+    -ea[:<packagename>...|:<classname>]
+    -enableassertions[:<packagename>...|:<classname>]
+                  enable assertions with specified granularity
+    -da[:<packagename>...|:<classname>]
+    -disableassertions[:<packagename>...|:<classname>]
+                  disable assertions with specified granularity
+    -esa | -enablesystemassertions
+                  enable system assertions
+    -dsa | -disablesystemassertions
+                  disable system assertions
+    -agentlib:<libname>[=<options>]
+                  load native agent library <libname>, e.g. -agentlib:hprof
+                  see also, -agentlib:jdwp=help and -agentlib:hprof=help
+    -agentpath:<pathname>[=<options>]
+                  load native agent library by full pathname
+    -javaagent:<jarpath>[=<options>]
+                  load Java programming language agent, see java.lang.instrument
+    -splash:<imagepath>
+                  show splash screen with specified image
+See http://www.oracle.com/technetwork/java/javase/documentation/index.html for more details.
+Usage: java [-options] class [args...]
+           (to execute a class)
+   or  java [-options] -jar jarfile [args...]
+           (to execute a jar file)
+where options include:
+    -d32	  use a 32-bit data model if available
+    -d64	  use a 64-bit data model if available
+    -server	  to select the "server" VM
+                  The default VM is server,
+                  because you are running on a server-class machine.
+
+
+    -cp <class search path of directories and zip/jar files>
+    -classpath <class search path of directories and zip/jar files>
+                  A : separated list of directories, JAR archives,
+                  and ZIP archives to search for class files.
+    -D<name>=<value>
+                  set a system property
+    -verbose:[class|gc|jni]
+                  enable verbose output
+    -version      print product version and exit
+    -version:<value>
+                  Warning: this feature is deprecated and will be removed
+                  in a future release.
+                  require the specified version to run
+    -showversion  print product version and continue
+    -jre-restrict-search | -no-jre-restrict-search
+                  Warning: this feature is deprecated and will be removed
+                  in a future release.
+                  include/exclude user private JREs in the version search
+    -? -help      print this help message
+    -X            print help on non-standard options
+    -ea[:<packagename>...|:<classname>]
+    -enableassertions[:<packagename>...|:<classname>]
+                  enable assertions with specified granularity
+    -da[:<packagename>...|:<classname>]
+    -disableassertions[:<packagename>...|:<classname>]
+                  disable assertions with specified granularity
+    -esa | -enablesystemassertions
+                  enable system assertions
+    -dsa | -disablesystemassertions
+                  disable system assertions
+    -agentlib:<libname>[=<options>]
+                  load native agent library <libname>, e.g. -agentlib:hprof
+                  see also, -agentlib:jdwp=help and -agentlib:hprof=help
+    -agentpath:<pathname>[=<options>]
+                  load native agent library by full pathname
+    -javaagent:<jarpath>[=<options>]
+                  load Java programming language agent, see java.lang.instrument
+    -splash:<imagepath>
+                  show splash screen with specified image
+See http://www.oracle.com/technetwork/java/javase/documentation/index.html for more details.
+Usage: java [-options] class [args...]
+           (to execute a class)
+   or  java [-options] -jar jarfile [args...]
+           (to execute a jar file)
+where options include:
+    -d32	  use a 32-bit data model if available
+    -d64	  use a 64-bit data model if available
+    -server	  to select the "server" VM
+                  The default VM is server,
+                  because you are running on a server-class machine.
+
+
+    -cp <class search path of directories and zip/jar files>
+    -classpath <class search path of directories and zip/jar files>
+                  A : separated list of directories, JAR archives,
+                  and ZIP archives to search for class files.
+    -D<name>=<value>
+                  set a system property
+    -verbose:[class|gc|jni]
+                  enable verbose output
+    -version      print product version and exit
+    -version:<value>
+                  Warning: this feature is deprecated and will be removed
+                  in a future release.
+                  require the specified version to run
+    -showversion  print product version and continue
+    -jre-restrict-search | -no-jre-restrict-search
+                  Warning: this feature is deprecated and will be removed
+                  in a future release.
+                  include/exclude user private JREs in the version search
+    -? -help      print this help message
+    -X            print help on non-standard options
+    -ea[:<packagename>...|:<classname>]
+    -enableassertions[:<packagename>...|:<classname>]
+                  enable assertions with specified granularity
+    -da[:<packagename>...|:<classname>]
+    -disableassertions[:<packagename>...|:<classname>]
+                  disable assertions with specified granularity
+    -esa | -enablesystemassertions
+                  enable system assertions
+    -dsa | -disablesystemassertions
+                  disable system assertions
+    -agentlib:<libname>[=<options>]
+                  load native agent library <libname>, e.g. -agentlib:hprof
+                  see also, -agentlib:jdwp=help and -agentlib:hprof=help
+    -agentpath:<pathname>[=<options>]
+                  load native agent library by full pathname
+    -javaagent:<jarpath>[=<options>]
+                  load Java programming language agent, see java.lang.instrument
+    -splash:<imagepath>
+                  show splash screen with specified image
+See http://www.oracle.com/technetwork/java/javase/documentation/index.html for more details.
+Usage: java [-options] class [args...]
+           (to execute a class)
+   or  java [-options] -jar jarfile [args...]
+           (to execute a jar file)
+where options include:
+    -d32	  use a 32-bit data model if available
+    -d64	  use a 64-bit data model if available
+    -server	  to select the "server" VM
+                  The default VM is server,
+                  because you are running on a server-class machine.
+
+
+    -cp <class search path of directories and zip/jar files>
+    -classpath <class search path of directories and zip/jar files>
+                  A : separated list of directories, JAR archives,
+                  and ZIP archives to search for class files.
+    -D<name>=<value>
+                  set a system property
+    -verbose:[class|gc|jni]
+                  enable verbose output
+    -version      print product version and exit
+    -version:<value>
+                  Warning: this feature is deprecated and will be removed
+                  in a future release.
+                  require the specified version to run
+    -showversion  print product version and continue
+    -jre-restrict-search | -no-jre-restrict-search
+                  Warning: this feature is deprecated and will be removed
+                  in a future release.
+                  include/exclude user private JREs in the version search
+    -? -help      print this help message
+    -X            print help on non-standard options
+    -ea[:<packagename>...|:<classname>]
+    -enableassertions[:<packagename>...|:<classname>]
+                  enable assertions with specified granularity
+    -da[:<packagename>...|:<classname>]
+    -disableassertions[:<packagename>...|:<classname>]
+                  disable assertions with specified granularity
+    -esa | -enablesystemassertions
+                  enable system assertions
+    -dsa | -disablesystemassertions
+                  disable system assertions
+    -agentlib:<libname>[=<options>]
+                  load native agent library <libname>, e.g. -agentlib:hprof
+                  see also, -agentlib:jdwp=help and -agentlib:hprof=help
+    -agentpath:<pathname>[=<options>]
+                  load native agent library by full pathname
+    -javaagent:<jarpath>[=<options>]
+                  load Java programming language agent, see java.lang.instrument
+    -splash:<imagepath>
+                  show splash screen with specified image
+See http://www.oracle.com/technetwork/java/javase/documentation/index.html for more details.
+Usage: java [-options] class [args...]
+           (to execute a class)
+   or  java [-options] -jar jarfile [args...]
+           (to execute a jar file)
+where options include:
+    -d32	  use a 32-bit data model if available
+    -d64	  use a 64-bit data model if available
+    -server	  to select the "server" VM
+                  The default VM is server,
+                  because you are running on a server-class machine.
+
+
+    -cp <class search path of directories and zip/jar files>
+    -classpath <class search path of directories and zip/jar files>
+                  A : separated list of directories, JAR archives,
+                  and ZIP archives to search for class files.
+    -D<name>=<value>
+                  set a system property
+    -verbose:[class|gc|jni]
+                  enable verbose output
+    -version      print product version and exit
+    -version:<value>
+                  Warning: this feature is deprecated and will be removed
+                  in a future release.
+                  require the specified version to run
+    -showversion  print product version and continue
+    -jre-restrict-search | -no-jre-restrict-search
+                  Warning: this feature is deprecated and will be removed
+                  in a future release.
+                  include/exclude user private JREs in the version search
+    -? -help      print this help message
+    -X            print help on non-standard options
+    -ea[:<packagename>...|:<classname>]
+    -enableassertions[:<packagename>...|:<classname>]
+                  enable assertions with specified granularity
+    -da[:<packagename>...|:<classname>]
+    -disableassertions[:<packagename>...|:<classname>]
+                  disable assertions with specified granularity
+    -esa | -enablesystemassertions
+                  enable system assertions
+    -dsa | -disablesystemassertions
+                  disable system assertions
+    -agentlib:<libname>[=<options>]
+                  load native agent library <libname>, e.g. -agentlib:hprof
+                  see also, -agentlib:jdwp=help and -agentlib:hprof=help
+    -agentpath:<pathname>[=<options>]
+                  load native agent library by full pathname
+    -javaagent:<jarpath>[=<options>]
+                  load Java programming language agent, see java.lang.instrument
+    -splash:<imagepath>
+                  show splash screen with specified image
+See http://www.oracle.com/technetwork/java/javase/documentation/index.html for more details.
+Usage: java [-options] class [args...]
+           (to execute a class)
+   or  java [-options] -jar jarfile [args...]
+           (to execute a jar file)
+where options include:
+    -d32	  use a 32-bit data model if available
+    -d64	  use a 64-bit data model if available
+    -server	  to select the "server" VM
+                  The default VM is server,
+                  because you are running on a server-class machine.
+
+
+    -cp <class search path of directories and zip/jar files>
+    -classpath <class search path of directories and zip/jar files>
+                  A : separated list of directories, JAR archives,
+                  and ZIP archives to search for class files.
+    -D<name>=<value>
+                  set a system property
+    -verbose:[class|gc|jni]
+                  enable verbose output
+    -version      print product version and exit
+    -version:<value>
+                  Warning: this feature is deprecated and will be removed
+                  in a future release.
+                  require the specified version to run
+    -showversion  print product version and continue
+    -jre-restrict-search | -no-jre-restrict-search
+                  Warning: this feature is deprecated and will be removed
+                  in a future release.
+                  include/exclude user private JREs in the version search
+    -? -help      print this help message
+    -X            print help on non-standard options
+    -ea[:<packagename>...|:<classname>]
+    -enableassertions[:<packagename>...|:<classname>]
+                  enable assertions with specified granularity
+    -da[:<packagename>...|:<classname>]
+    -disableassertions[:<packagename>...|:<classname>]
+                  disable assertions with specified granularity
+    -esa | -enablesystemassertions
+                  enable system assertions
+    -dsa | -disablesystemassertions
+                  disable system assertions
+    -agentlib:<libname>[=<options>]
+                  load native agent library <libname>, e.g. -agentlib:hprof
+                  see also, -agentlib:jdwp=help and -agentlib:hprof=help
+    -agentpath:<pathname>[=<options>]
+                  load native agent library by full pathname
+    -javaagent:<jarpath>[=<options>]
+                  load Java programming language agent, see java.lang.instrument
+    -splash:<imagepath>
+                  show splash screen with specified image
+See http://www.oracle.com/technetwork/java/javase/documentation/index.html for more details.
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::        (v1.5.7.RELEASE)
+
+2018-05-19 01:12:02.130 [main] INFO  c.a.dubbo.performance.demo.provider.ProviderApp - Starting ProviderApp on ocean with PID 19343 (/root/dists/mesh-provider.jar started by root in /home/devspace/middleware2018/bash)
+2018-05-19 01:12:02.132 [main] INFO  c.a.dubbo.performance.demo.provider.ProviderApp - No active profile set, falling back to default profiles: default
+2018-05-19 01:12:02.170 [main] INFO  o.s.c.a.AnnotationConfigApplicationContext - Refreshing org.springframework.context.annotation.AnnotationConfigApplicationContext@41975e01: startup date [Sat May 19 01:12:02 CST 2018]; root of context hierarchy
+2018-05-19 01:12:02.338 [main] INFO  o.s.beans.factory.xml.XmlBeanDefinitionReader - Loading XML bean definitions from URL [jar:file:/root/dists/mesh-provider.jar!/BOOT-INF/classes!/dubbo-provider.xml]
+2018-05-19 01:12:02.432 [main] INFO  com.alibaba.dubbo.common.logger.LoggerFactory - using logger: com.alibaba.dubbo.common.logger.log4j.Log4jLoggerAdapter
+2018-05-19 01:12:02.892 [main] INFO  o.s.jmx.export.annotation.AnnotationMBeanExporter - Registering beans for JMX exposure on startup
+2018-05-19 01:12:02.900 [main] INFO  com.alibaba.dubbo.config.AbstractConfig -  [DUBBO] The service ready on spring started. service: com.alibaba.dubbo.performance.demo.provider.IHelloService, dubbo version: 2.6.1, current host: 172.17.0.1
+2018-05-19 01:12:02.903 [main] INFO  com.alibaba.dubbo.config.AbstractConfig -  [DUBBO] Use System Property dubbo.application.qos.enable to config dubbo, dubbo version: 2.6.1, current host: 172.17.0.1
+2018-05-19 01:12:02.904 [main] INFO  com.alibaba.dubbo.config.AbstractConfig -  [DUBBO] Use System Property dubbo.protocol.port to config dubbo, dubbo version: 2.6.1, current host: 172.17.0.1
+2018-05-19 01:12:02.974 [main] INFO  com.alibaba.dubbo.config.AbstractConfig -  [DUBBO] Export dubbo service com.alibaba.dubbo.performance.demo.provider.IHelloService to local registry, dubbo version: 2.6.1, current host: 172.17.0.1
+2018-05-19 01:12:02.975 [main] INFO  com.alibaba.dubbo.config.AbstractConfig -  [DUBBO] Export dubbo service com.alibaba.dubbo.performance.demo.provider.IHelloService to url dubbo://172.17.0.1:20889/com.alibaba.dubbo.performance.demo.provider.IHelloService?anyhost=true&application=demo-provider&bind.ip=172.17.0.1&bind.port=20889&default.server=netty4&dubbo=2.6.1&generic=false&interface=com.alibaba.dubbo.performance.demo.provider.IHelloService&methods=hash&pid=19343&qos.enable=false&serialization=fastjson&side=provider&timestamp=1526663522911, dubbo version: 2.6.1, current host: 172.17.0.1
+2018-05-19 01:12:03.102 [main] INFO  c.alibaba.dubbo.remoting.transport.AbstractServer -  [DUBBO] Start NettyServer bind /0.0.0.0:20889, export /172.17.0.1:20889, dubbo version: 2.6.1, current host: 172.17.0.1
+2018-05-19 01:12:03.109 [main] INFO  c.a.dubbo.performance.demo.provider.ProviderApp - Started ProviderApp in 1.168 seconds (JVM running for 1.575)
+2018-05-19 01:13:36.079 [DubboShutdownHook] INFO  com.alibaba.dubbo.config.AbstractConfig -  [DUBBO] Run shutdown hook now., dubbo version: 2.6.1, current host: 172.17.0.1
+2018-05-19 01:13:36.079 [Thread-2] INFO  o.s.c.a.AnnotationConfigApplicationContext - Closing org.springframework.context.annotation.AnnotationConfigApplicationContext@41975e01: startup date [Sat May 19 01:12:02 CST 2018]; root of context hierarchy
+2018-05-19 01:13:36.080 [DubboShutdownHook] INFO  c.a.dubbo.registry.support.AbstractRegistryFactory -  [DUBBO] Close all registries [], dubbo version: 2.6.1, current host: 172.17.0.1
+2018-05-19 01:13:36.082 [Thread-2] INFO  o.s.jmx.export.annotation.AnnotationMBeanExporter - Unregistering JMX-exposed beans on shutdown
+2018-05-19 01:13:46.084 [DubboShutdownHook] INFO  com.alibaba.dubbo.rpc.protocol.dubbo.DubboProtocol -  [DUBBO] Close dubbo server: /172.17.0.1:20889, dubbo version: 2.6.1, current host: 172.17.0.1
+2018-05-19 01:13:46.087 [DubboShutdownHook] INFO  c.alibaba.dubbo.remoting.transport.AbstractServer -  [DUBBO] Close NettyServer bind /0.0.0.0:20889, export /172.17.0.1:20889, dubbo version: 2.6.1, current host: 172.17.0.1
+2018-05-19 01:13:46.090 [DubboShutdownHook] INFO  com.alibaba.dubbo.rpc.protocol.dubbo.DubboProtocol -  [DUBBO] Unexport service: dubbo://172.17.0.1:20889/com.alibaba.dubbo.performance.demo.provider.IHelloService?anyhost=true&application=demo-provider&bind.ip=172.17.0.1&bind.port=20889&default.server=netty4&dubbo=2.6.1&generic=false&interface=com.alibaba.dubbo.performance.demo.provider.IHelloService&methods=hash&pid=19343&qos.enable=false&serialization=fastjson&side=provider&timestamp=1526663522911, dubbo version: 2.6.1, current host: 172.17.0.1
+2018-05-19 01:13:46.091 [DubboShutdownHook] INFO  com.alibaba.dubbo.rpc.protocol.injvm.InjvmProtocol -  [DUBBO] Unexport service: injvm://127.0.0.1/com.alibaba.dubbo.performance.demo.provider.IHelloService?anyhost=true&application=demo-provider&bind.ip=172.17.0.1&bind.port=20889&default.server=netty4&dubbo=2.6.1&generic=false&interface=com.alibaba.dubbo.performance.demo.provider.IHelloService&methods=hash&pid=19343&qos.enable=false&serialization=fastjson&side=provider&timestamp=1526663522911, dubbo version: 2.6.1, current host: 172.17.0.1

@@ -1,0 +1,67 @@
+22:22:39,044 |-INFO in ch.qos.logback.classic.LoggerContext[default] - Could NOT find resource [logback.groovy]
+22:22:39,044 |-INFO in ch.qos.logback.classic.LoggerContext[default] - Could NOT find resource [logback-test.xml]
+22:22:39,044 |-INFO in ch.qos.logback.classic.LoggerContext[default] - Found resource [logback.xml] at [jar:file:/root/dists/mesh-agent.jar!/BOOT-INF/classes!/logback.xml]
+22:22:39,046 |-WARN in ch.qos.logback.classic.LoggerContext[default] - Resource [logback.xml] occurs multiple times on the classpath.
+22:22:39,046 |-WARN in ch.qos.logback.classic.LoggerContext[default] - Resource [logback.xml] occurs at [jar:file:/root/dists/mesh-agent.jar!/BOOT-INF/lib/common-1.0-SNAPSHOT.jar!/logback.xml]
+22:22:39,046 |-WARN in ch.qos.logback.classic.LoggerContext[default] - Resource [logback.xml] occurs at [jar:file:/root/dists/mesh-agent.jar!/BOOT-INF/classes!/logback.xml]
+22:22:39,084 |-INFO in ch.qos.logback.core.joran.spi.ConfigurationWatchList@277050dc - URL [jar:file:/root/dists/mesh-agent.jar!/BOOT-INF/classes!/logback.xml] is not of type file
+22:22:39,298 |-INFO in ch.qos.logback.classic.joran.action.ConfigurationAction - debug attribute not set
+22:22:39,305 |-INFO in ch.qos.logback.core.joran.action.AppenderAction - About to instantiate appender of type [ch.qos.logback.core.ConsoleAppender]
+22:22:39,308 |-INFO in ch.qos.logback.core.joran.action.AppenderAction - Naming appender as [STDOUT]
+22:22:39,387 |-INFO in ch.qos.logback.core.joran.action.AppenderAction - About to instantiate appender of type [ch.qos.logback.core.FileAppender]
+22:22:39,389 |-INFO in ch.qos.logback.core.joran.action.AppenderAction - Naming appender as [FILE]
+22:22:39,390 |-INFO in ch.qos.logback.core.joran.action.NestedComplexPropertyIA - Assuming default type [ch.qos.logback.classic.encoder.PatternLayoutEncoder] for [encoder] property
+22:22:39,391 |-INFO in ch.qos.logback.core.FileAppender[FILE] - File property is set to [/root/logs/consumer//agent.log]
+22:22:39,392 |-INFO in ch.qos.logback.classic.joran.action.RootLoggerAction - Setting level of ROOT logger to INFO
+22:22:39,392 |-INFO in ch.qos.logback.core.joran.action.AppenderRefAction - Attaching appender named [STDOUT] to Logger[ROOT]
+22:22:39,393 |-INFO in ch.qos.logback.core.joran.action.AppenderRefAction - Attaching appender named [FILE] to Logger[ROOT]
+22:22:39,393 |-INFO in ch.qos.logback.classic.joran.action.ConfigurationAction - End of configuration.
+22:22:39,394 |-INFO in ch.qos.logback.classic.joran.JoranConfigurator@5c29bfd - Registering current configuration as safe fallback point
+
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::        (v1.5.7.RELEASE)
+
+2018-05-19 22:22:41.470 [main] INFO  com.alibaba.dubbo.performance.demo.agent.AgentApp - Starting AgentApp on ocean with PID 30964 (/root/dists/mesh-agent.jar started by root in /home/devspace/middleware2018/bash)
+2018-05-19 22:22:41.488 [main] INFO  com.alibaba.dubbo.performance.demo.agent.AgentApp - No active profile set, falling back to default profiles: default
+2018-05-19 22:22:42.462 [main] INFO  o.s.b.c.e.AnnotationConfigEmbeddedWebApplicationContext - Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@3d012ddd: startup date [Sat May 19 22:22:42 CST 2018]; root of context hierarchy
+2018-05-19 22:22:42.742 [background-preinit] INFO  org.hibernate.validator.internal.util.Version - HV000001: Hibernate Validator 5.3.5.Final
+2018-05-19 22:22:50.072 [main] INFO  org.xnio - XNIO version 3.3.8.Final
+2018-05-19 22:22:50.095 [main] INFO  org.xnio.nio - XNIO NIO Implementation Version 3.3.8.Final
+2018-05-19 22:22:50.179 [main] WARN  io.undertow.websockets.jsr - UT026009: XNIO worker was not set on WebSocketDeploymentInfo, the default worker will be used
+2018-05-19 22:22:50.180 [main] WARN  io.undertow.websockets.jsr - UT026010: Buffer pool was not set on WebSocketDeploymentInfo, the default pool will be used
+2018-05-19 22:22:50.200 [main] INFO  io.undertow.servlet - Initializing Spring embedded WebApplicationContext
+2018-05-19 22:22:50.200 [main] INFO  org.springframework.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 7740 ms
+2018-05-19 22:22:50.324 [main] INFO  o.s.boot.web.servlet.ServletRegistrationBean - Mapping servlet: 'dispatcherServlet' to [/]
+2018-05-19 22:22:50.332 [main] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'characterEncodingFilter' to: [/*]
+2018-05-19 22:22:50.334 [main] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2018-05-19 22:22:50.334 [main] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'httpPutFormContentFilter' to: [/*]
+2018-05-19 22:22:50.334 [main] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'requestContextFilter' to: [/*]
+2018-05-19 22:22:52.251 [main] INFO  c.a.d.performance.demo.agent.registry.EtcdRegistry - dispatch index: 0,["provider.memory","cpu.period","provider.cpu.quota"]
+2018-05-19 22:22:52.252 [main] INFO  c.a.dubbo.performance.demo.agent.HelloController - lookup service ok
+2018-05-19 22:22:52.565 [main] INFO  o.s.w.s.m.m.a.RequestMappingHandlerAdapter - Looking for @ControllerAdvice: org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@3d012ddd: startup date [Sat May 19 22:22:42 CST 2018]; root of context hierarchy
+2018-05-19 22:22:52.641 [main] INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[]}" onto public org.springframework.web.context.request.async.DeferredResult<org.springframework.http.ResponseEntity> com.alibaba.dubbo.performance.demo.agent.HelloController.asyncInvoke(java.lang.String,java.lang.String,java.lang.String,java.lang.String) throws java.lang.Exception
+2018-05-19 22:22:52.643 [main] INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/sync]}" onto public java.lang.Object com.alibaba.dubbo.performance.demo.agent.HelloController.syncInvoke(java.lang.String,java.lang.String,java.lang.String,java.lang.String) throws java.lang.Exception
+2018-05-19 22:22:52.644 [main] INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/rpc/agent]}" onto public java.lang.Object com.alibaba.dubbo.performance.demo.agent.HelloController.agent(java.lang.String,java.lang.String,java.lang.String,java.lang.String) throws java.lang.Exception
+2018-05-19 22:22:52.646 [main] INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2018-05-19 22:22:52.647 [main] INFO  o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+2018-05-19 22:22:52.679 [main] INFO  o.s.web.servlet.handler.SimpleUrlHandlerMapping - Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-05-19 22:22:52.679 [main] INFO  o.s.web.servlet.handler.SimpleUrlHandlerMapping - Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-05-19 22:22:52.715 [main] INFO  o.s.web.servlet.handler.SimpleUrlHandlerMapping - Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-05-19 22:22:52.867 [main] INFO  o.s.jmx.export.annotation.AnnotationMBeanExporter - Registering beans for JMX exposure on startup
+2018-05-19 22:22:53.258 [main] INFO  o.s.b.c.e.u.UndertowEmbeddedServletContainer - Undertow started on port(s) 20000 (http)
+2018-05-19 22:22:53.264 [main] INFO  com.alibaba.dubbo.performance.demo.agent.AgentApp - Started AgentApp in 13.625 seconds (JVM running for 14.566)
+2018-05-19 22:23:01.527 [XNIO-2 task-1] INFO  io.undertow.servlet - Initializing Spring FrameworkServlet 'dispatcherServlet'
+2018-05-19 22:23:01.528 [XNIO-2 task-1] INFO  org.springframework.web.servlet.DispatcherServlet - FrameworkServlet 'dispatcherServlet': initialization started
+2018-05-19 22:2018-05-19 22:23:12.619 [XNIO-2 task-1] INFO  io.undertow.servlet - Initializing Spring FrameworkServlet 'dispatcherServlet'
+2018-05-19 22:23:12.620 [XNIO-2 task-1] INFO  org.springframework.web.servlet.DispatcherServlet - FrameworkServlet 'dispatcherServlet': initialization started
+2018-05-19 22:23:12.656 [XNIO-2 task-1] INFO  org.springframework.web.servlet.DispatcherServlet - FrameworkServlet 'dispatcherServlet': initialization completed in 35 ms
+2018-05-19 22:28:23.995 [IoLoopGroup - 1] INFO  com.alibaba.common.net.handler.ResponseHandler - request is timeout,request id 0
+2018-05-19 22:29:23.918 [IoLoopGroup - 1] INFO  com.alibaba.common.net.handler.ResponseHandler - request is timeout,request id 1
+2018-05-19 22:30:23.915 [IoLoopGroup - 1] INFO  com.alibaba.common.net.handler.ResponseHandler - request is timeout,request id 2
+ 2

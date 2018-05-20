@@ -1,9 +1,9 @@
 
-netstat -ntlp ²é¿´¿ª·¢¶Ë¿Ú
+netstat -ntlp ï¿½é¿´ï¿½ï¿½ï¿½ï¿½ï¿½Ë¿ï¿½
   -Detcd.url=http://140.143.90.42:2379a
-  
-agent config:  
- small :-Dcpu.period=50000 -Dprovider.cpu.quota=30000 -Dprovider.memory=2g
+
+agent config:
+ small :-Dcpu.period=50000 -Dprovider.cpu.quota=30000 -Dprovider.memory=2
  medium :-Dcpu.period=50000 -Dprovider.cpu.quota=60000 -Dprovider.memory=4g
  large :-Dcpu.period=50000 -Dprovider.cpu.quota=90000 -Dprovider.memory=6g
 -Dtype=provider -Dserver.port=30000 -Ddubbo.protocol.port=20889 -Dlogs.dir=/home/middle2018/logs -Detcd.url=http://140.143.90.42:2379
@@ -13,73 +13,73 @@ provider config:
 -Ddubbo.protocol.port=20889 -Ddubbo.application.qos.enable=false -Dlogs.dir=/home/middle2018/logs
 
 curl http://140.143.90.42:2379/v2/members
-curl -X GET http://140.143.90.42::2379/v2/keys/aa?consistent=true&wait=true 
+curl -X GET http://140.143.90.42::2379/v2/keys/aa?consistent=true&wait=true
 
 watch
-curl -X GET http://140.143.90.42::2379/v2/keys/aa?consistent=true&wait=true 
-set 
-curl -X PUT http://140.143.90.42:2379/v2/keys/aa -d value=999 
-get 
+curl -X GET http://140.143.90.42::2379/v2/keys/aa?consistent=true&wait=true
+set
+curl -X PUT http://140.143.90.42:2379/v2/keys/aa -d value=999
+get
 curl -X GET http://140.143.90.42:2379/v2/keys/aa
 /dubbomesh/com.alibaba.dubbo.performance.demo.provider.IHelloService/169.254.107.180:30000
-curl http://localhost:2379/v2/members 
+curl http://localhost:2379/v2/members
 
-etcd Éè³Év3°æ±¾ºÍv2µÄÇø±ð
+etcd ï¿½ï¿½ï¿½ï¿½v3ï¿½æ±¾ï¿½ï¿½v2ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 ETCDCTL_API=3
 
 
-curl http://47.105.58.23:2379/v2/members 
-curl http://172.17.0.1:2379/v2/members 
-curl http://47.105.60.6:2379/v2/members 
+curl http://47.105.58.23:2379/v2/members
+curl http://172.17.0.1:2379/v2/members
+curl http://47.105.60.6:2379/v2/members
 47.105.60.6
 47.105.58.23
-firewalld 
+firewalld
 
-etcd µ¥»úÅäÖÃ
-/opt/etcd/etcd  --name my-etcd-1 
-       --listen-client-urls http://0.0.0.0:2379 
+etcd ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+/opt/etcd/etcd  --name my-etcd-1
+       --listen-client-urls http://0.0.0.0:2379
        --advertise-client-urls http://0.0.0.0:2379
-       --listen-peer-urls http://0.0.0.0:2380 
-       --initial-advertise-peer-urls http://0.0.0.0:2380 
+       --listen-peer-urls http://0.0.0.0:2380
+       --initial-advertise-peer-urls http://0.0.0.0:2380
        --initial-cluster my-etcd-1=http://0.0.0.0:2380&
-       
-/opt/etcd/etcd --name my-etcd-1  --listen-client-urls http://0.0.0.0:2379 --advertise-client-urls http://0.0.0.0:2379       
+
+/opt/etcd/etcd --name my-etcd-1  --listen-client-urls http://0.0.0.0:2379 --advertise-client-urls http://0.0.0.0:2379
 /opt/etcd/etcd --name my-etcd-1  --listen-client-urls http://172.17.0.1:2379 --advertise-client-urls http://172.17.0.1:2379
-    
-       
+
+
        windows:
        netstat -ano | tasklist |find 8436|taskkill /pid xxx /f
-       
+
 wrk \
 homebrew
 docker ce
 
-dockerÃüÁîÖ®push
-docker pull 
-¾µÏñ²Ö¿â
+dockerï¿½ï¿½ï¿½ï¿½Ö®push
+docker pull
+ï¿½ï¿½ï¿½ï¿½ï¿½Ö¿ï¿½
 rudycto
 rudydoker123
 
-°²×°python 3.6 pip3  setuptools
+ï¿½ï¿½×°python 3.6 pip3  setuptools
 
-centos7ÉèÖÃsshÃâÃÜÂëµÇÂ½
+centos7ï¿½ï¿½ï¿½ï¿½sshï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â½
 
 curl -c 140.143.90.42:3000
 
 ssh root@47.105.58.23
-ÈÝÆ÷£¬¾µÏñ
+ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 
-°¢ÀïÔÆ 
-Ë½ÓÐ   172.31.235.164
+ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+Ë½ï¿½ï¿½   172.31.235.164
 
-docker 
-É¾³ýÍøÇÅ£º
+docker
+É¾ï¿½ï¿½ï¿½ï¿½ï¿½Å£ï¿½
 ifconfig docker0 down
 
-docker ËÄÖÖÍøÂçÆô¶¯Ä£Ê½£º
+docker ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä£Ê½ï¿½ï¿½
 
 ip addr
-dockerÆô¶¯£º 
+dockerï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 systemctl start docker
 docker run imageid
 docker run -t -i -d  --name provider-small --cidfile run.cid    --cpu-period 50000  --cpu-quota 30000  -m 2g   --network host -v ~/workspace/provider/1000/2000/provider-small/logs:/root/logs  registry.cn-hangzhou.aliyuncs.com/tianchi4-docker/dubbo-tianchi-demo provider-small
@@ -92,68 +92,135 @@ tail -n 100 workspace/provider/1000/2000/provider-samll/provider.log
  wrk -t2 -c256 -d20s -T5                 --script=./benchmark/wrk.lua                 --latency http://provider.vm_0_4_centos:8087/invoke
   wrk -t2 -c256 -d20s -T5                 --script=./benchmark/wrk.lua                 --latency http://47.105.58.23:8087/invoke
   wrk -t2 -c256 -d20s -T5                 --script=./benchmark/wrk.lua                 --latency http://www.baidu.com:80
-Æô¶¯Ñ¹²â£º
-  Æô¶¯
-  /mock/server.py 
-  pipenv install  
+
+  /mock/server.py
+  pipenv install
   pipenv run python bootstrap.py -p provider
-  
-docker ¾µÏñÖÆ×÷£º
+local:jd desktop
+
+  pipenv run python3 bootstrap.py -p provider
+docker ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 
 1:docker attach
 
-docker commit  
+docker commit
 dcoker inspect
 2 docker file
- docker imageÄÚÈÝ²é¿´£º
+ docker image
  docker run -t -i wangjin/dubbo-tianchi-demo /bin/bash
- 
+
 FROM/RUN/COPY
 
-set -ex 
-docker build -t="image_name"  
+set -ex
+docker build -t="image_name"
 docker build -t="wangjin/dubbo-tianchi-demo"  --no-cache .
- 
- docker ÍÆµ½°¢Àïdocker hub: 
+docker build -t="wangjin/dubbo-tianchi-demo" .
+ docker image build and push:
+ docker build -t="wangjin/dubbo-tianchi-agent-demo"  --no-cache .
  docker login --username=rudycto registry.cn-hangzhou.aliyuncs.com
- docker tage imageId registry.cn-hangzhou.aliyuncs.com/ocean18/dubbo-tianchi-agent-demo:latest
+ docker tag imageId registry.cn-hangzhou.aliyuncs.com/ocean18/dubbo-tianchi-agent-demo:latest
  docker push registry.cn-hangzhou.aliyuncs.com/ocean18/dubbo-tianchi-agent-demo:latest
- 
- ¿Ó£º
- 
- 1 ·þÎñÆðÀ´È«²¿connection refused
- 2 ¹Û²ìdockeÆô¶¯
+
+
  docker rm provider-small
  rm run.id
 docker run -t -i registry.cn-hangzhou.aliyuncs.com/tianchi4-docker/dubbo-tianchi-demo provider-small
 
 docker run -i 67debb0133cc  provider-small
 
-docker run -it ¡ªentrypoint=¡°¡± <image> bash
+docker run -it ï¿½ï¿½entrypoint=ï¿½ï¿½ï¿½ï¿½ <image> bash
 
-docker run -it ¡ªentrypoint=¡°¡± registry.cn-hangzhou.aliyuncs.com/tianchi4-docker/dubbo-tianchi-demo provider-small
+docker run -it ï¿½ï¿½entrypoint=ï¿½ï¿½ï¿½ï¿½ registry.cn-hangzhou.aliyuncs.com/tianchi4-docker/dubbo-tianchi-demo provider-small
 
-ÅúÁ¿Í£Ö¹¡¢É¾³ý
+ï¿½ï¿½ï¿½ï¿½Í£Ö¹ï¿½ï¿½É¾ï¿½ï¿½
 docker stop  $(docker ps -a|awk '{print $1}')
 docker rm  $(docker ps -a|awk '{print $1}')
-
+docker rim $(docker images|awk '{print $2}')
 git config --global user.name "rudy"
 git config --global user.email "rudysteiner@163.com"
 ssh-keygen -t rsa -C "rudysteiner@163.com"
 -------------------
-¼¼Êõµ÷ÑÐ
+ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 
  git clone https://github.com/coreos/jetcd.git
- 
+
  https://github.com/coreos/jetcd
 
+ SERVICE_HOME=/home/devspace/services/
+cp $SERVICE_HOME/mesh-consumer/target/mesh-consumer-1.0-SNAPSHOT.jar /root/dists/mesh-consumer.jar
+cp $SERVICE_HOME/mesh-provider/target/mesh-provider-1.0-SNAPSHOT.jar /root/dists/mesh-provider.jar
+ AGENT_HOME=/home/devspace/agent-demo/
+cp $AGENT_HOME/mesh-agent/target/mesh-agent-1.0-SNAPSHOT.jar /root/dists/mesh-agent.jar
 
+
+: Goverment
+ AGENT_HOME=/home/devspace/aliware/agent-demo/
+ cp $AGENT_HOME/mesh-agent/target/mesh-agent-1.0-SNAPSHOT.jar /root/dists/mesh-agent.jar
+cp $AGENT_HOME/mesh-agent/target/
+
+
+kill -9 $(ps -ef|grep mesh|awk '{print $2}')
+kill -g $(ps -ef|grep agent|awk '{print $2}')
+
+ETCD_HOST=$(ip addr show docker0 | grep 'inet\b' | awk '{print $2}' | cut -d '/' -f 1)
+ETCD_PORT=2379
+ETCD_URL=http://$ETCD_HOST:$ETCD_PORT
+echo ETCD_URL = $ETCD_URL
+java -jar  -Xdebug -Xms512M  -Xmx512M   -Dtype=provider   -Dserver.port=30000 -Ddubbo.protocol.port=20889  -Detcd.url=$ETCD_URL $AGENT_HOME/mesh-agent/target/mesh-agent-1.0-SNAPSHOT.jar
+
+
+// service stest
+ curl http://localhost:8087/invoke
+
+ //
+//local start shell
+ small/medium/large different dir
+ agent log redirect
+ timeout request process
+//clear  ps
+
+kill -9 $(ps -ef|grep mesh|awk '{print $2}')
+
+ #!/bin/bash
+./start-service.sh provider-small
+./start-service.sh provider-medium
+./start-service.sh provider-large
+./start-service.sh consumer
+
+boot service
+docker run -it --entrypoint="" <imagepath> bash
+docker time wrong
+//spring framework
+  undertow
+
+
+#yourkit 12
+key:rudy
+07c970aa7bebce79f78b10601ca4c8f45b8efe8560f36ff80b76cb6d8539e845d46319aea061655290cc2dd75a4955bf821bd36c994f7bf4e283403812b5e78ea22430b70f5bd5b154cca4d7673ab4c39602d95243c5c7b92e4fb43bf60f8787e56052152369a0c840ac06e88e3e28b90934ee31eb3efdd317d5df8d34d376b0e46cdf8f6cef48cdf8ffd18541757ff2f93fa44e43b2a4c87a2cac3d51fb0424a632243818ab669fb116f140cfccffabdbcba0af4ba0d6d63c7a6c2ecb485120af69c468602a10bddc353a498b05e637f4e7f5574e566e16ee27f34026d6b011cbe4d7f627dcda2019d35dd414a8b7a765fcb4259c237a2e335c4c8f6761ffacd00fd006fb006e
+
+<<<<<<< HEAD
 ./etcdctl lease timetolive 18f63145f059315
 
 
 wrk -t2 -c256 -d20s -T5                 --script=./benchmark/wrk.lua                 --latency http://192.168.2.245:8087/invoke
+=======
+-agentpath:/home/soft/YourKit-JavaProfiler-2017.02/bin/linux-x86-64/libyjpagent.so=disablestacktelemetry,exceptions=disable,delay=10000
 
 
+# balance index
+  -Ddispatch=0
+   taskId=368104,teamId=150641 Success
+  https://middlewarerace2018.oss-cn-hangzhou.aliyuncs.com/150641/368104/logs.tar.gz
+  taskId=368269,teamId=150641 Success
+   https://middlewarerace2018.oss-cn-hangzhou.aliyuncs.com/150641/368269/logs.tar.gz
+>>>>>>> ec5b471855e36e389e9a38ca30e31abe4d7fbeb2
+
+ -Dtype=provider -Dserver.port=30000 -Dcpu.period=50000 -Dprovider.cpu.quota=30000 -Dprovider.memory=2 -Ddubbo.protocol.port=20889 -Dlogs.dir=/home/middle2018/logs/provider -Detcd.url=http://140.143.90.42:2379
+
+<<<<<<< HEAD
 
 
 wrk -t2 -c64 -d5s -T5                 --script=./benchmark/wrk.lua                 --latency http://192.168.2.245:8087/invoke
+=======
+ -Dtype=consumer -Dserver.port=20000 -Dlogs.dir=/home/middle2018/logs/consumer -Ddispatch=0 -Detcd.url=http://140.143.90.42:2379
+>>>>>>> ec5b471855e36e389e9a38ca30e31abe4d7fbeb2

@@ -1,0 +1,134 @@
+[INFO] >>> Warmup.
+[DEBUG] Script to execute:
+
+            sleep 5
+            wrk -t2 -c256 -d20s -T5                 --script=./benchmark/wrk.lua                 --latency http://shuke.e100081000126.zmf/invoke
+            exit 0
+
+[DEBUG] Return code = 0
+[DEBUG] The output is as following:
+Running 20s test @ http://shuke.e100081000126.zmf/invoke
+  2 threads and 256 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency   933.31ms    1.03s    5.00s    86.01%
+    Req/Sec   221.24    131.75   570.00     62.93%
+  Latency Distribution
+     50%  410.23ms
+     75%    1.09s
+     90%    2.59s
+     99%    4.48s
+  7127 requests in 20.02s, 0.96MB read
+  Socket errors: connect 0, read 0, write 0, timeout 40
+Requests/sec:    355.93
+Transfer/sec:     49.01KB
+--------------------------
+Durations:       20.02s
+Requests:        7127
+Avg RT:          933.31ms
+Max RT:          4997.854ms
+Min RT:          171.085ms
+Error requests:  0
+Valid requests:  7127
+QPS:             355.93
+--------------------------
+
+[INFO] >>> Pressure with 64 connections.
+[DEBUG] Script to execute:
+
+            sleep 5
+            wrk -t2 -c64 -d60s -T5                 --script=./benchmark/wrk.lua                 --latency http://shuke.e100081000126.zmf/invoke
+            exit 0
+
+[DEBUG] Return code = 0
+[DEBUG] The output is as following:
+Running 1m test @ http://shuke.e100081000126.zmf/invoke
+  2 threads and 64 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency    72.62ms   39.83ms 544.00ms   90.25%
+    Req/Sec   466.63     93.27   636.00     64.83%
+  Latency Distribution
+     50%   55.26ms
+     75%   74.86ms
+     90%  110.36ms
+     99%  247.62ms
+  55784 requests in 1.00m, 7.50MB read
+Requests/sec:    928.91
+Transfer/sec:    127.91KB
+--------------------------
+Durations:       60.05s
+Requests:        55784
+Avg RT:          72.62ms
+Max RT:          543.997ms
+Min RT:          52.271ms
+Error requests:  0
+Valid requests:  55784
+QPS:             928.91
+--------------------------
+
+[INFO] QPS = 928.91
+[INFO] >>> Pressure with 128 connections.
+[DEBUG] Script to execute:
+
+            sleep 5
+            wrk -t2 -c128 -d60s -T5                 --script=./benchmark/wrk.lua                 --latency http://shuke.e100081000126.zmf/invoke
+            exit 0
+
+[DEBUG] Return code = 0
+[DEBUG] The output is as following:
+Running 1m test @ http://shuke.e100081000126.zmf/invoke
+  2 threads and 128 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency    59.34ms    7.35ms 302.12ms   94.44%
+    Req/Sec     1.08k    75.90     1.22k    82.17%
+  Latency Distribution
+     50%   57.82ms
+     75%   60.10ms
+     90%   63.75ms
+     99%   84.32ms
+  129618 requests in 1.00m, 17.43MB read
+Requests/sec:   2159.35
+Transfer/sec:    297.33KB
+--------------------------
+Durations:       60.03s
+Requests:        129618
+Avg RT:          59.34ms
+Max RT:          302.12ms
+Min RT:          52.313ms
+Error requests:  0
+Valid requests:  129618
+QPS:             2159.35
+--------------------------
+
+[INFO] QPS = 2159.35
+[INFO] >>> Pressure with 256 connections.
+[DEBUG] Script to execute:
+
+            sleep 5
+            wrk -t2 -c256 -d60s -T5                 --script=./benchmark/wrk.lua                 --latency http://shuke.e100081000126.zmf/invoke
+            exit 0
+
+[DEBUG] Return code = 0
+[DEBUG] The output is as following:
+Running 1m test @ http://shuke.e100081000126.zmf/invoke
+  2 threads and 256 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency   114.52ms    5.87ms 358.38ms   88.12%
+    Req/Sec     1.12k    54.69     1.43k    79.75%
+  Latency Distribution
+     50%  113.92ms
+     75%  116.12ms
+     90%  119.32ms
+     99%  130.08ms
+  134034 requests in 1.00m, 18.02MB read
+Requests/sec:   2233.01
+Transfer/sec:    307.47KB
+--------------------------
+Durations:       60.02s
+Requests:        134034
+Avg RT:          114.52ms
+Max RT:          358.376ms
+Min RT:          57.197ms
+Error requests:  0
+Valid requests:  134034
+QPS:             2233.01
+--------------------------

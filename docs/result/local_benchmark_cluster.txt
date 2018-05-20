@@ -1,0 +1,233 @@
+Running 20s test @ http://provider.tcentos:8087/invoke
+  2 threads and 256 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency   417.24ms  386.31ms   2.80s    89.00%
+    Req/Sec   378.04    216.98     0.98k    62.80%
+  Latency Distribution
+     50%  279.60ms
+     75%  392.84ms
+     90%  889.72ms
+     99%    2.03s
+  14638 requests in 20.07s, 1.97MB read
+Requests/sec:    729.21
+Transfer/sec:    100.41KB
+--------------------------
+Durations:       20.07s
+Requests:        14638
+Avg RT:          417.24ms
+Max RT:          2803.88ms
+Min RT:          65.653ms
+Error requests:  0
+Valid requests:  14638
+QPS:             729.21
+--------------------------
+Running 1m test @ http://provider.tcentos:8087/invoke
+  2 threads and 64 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency    59.74ms   11.50ms 241.04ms   88.22%
+    Req/Sec   538.78     80.55   646.00     63.94%
+  Latency Distribution
+     50%   54.92ms
+     75%   61.41ms
+     90%   73.32ms
+     99%  105.48ms
+  64379 requests in 1.00m, 8.66MB read
+Requests/sec:   1071.82
+Transfer/sec:    147.58KB
+--------------------------
+Durations:       60.07s
+Requests:        64379
+Avg RT:          59.74ms
+Max RT:          241.039ms
+Min RT:          51.269ms
+Error requests:  0
+Valid requests:  64379
+QPS:             1071.82
+--------------------------
+Running 1m test @ http://provider.tcentos:8087/invoke
+  2 threads and 128 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency    57.68ms    3.62ms 117.36ms   86.76%
+    Req/Sec     1.11k    68.22     1.25k    80.25%
+  Latency Distribution
+     50%   56.76ms
+     75%   58.60ms
+     90%   61.35ms
+     99%   72.14ms
+  133201 requests in 1.00m, 17.91MB read
+Requests/sec:   2217.83
+Transfer/sec:    305.38KB
+--------------------------
+Durations:       60.06s
+Requests:        133201
+Avg RT:          57.68ms
+Max RT:          117.358ms
+Min RT:          51.968ms
+Error requests:  0
+Valid requests:  133201
+QPS:             2217.83
+--------------------------
+Running 1m test @ http://provider.tcentos:8087/invoke
+  2 threads and 256 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency   114.35ms    4.16ms 191.87ms   84.08%
+    Req/Sec     1.12k    73.44     1.28k    75.38%
+  Latency Distribution
+     50%  113.40ms
+     75%  115.75ms
+     90%  118.93ms
+     99%  129.70ms
+  134150 requests in 1.00m, 18.04MB read
+Requests/sec:   2234.88
+Transfer/sec:    307.73KB
+--------------------------
+Durations:       60.03s
+Requests:        134150
+Avg RT:          114.35ms
+Max RT:          191.866ms
+Min RT:          54.217ms
+Error requests:  0
+Valid requests:  134150
+QPS:             2234.88      2018.5.19 16:28  cluster Provider, okhttp 
+-----------------------------------------------------------------------------------------
+
+Running 20s test @ http://provider.tcentos:8087/invoke
+  2 threads and 256 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency   147.64ms   71.68ms   1.02s    94.84%
+    Req/Sec     0.90k   241.15     1.28k    82.91%
+  Latency Distribution
+     50%  132.09ms
+     75%  148.57ms
+     90%  174.80ms
+     99%  520.84ms
+  35570 requests in 20.05s, 4.78MB read
+Requests/sec:   1773.93
+Transfer/sec:    244.26KB
+--------------------------
+Durations:       20.05s
+Requests:        35570
+Avg RT:          147.64ms
+Max RT:          1024.171ms
+Min RT:          65.257ms
+Error requests:  0
+Valid requests:  35570
+QPS:             1773.93
+--------------------------
+root@ocean:/home/devspace/middleware2018/bash# ./start_pressure.sh
+Running 20s test @ http://provider.tcentos:8087/invoke
+  2 threads and 256 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency   137.73ms   20.61ms 265.01ms   70.70%
+    Req/Sec     0.93k   143.99     1.28k    68.86%
+  Latency Distribution
+     50%  136.23ms
+     75%  150.04ms
+     90%  164.09ms
+     99%  194.37ms
+  36944 requests in 20.07s, 4.97MB read
+Requests/sec:   1841.14
+Transfer/sec:    253.52KB
+--------------------------
+Durations:       20.07s
+Requests:        36944
+Avg RT:          137.73ms
+Max RT:          265.011ms
+Min RT:          58.027ms
+Error requests:  0
+Valid requests:  36944
+QPS:             1841.14
+--------------------------
+Running 1m test @ http://provider.tcentos:8087/invoke
+  2 threads and 64 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency    63.85ms    8.02ms 129.77ms   72.99%
+    Req/Sec   502.99     59.53   640.00     65.66%
+  Latency Distribution
+     50%   62.11ms
+     75%   67.94ms
+     90%   74.55ms
+     99%   89.40ms
+  60148 requests in 1.00m, 8.09MB read
+Requests/sec:   1001.05
+Transfer/sec:    137.84KB
+--------------------------
+Durations:       60.08s
+Requests:        60148
+Avg RT:          63.85ms
+Max RT:          129.775ms
+Min RT:          51.872ms
+Error requests:  0
+Valid requests:  60148
+QPS:             1001.05
+--------------------------
+Running 1m test @ http://provider.tcentos:8087/invoke
+  2 threads and 128 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency    84.34ms   15.28ms 197.56ms   70.17%
+    Req/Sec   761.33    100.96     1.10k    71.43%
+  Latency Distribution
+     50%   81.96ms
+     75%   92.84ms
+     90%  105.04ms
+     99%  130.14ms
+  90959 requests in 1.00m, 12.23MB read
+Requests/sec:   1515.47
+Transfer/sec:    208.67KB
+--------------------------
+Durations:       60.02s
+Requests:        90959
+Avg RT:          84.34ms
+Max RT:          197.564ms
+Min RT:          53.745ms
+Error requests:  0
+Valid requests:  90959
+QPS:             1515.47
+--------------------------
+Running 1m test @ http://provider.tcentos:8087/invoke
+  2 threads and 256 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency   138.46ms   19.86ms 262.14ms   70.42%
+    Req/Sec     0.93k   144.32     1.33k    68.02%
+  Latency Distribution
+     50%  137.21ms
+     75%  150.51ms
+     90%  163.75ms
+     99%  192.42ms
+  110723 requests in 1.00m, 14.89MB read
+Requests/sec:   1843.44
+Transfer/sec:    253.83KB
+--------------------------
+Durations:       60.06s
+Requests:        110723
+Avg RT:          138.46ms
+Max RT:          262.144ms
+Min RT:          65.447ms
+Error requests:  0
+Valid requests:  110723
+QPS:             1843.44                       single mode, netty maxOneway 256,ayncHttpclient
+-----------------------------------------------------
+--------------------------
+Running 1m test @ http://provider.tcentos:8087/invoke
+  2 threads and 256 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency   126.12ms   14.33ms 239.59ms   73.09%
+    Req/Sec     1.02k   129.25     1.38k    70.33%
+  Latency Distribution
+     50%  124.46ms
+     75%  133.76ms
+     90%  144.33ms
+     99%  168.47ms
+  121778 requests in 1.00m, 16.38MB read
+Requests/sec:   2026.55
+Transfer/sec:    279.05KB
+--------------------------
+Durations:       60.09s
+Requests:        121778
+Avg RT:          126.12ms
+Max RT:          239.587ms
+Min RT:          61.781ms
+Error requests:  0
+Valid requests:  121778
+QPS:             2026.55                          single mode, netty maxOneway 512,ayncHttpclient
+------------------------------------------------------------------------------------------------
