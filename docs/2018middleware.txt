@@ -148,7 +148,12 @@ ssh-keygen -t rsa -C "rudysteiner@163.com"
  https://github.com/coreos/jetcd
 
 
+./etcdctl lease timetolive 18f63145f059315
+
+
+wrk -t2 -c256 -d20s -T5                 --script=./benchmark/wrk.lua                 --latency http://192.168.2.245:8087/invoke
 
 
 
 
+wrk -t2 -c64 -d5s -T5                 --script=./benchmark/wrk.lua                 --latency http://192.168.2.245:8087/invoke
