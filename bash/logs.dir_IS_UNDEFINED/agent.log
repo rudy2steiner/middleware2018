@@ -345,3 +345,195 @@ Caused by: java.lang.NullPointerException: endpoint can't be null
 2018-05-12 13:59:52.404 [main] INFO  com.alibaba.dubbo.performance.demo.agent.AgentApp - Started AgentApp in 2.055 seconds (JVM running for 2.516)
 2018-05-12 14:01:04.622 [Thread-2] INFO  o.s.b.c.e.AnnotationConfigEmbeddedWebApplicationContext - Closing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@1ee0005: startup date [Sat May 12 13:59:50 CST 2018]; root of context hierarchy
 2018-05-12 14:01:04.625 [Thread-2] INFO  o.s.jmx.export.annotation.AnnotationMBeanExporter - Unregistering JMX-exposed beans on shutdown
+2018-05-27 21:59:57.949 [main] INFO  com.alibaba.dubbo.performance.demo.agent.AgentApp - Starting AgentApp on ocean with PID 2112 (/root/dists/mesh-agent.jar started by root in /home/devspace/middleware2018/bash)
+2018-05-27 21:59:57.952 [main] INFO  com.alibaba.dubbo.performance.demo.agent.AgentApp - No active profile set, falling back to default profiles: default
+2018-05-27 21:59:57.999 [main] INFO  o.s.b.c.e.AnnotationConfigEmbeddedWebApplicationContext - Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@3d012ddd: startup date [Sun May 27 21:59:57 CST 2018]; root of context hierarchy
+2018-05-27 21:59:58.024 [background-preinit] INFO  org.hibernate.validator.internal.util.Version - HV000001: Hibernate Validator 5.3.5.Final
+2018-05-27 21:59:58.803 [main] INFO  org.xnio - XNIO version 3.3.8.Final
+2018-05-27 21:59:58.814 [main] INFO  org.xnio.nio - XNIO NIO Implementation Version 3.3.8.Final
+2018-05-27 21:59:58.870 [main] WARN  io.undertow.websockets.jsr - UT026009: XNIO worker was not set on WebSocketDeploymentInfo, the default worker will be used
+2018-05-27 21:59:58.870 [main] WARN  io.undertow.websockets.jsr - UT026010: Buffer pool was not set on WebSocketDeploymentInfo, the default pool will be used
+2018-05-27 21:59:58.888 [main] INFO  io.undertow.servlet - Initializing Spring embedded WebApplicationContext
+2018-05-27 21:59:58.888 [main] INFO  org.springframework.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 891 ms
+2018-05-27 21:59:58.974 [main] INFO  o.s.boot.web.servlet.ServletRegistrationBean - Mapping servlet: 'dispatcherServlet' to [/]
+2018-05-27 21:59:58.978 [main] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'characterEncodingFilter' to: [/*]
+2018-05-27 21:59:58.979 [main] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2018-05-27 21:59:58.979 [main] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'httpPutFormContentFilter' to: [/*]
+2018-05-27 21:59:58.979 [main] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'requestContextFilter' to: [/*]
+2018-05-27 21:59:59.016 [main] WARN  o.s.b.c.e.AnnotationConfigEmbeddedWebApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'HelloController' defined in URL [jar:file:/root/dists/mesh-agent.jar!/BOOT-INF/classes!/com/alibaba/dubbo/performance/demo/agent/HelloController.class]: Instantiation of bean failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [com.alibaba.dubbo.performance.demo.agent.HelloController]: Constructor threw exception; nested exception is java.lang.NullPointerException: endpoint can't be null
+2018-05-27 21:59:59.021 [main] INFO  o.s.b.a.l.AutoConfigurationReportLoggingInitializer - 
+
+Error starting ApplicationContext. To display the auto-configuration report re-run your application with 'debug' enabled.
+2018-05-27 21:59:59.025 [main] ERROR org.springframework.boot.SpringApplication - Application startup failed
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'HelloController' defined in URL [jar:file:/root/dists/mesh-agent.jar!/BOOT-INF/classes!/com/alibaba/dubbo/performance/demo/agent/HelloController.class]: Instantiation of bean failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [com.alibaba.dubbo.performance.demo.agent.HelloController]: Constructor threw exception; nested exception is java.lang.NullPointerException: endpoint can't be null
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateBean(AbstractAutowireCapableBeanFactory.java:1155)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1099)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:513)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:483)
+	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:306)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:230)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:302)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:197)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:761)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:867)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:543)
+	at org.springframework.boot.context.embedded.EmbeddedWebApplicationContext.refresh(EmbeddedWebApplicationContext.java:122)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:693)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:360)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:303)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1118)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1107)
+	at com.alibaba.dubbo.performance.demo.agent.AgentApp.main(AgentApp.java:26)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.boot.loader.MainMethodRunner.run(MainMethodRunner.java:48)
+	at org.springframework.boot.loader.Launcher.launch(Launcher.java:87)
+	at org.springframework.boot.loader.Launcher.launch(Launcher.java:50)
+	at org.springframework.boot.loader.JarLauncher.main(JarLauncher.java:51)
+Caused by: org.springframework.beans.BeanInstantiationException: Failed to instantiate [com.alibaba.dubbo.performance.demo.agent.HelloController]: Constructor threw exception; nested exception is java.lang.NullPointerException: endpoint can't be null
+	at org.springframework.beans.BeanUtils.instantiateClass(BeanUtils.java:154)
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:89)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateBean(AbstractAutowireCapableBeanFactory.java:1147)
+	... 25 common frames omitted
+Caused by: java.lang.NullPointerException: endpoint can't be null
+	at com.google.common.base.Preconditions.checkNotNull(Preconditions.java:228)
+	at com.coreos.jetcd.ClientBuilder.endpoints(ClientBuilder.java:71)
+	at com.coreos.jetcd.ClientBuilder.endpoints(ClientBuilder.java:91)
+	at com.alibaba.dubbo.performance.demo.agent.registry.EtcdClient.<init>(EtcdClient.java:41)
+	at com.alibaba.dubbo.performance.demo.agent.HelloController.<init>(HelloController.java:41)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:423)
+	at org.springframework.beans.BeanUtils.instantiateClass(BeanUtils.java:142)
+	... 27 common frames omitted
+2018-05-28 11:31:44.367 [main] INFO  com.alibaba.dubbo.performance.demo.agent.AgentApp - Starting AgentApp on ocean with PID 2882 (/root/dists/mesh-agent.jar started by root in /home/devspace/middleware2018/bash)
+2018-05-28 11:31:44.370 [main] INFO  com.alibaba.dubbo.performance.demo.agent.AgentApp - No active profile set, falling back to default profiles: default
+2018-05-28 11:31:44.420 [main] INFO  o.s.b.c.e.AnnotationConfigEmbeddedWebApplicationContext - Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@3d012ddd: startup date [Mon May 28 11:31:44 CST 2018]; root of context hierarchy
+2018-05-28 11:31:44.461 [background-preinit] INFO  org.hibernate.validator.internal.util.Version - HV000001: Hibernate Validator 5.3.5.Final
+2018-05-28 11:31:45.312 [main] INFO  org.xnio - XNIO version 3.3.8.Final
+2018-05-28 11:31:45.324 [main] INFO  org.xnio.nio - XNIO NIO Implementation Version 3.3.8.Final
+2018-05-28 11:31:45.397 [main] WARN  io.undertow.websockets.jsr - UT026009: XNIO worker was not set on WebSocketDeploymentInfo, the default worker will be used
+2018-05-28 11:31:45.397 [main] WARN  io.undertow.websockets.jsr - UT026010: Buffer pool was not set on WebSocketDeploymentInfo, the default pool will be used
+2018-05-28 11:31:45.418 [main] INFO  io.undertow.servlet - Initializing Spring embedded WebApplicationContext
+2018-05-28 11:31:45.418 [main] INFO  org.springframework.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 1001 ms
+2018-05-28 11:31:45.498 [main] INFO  o.s.boot.web.servlet.ServletRegistrationBean - Mapping servlet: 'dispatcherServlet' to [/]
+2018-05-28 11:31:45.502 [main] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'characterEncodingFilter' to: [/*]
+2018-05-28 11:31:45.503 [main] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2018-05-28 11:31:45.504 [main] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'httpPutFormContentFilter' to: [/*]
+2018-05-28 11:31:45.504 [main] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'requestContextFilter' to: [/*]
+2018-05-28 11:31:45.544 [main] WARN  o.s.b.c.e.AnnotationConfigEmbeddedWebApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'HelloController' defined in URL [jar:file:/root/dists/mesh-agent.jar!/BOOT-INF/classes!/com/alibaba/dubbo/performance/demo/agent/HelloController.class]: Instantiation of bean failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [com.alibaba.dubbo.performance.demo.agent.HelloController]: Constructor threw exception; nested exception is java.lang.NullPointerException: endpoint can't be null
+2018-05-28 11:31:45.549 [main] INFO  o.s.b.a.l.AutoConfigurationReportLoggingInitializer - 
+
+Error starting ApplicationContext. To display the auto-configuration report re-run your application with 'debug' enabled.
+2018-05-28 11:31:45.553 [main] ERROR org.springframework.boot.SpringApplication - Application startup failed
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'HelloController' defined in URL [jar:file:/root/dists/mesh-agent.jar!/BOOT-INF/classes!/com/alibaba/dubbo/performance/demo/agent/HelloController.class]: Instantiation of bean failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [com.alibaba.dubbo.performance.demo.agent.HelloController]: Constructor threw exception; nested exception is java.lang.NullPointerException: endpoint can't be null
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateBean(AbstractAutowireCapableBeanFactory.java:1155)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1099)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:513)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:483)
+	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:306)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:230)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:302)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:197)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:761)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:867)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:543)
+	at org.springframework.boot.context.embedded.EmbeddedWebApplicationContext.refresh(EmbeddedWebApplicationContext.java:122)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:693)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:360)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:303)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1118)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1107)
+	at com.alibaba.dubbo.performance.demo.agent.AgentApp.main(AgentApp.java:26)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.boot.loader.MainMethodRunner.run(MainMethodRunner.java:48)
+	at org.springframework.boot.loader.Launcher.launch(Launcher.java:87)
+	at org.springframework.boot.loader.Launcher.launch(Launcher.java:50)
+	at org.springframework.boot.loader.JarLauncher.main(JarLauncher.java:51)
+Caused by: org.springframework.beans.BeanInstantiationException: Failed to instantiate [com.alibaba.dubbo.performance.demo.agent.HelloController]: Constructor threw exception; nested exception is java.lang.NullPointerException: endpoint can't be null
+	at org.springframework.beans.BeanUtils.instantiateClass(BeanUtils.java:154)
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:89)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateBean(AbstractAutowireCapableBeanFactory.java:1147)
+	... 25 common frames omitted
+Caused by: java.lang.NullPointerException: endpoint can't be null
+	at com.google.common.base.Preconditions.checkNotNull(Preconditions.java:228)
+	at com.coreos.jetcd.ClientBuilder.endpoints(ClientBuilder.java:71)
+	at com.coreos.jetcd.ClientBuilder.endpoints(ClientBuilder.java:91)
+	at com.alibaba.dubbo.performance.demo.agent.registry.EtcdClient.<init>(EtcdClient.java:41)
+	at com.alibaba.dubbo.performance.demo.agent.HelloController.<init>(HelloController.java:41)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:423)
+	at org.springframework.beans.BeanUtils.instantiateClass(BeanUtils.java:142)
+	... 27 common frames omitted
+2018-05-28 11:34:34.100 [main] INFO  com.alibaba.dubbo.performance.demo.agent.AgentApp - Starting AgentApp on ocean with PID 2968 (/root/dists/mesh-agent.jar started by root in /home/devspace/middleware2018/bash)
+2018-05-28 11:34:34.102 [main] INFO  com.alibaba.dubbo.performance.demo.agent.AgentApp - No active profile set, falling back to default profiles: default
+2018-05-28 11:34:34.151 [main] INFO  o.s.b.c.e.AnnotationConfigEmbeddedWebApplicationContext - Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@3d012ddd: startup date [Mon May 28 11:34:34 CST 2018]; root of context hierarchy
+2018-05-28 11:34:34.173 [background-preinit] INFO  org.hibernate.validator.internal.util.Version - HV000001: Hibernate Validator 5.3.5.Final
+2018-05-28 11:34:34.989 [main] INFO  org.xnio - XNIO version 3.3.8.Final
+2018-05-28 11:34:35.000 [main] INFO  org.xnio.nio - XNIO NIO Implementation Version 3.3.8.Final
+2018-05-28 11:34:35.056 [main] WARN  io.undertow.websockets.jsr - UT026009: XNIO worker was not set on WebSocketDeploymentInfo, the default worker will be used
+2018-05-28 11:34:35.056 [main] WARN  io.undertow.websockets.jsr - UT026010: Buffer pool was not set on WebSocketDeploymentInfo, the default pool will be used
+2018-05-28 11:34:35.073 [main] INFO  io.undertow.servlet - Initializing Spring embedded WebApplicationContext
+2018-05-28 11:34:35.074 [main] INFO  org.springframework.web.context.ContextLoader - Root WebApplicationContext: initialization completed in 929 ms
+2018-05-28 11:34:35.158 [main] INFO  o.s.boot.web.servlet.ServletRegistrationBean - Mapping servlet: 'dispatcherServlet' to [/]
+2018-05-28 11:34:35.162 [main] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'characterEncodingFilter' to: [/*]
+2018-05-28 11:34:35.163 [main] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2018-05-28 11:34:35.163 [main] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'httpPutFormContentFilter' to: [/*]
+2018-05-28 11:34:35.163 [main] INFO  o.s.boot.web.servlet.FilterRegistrationBean - Mapping filter: 'requestContextFilter' to: [/*]
+2018-05-28 11:34:35.199 [main] WARN  o.s.b.c.e.AnnotationConfigEmbeddedWebApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'HelloController' defined in URL [jar:file:/root/dists/mesh-agent.jar!/BOOT-INF/classes!/com/alibaba/dubbo/performance/demo/agent/HelloController.class]: Instantiation of bean failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [com.alibaba.dubbo.performance.demo.agent.HelloController]: Constructor threw exception; nested exception is java.lang.NullPointerException: endpoint can't be null
+2018-05-28 11:34:35.204 [main] INFO  o.s.b.a.l.AutoConfigurationReportLoggingInitializer - 
+
+Error starting ApplicationContext. To display the auto-configuration report re-run your application with 'debug' enabled.
+2018-05-28 11:34:35.208 [main] ERROR org.springframework.boot.SpringApplication - Application startup failed
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'HelloController' defined in URL [jar:file:/root/dists/mesh-agent.jar!/BOOT-INF/classes!/com/alibaba/dubbo/performance/demo/agent/HelloController.class]: Instantiation of bean failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [com.alibaba.dubbo.performance.demo.agent.HelloController]: Constructor threw exception; nested exception is java.lang.NullPointerException: endpoint can't be null
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateBean(AbstractAutowireCapableBeanFactory.java:1155)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1099)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:513)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:483)
+	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:306)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:230)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:302)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:197)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:761)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:867)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:543)
+	at org.springframework.boot.context.embedded.EmbeddedWebApplicationContext.refresh(EmbeddedWebApplicationContext.java:122)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:693)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:360)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:303)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1118)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1107)
+	at com.alibaba.dubbo.performance.demo.agent.AgentApp.main(AgentApp.java:26)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.boot.loader.MainMethodRunner.run(MainMethodRunner.java:48)
+	at org.springframework.boot.loader.Launcher.launch(Launcher.java:87)
+	at org.springframework.boot.loader.Launcher.launch(Launcher.java:50)
+	at org.springframework.boot.loader.JarLauncher.main(JarLauncher.java:51)
+Caused by: org.springframework.beans.BeanInstantiationException: Failed to instantiate [com.alibaba.dubbo.performance.demo.agent.HelloController]: Constructor threw exception; nested exception is java.lang.NullPointerException: endpoint can't be null
+	at org.springframework.beans.BeanUtils.instantiateClass(BeanUtils.java:154)
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:89)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateBean(AbstractAutowireCapableBeanFactory.java:1147)
+	... 25 common frames omitted
+Caused by: java.lang.NullPointerException: endpoint can't be null
+	at com.google.common.base.Preconditions.checkNotNull(Preconditions.java:228)
+	at com.coreos.jetcd.ClientBuilder.endpoints(ClientBuilder.java:71)
+	at com.coreos.jetcd.ClientBuilder.endpoints(ClientBuilder.java:91)
+	at com.alibaba.dubbo.performance.demo.agent.registry.EtcdClient.<init>(EtcdClient.java:41)
+	at com.alibaba.dubbo.performance.demo.agent.HelloController.<init>(HelloController.java:41)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:423)
+	at org.springframework.beans.BeanUtils.instantiateClass(BeanUtils.java:142)
+	... 27 common frames omitted

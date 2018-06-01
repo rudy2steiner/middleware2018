@@ -1,0 +1,613 @@
+[INFO] >>> Fetch task.
+[DEBUG] fetch task url = https://tianchi.aliyun.com/race/task/fetchTask
+[DEBUG] request data = {'token': '******', 'raceId': '231657', 'daemonid': 'e100081000108.zmf[QARDs51]'}
+[DEBUG] response data = {'errCode': 0, 'errName': None, 'errMsg': 'success', 'wrapped': True, 'data': {'tairNamespace': 4126, 'gitpath': 'git@code.aliyun.com:git@code.aliyun.com:rudy_steiner/agent-demo.git', 'imagepath': 'registry.cn-hangzhou.aliyuncs.com/ocean18/dubbo-tianchi-agent-demo', 'teamId': 150641, 'teamCode': '150641qemw2', 'imagerepouser': 'rudycto', 'userid': 1095279144092, 'imagerepopassword': 'rudydocker123', 'taskid': 374183}}
+[INFO] task = Task(dict={'tairNamespace': 4126, 'gitpath': 'git@code.aliyun.com:git@code.aliyun.com:rudy_steiner/agent-demo.git', 'imagepath': 'registry.cn-hangzhou.aliyuncs.com/ocean18/dubbo-tianchi-agent-demo', 'teamId': 150641, 'teamCode': '150641qemw2', 'imagerepouser': 'rudycto', 'userid': 1095279144092, 'imagerepopassword': 'rudydocker123', 'taskid': 374183})
+[INFO] local workspace = LocalHost(hostname=e100081000108.zmf, home=/home/mwrace2018/workspace/shuke, lock_file=/home/mwrace2018/workspace/shuke/.lock, dockerpwd_file=/home/mwrace2018/workspace/shuke/.dockerpwd)
+[INFO] remote workspace = RemoteHost(hostname=shuke.e100081000108.zmf, user=mwrace2018, home=~/workspace/shuke, team_home=~/workspace/shuke/150641, task_home=~/workspace/shuke/150641/374183, lock_file=~/workspace/shuke/150641/374183/.lock, dockerpwd_file=~/workspace/shuke/150641/374183/.dockerpwd)
+[INFO] >>> Lock local workspace.
+[INFO] >>> Generate Docker password file.
+[INFO] >>> Create remote task home.
+[DEBUG] Script to execute:
+
+            mkdir -p ~/workspace/shuke/150641/374183
+            exit 0
+
+[DEBUG] Return code = 0
+[DEBUG] The output is as following:
+
+[INFO] >>> Lock remote task home.
+[DEBUG] Script to execute:
+
+            if [[ -f ~/workspace/shuke/150641/374183/.lock ]]; then
+                echo "Lock file exists."
+                exit 1
+            else
+                touch ~/workspace/shuke/150641/374183/.lock
+            fi
+            exit 0
+
+[DEBUG] Return code = 0
+[DEBUG] The output is as following:
+
+[INFO] >>> Upload Docker password file.
+[DEBUG] Script to execute:
+
+            if [[ -f /home/mwrace2018/workspace/shuke/.dockerpwd ]]; then
+                scp -q                     /home/mwrace2018/workspace/shuke/.dockerpwd                     mwrace2018@shuke.e100081000108.zmf:~/workspace/shuke/150641/374183/.dockerpwd
+                rm -f /home/mwrace2018/workspace/shuke/.dockerpwd
+            else
+                echo "Docker password file not exists."
+                exit 1
+            fi
+            exit 0
+
+[DEBUG] Return code = 0
+[DEBUG] The output is as following:
+
+[INFO] >>> Login to Docker repository.
+[DEBUG] Script to execute:
+
+            cat ~/.passwd | sudo -S -p '' docker login                 -u rudycto                 -p $(cat ~/workspace/shuke/150641/374183/.dockerpwd)                 registry.cn-hangzhou.aliyuncs.com
+            rm -f ~/workspace/shuke/150641/374183/.dockerpwd
+            exit 0
+
+[DEBUG] Return code = 0
+[DEBUG] The output is as following:
+Login Succeeded
+
+[INFO] >>> Pull Docker images.
+[DEBUG] Script to execute:
+
+            cat ~/.passwd | sudo -S -p '' docker pull registry.cn-hangzhou.aliyuncs.com/ocean18/dubbo-tianchi-agent-demo
+            cat ~/.passwd | sudo -S -p '' docker pull registry.cn-hangzhou.aliyuncs.com/aliware2018/alpine-etcd
+            cat ~/.passwd | sudo -S -p '' docker pull registry.cn-hangzhou.aliyuncs.com/aliware2018/alpine-nmap-ncat
+
+[DEBUG] Return code = 0
+[DEBUG] The output is as following:
+Using default tag: latest
+latest: Pulling from ocean18/dubbo-tianchi-agent-demo
+cc1a78bfd46b: Pulling fs layer
+7012b8a74a3f: Pulling fs layer
+a9454f33a104: Pulling fs layer
+10f76973a77a: Pulling fs layer
+a1581c46810a: Pulling fs layer
+296542c3de35: Pulling fs layer
+52d662148d97: Pulling fs layer
+0a3000042394: Pulling fs layer
+e2ac4274e1ad: Pulling fs layer
+a1581c46810a: Waiting
+296542c3de35: Waiting
+e2ac4274e1ad: Waiting
+0a3000042394: Waiting
+a9454f33a104: Verifying Checksum
+a9454f33a104: Download complete
+10f76973a77a: Verifying Checksum
+10f76973a77a: Download complete
+cc1a78bfd46b: Verifying Checksum
+cc1a78bfd46b: Download complete
+52d662148d97: Verifying Checksum
+52d662148d97: Download complete
+296542c3de35: Verifying Checksum
+296542c3de35: Download complete
+0a3000042394: Verifying Checksum
+0a3000042394: Download complete
+e2ac4274e1ad: Verifying Checksum
+e2ac4274e1ad: Download complete
+a1581c46810a: Verifying Checksum
+a1581c46810a: Download complete
+cc1a78bfd46b: Pull complete
+7012b8a74a3f: Verifying Checksum
+7012b8a74a3f: Download complete
+7012b8a74a3f: Pull complete
+a9454f33a104: Pull complete
+10f76973a77a: Pull complete
+a1581c46810a: Pull complete
+296542c3de35: Pull complete
+52d662148d97: Pull complete
+0a3000042394: Pull complete
+e2ac4274e1ad: Pull complete
+Digest: sha256:7f95579ada471d2084f7e178e855923330d6b7c4e4a6e57384d3800973b21637
+Status: Downloaded newer image for registry.cn-hangzhou.aliyuncs.com/ocean18/dubbo-tianchi-agent-demo:latest
+Using default tag: latest
+latest: Pulling from aliware2018/alpine-etcd
+ff3a5c916c92: Pulling fs layer
+b6c8a18d466f: Pulling fs layer
+bab68923f148: Pulling fs layer
+bab68923f148: Verifying Checksum
+bab68923f148: Download complete
+ff3a5c916c92: Verifying Checksum
+ff3a5c916c92: Download complete
+ff3a5c916c92: Pull complete
+b6c8a18d466f: Verifying Checksum
+b6c8a18d466f: Download complete
+b6c8a18d466f: Pull complete
+bab68923f148: Pull complete
+Digest: sha256:aa6389d2ac369ef302c403873f4a9f9cdb9cba39678c9f53743d99296f6c04db
+Status: Downloaded newer image for registry.cn-hangzhou.aliyuncs.com/aliware2018/alpine-etcd:latest
+Using default tag: latest
+latest: Pulling from aliware2018/alpine-nmap-ncat
+ff3a5c916c92: Already exists
+da22f0c2269c: Pulling fs layer
+da22f0c2269c: Verifying Checksum
+da22f0c2269c: Download complete
+da22f0c2269c: Pull complete
+Digest: sha256:d04328ee217f00e0c1d0f27452a55e816753225df47731575e2d041e8623fb35
+Status: Downloaded newer image for registry.cn-hangzhou.aliyuncs.com/aliware2018/alpine-nmap-ncat:latest
+
+[INFO] >>> Check signatures.
+[DEBUG] Script to execute:
+
+            # noqa: E501
+
+            if [[ -f /tmp/run.cid ]]; then
+                cat ~/.passwd | sudo -S -p '' rm /tmp/run.cid
+            fi
+
+            cat ~/.passwd | sudo -S -p '' docker run --rm -i --entrypoint='' registry.cn-hangzhou.aliyuncs.com/ocean18/dubbo-tianchi-agent-demo bash -c 'sha256sum -c < <(echo e5b85c5f7f20b41a2f8572186d3d20f66676c70b325593822dbae773925c9e05  /root/dists/mesh-consumer.jar)'
+            [[ $? -ne 0 ]] && cat ~/.passwd | sudo -S -p '' docker stop $CID && exit 101
+
+            cat ~/.passwd | sudo -S -p '' docker run --rm -i --entrypoint='' registry.cn-hangzhou.aliyuncs.com/ocean18/dubbo-tianchi-agent-demo bash -c 'sha256sum -c < <(echo 7860506063345ef99d58059a2c4aa2c2b536e688e75933ac6abf07f1c4b783cb  /root/dists/mesh-provider.jar)'
+            [[ $? -ne 0 ]] && cat ~/.passwd | sudo -S -p '' docker stop $CID && exit 102
+
+            cat ~/.passwd | sudo -S -p '' docker run --rm -i --entrypoint='' registry.cn-hangzhou.aliyuncs.com/ocean18/dubbo-tianchi-agent-demo bash -c 'sha256sum -c < <(echo 6480f20e4cd8222eea7fe9e93db0e81d851fa90dde8e279669c648933e928c5a  /usr/local/bin/docker-entrypoint.sh)'
+            [[ $? -ne 0 ]] && cat ~/.passwd | sudo -S -p '' docker stop $CID && exit 103
+        
+
+[DEBUG] Return code = 1
+[DEBUG] The output is as following:
+/root/dists/mesh-consumer.jar: OK
+/root/dists/mesh-provider.jar: OK
+/usr/local/bin/docker-entrypoint.sh: OK
+
+[INFO] >>> Create Docker network.
+[DEBUG] Script to execute:
+
+            # noqa: E501
+
+            CID=$(cat ~/.passwd | sudo -S -p '' docker network ls --filter name=benchmarker -q)
+            if [[ "$CID" != "" ]]; then
+                echo "[WARN] Network named 'benchmarker' already exists, skip creating."
+                exit 0
+            fi
+            cat ~/.passwd | sudo -S -p '' docker network create                 --driver=bridge                 --subnet=10.10.10.0/24                 --gateway=10.10.10.1                 -o "com.docker.network.bridge.name"="benchmarker"                 -o "com.docker.network.bridge.enable_icc"="true"                 benchmarker
+            cat ~/.passwd | sudo -S -p '' ifconfig benchmarker 10.10.10.1 netmask 255.255.255.0
+
+[DEBUG] Return code = 0
+[DEBUG] The output is as following:
+[WARN] Network named 'benchmarker' already exists, skip creating.
+
+[INFO] >>> Start etcd service.
+[DEBUG] Script to execute:
+
+            # noqa: E501
+
+            ETCD_HOME=~/workspace/shuke/150641/374183/etcd
+            rm -rf $ETCD_HOME
+            mkdir -p $ETCD_HOME/logs
+            cat ~/.passwd | sudo -S -p '' docker run -d                 --name=etcd                 --cidfile=$ETCD_HOME/run.cid                 --cpu-period=50000                 --cpu-quota=20000                 --memory=1g                 --network=benchmarker                 -v $ETCD_HOME/logs:/root/logs                 registry.cn-hangzhou.aliyuncs.com/aliware2018/alpine-etcd
+
+            echo $IP_ADDR
+            ATTEMPTS=0
+            MAX_ATTEMPTS=12
+            while true; do
+                echo "Trying to connect etcd..."
+                cat ~/.passwd | sudo -S -p ''                     docker run --rm --network=benchmarker registry.cn-hangzhou.aliyuncs.com/aliware2018/alpine-nmap-ncat                     ncat -v -w 1 --send-only etcd 2379
+                if [[ $? -eq 0 ]]; then
+                    exit 0
+                fi
+                if [[ $ATTEMPTS -eq $MAX_ATTEMPTS ]]; then
+                    echo "Cannot connect to etcd service after $ATTEMPTS attempts."
+                    exit 1
+                fi
+                ATTEMPTS=$((ATTEMPTS+1))
+                echo "Waiting for 5 seconds... ($ATTEMPTS/$MAX_ATTEMPTS)"
+                sleep 5
+            done
+
+[DEBUG] Return code = 0
+[DEBUG] The output is as following:
+0a1ed68a4412a857be20d24f9149183f910b6f5e2f8a3272ae22a02875785a4c
+
+Trying to connect etcd...
+Ncat: Version 7.60 ( https://nmap.org/ncat )
+Ncat: Connected to 10.10.10.2:2379.
+Ncat: 0 bytes sent, 0 bytes received in 0.01 seconds.
+
+[INFO] >>> Start provider services.
+[DEBUG] Script to execute:
+
+            PROVIDER_HOME=~/workspace/shuke/150641/374183/provider-small
+            rm -rf $PROVIDER_HOME
+            mkdir -p $PROVIDER_HOME/logs
+            cat ~/.passwd | sudo -S -p '' docker run -d                 --name=provider-small                 --cidfile=$PROVIDER_HOME/run.cid                 --cpu-period=50000                 --cpu-quota=30000                 --memory=2g                 --network=benchmarker                 -v $PROVIDER_HOME/logs:/root/logs                 registry.cn-hangzhou.aliyuncs.com/ocean18/dubbo-tianchi-agent-demo provider-small
+            PROVIDER_HOME=~/workspace/shuke/150641/374183/provider-medium
+            rm -rf $PROVIDER_HOME
+            mkdir -p $PROVIDER_HOME/logs
+            cat ~/.passwd | sudo -S -p '' docker run -d                 --name=provider-medium                 --cidfile=$PROVIDER_HOME/run.cid                 --cpu-period=50000                 --cpu-quota=60000                 --memory=4g                 --network=benchmarker                 -v $PROVIDER_HOME/logs:/root/logs                 registry.cn-hangzhou.aliyuncs.com/ocean18/dubbo-tianchi-agent-demo provider-medium
+            PROVIDER_HOME=~/workspace/shuke/150641/374183/provider-large
+            rm -rf $PROVIDER_HOME
+            mkdir -p $PROVIDER_HOME/logs
+            cat ~/.passwd | sudo -S -p '' docker run -d                 --name=provider-large                 --cidfile=$PROVIDER_HOME/run.cid                 --cpu-period=50000                 --cpu-quota=90000                 --memory=6g                 --network=benchmarker                 -v $PROVIDER_HOME/logs:/root/logs                 registry.cn-hangzhou.aliyuncs.com/ocean18/dubbo-tianchi-agent-demo provider-large
+            # noqa: E501
+
+            ATTEMPTS=0
+            MAX_ATTEMPTS=12
+            while true; do
+                echo "Trying to connect provider-small..."
+                cat ~/.passwd | sudo -S -p ''                     docker run --rm --network=benchmarker registry.cn-hangzhou.aliyuncs.com/aliware2018/alpine-nmap-ncat                     ncat -v -w 1 --send-only provider-small 20880; r1=$?
+
+                echo "Trying to connect provider-medium..."
+                cat ~/.passwd | sudo -S -p ''                     docker run --rm --network=benchmarker registry.cn-hangzhou.aliyuncs.com/aliware2018/alpine-nmap-ncat                     ncat -v -w 1 --send-only provider-medium 20880; r2=$?
+
+                echo "Trying to connect provider-large..."
+                cat ~/.passwd | sudo -S -p ''                     docker run --rm --network=benchmarker registry.cn-hangzhou.aliyuncs.com/aliware2018/alpine-nmap-ncat                     ncat -v -w 1 --send-only provider-large 20880; r3=$?
+
+                if [[ $r1 -eq 0 && $r2 -eq 0 && $r3 -eq 0 ]]; then
+                    exit 0
+                fi
+                if [[ $ATTEMPTS -eq $MAX_ATTEMPTS ]]; then
+                    echo "Cannot connect to some of the provider services after $ATTEMPTS attempts."
+                    exit 1
+                fi
+                ATTEMPTS=$((ATTEMPTS+1))
+                echo "Waiting for 5 seconds... ($ATTEMPTS/$MAX_ATTEMPTS)"
+                sleep 5
+            done
+
+[DEBUG] Return code = 0
+[DEBUG] The output is as following:
+a6a416856ac1640aa76321b5fccb433c41c0ca1c2be54f61254fa21d83cab56e
+705f743af3f7c5a241d0efd181e37a35c532b9f3e6292582158a3d64b7c55e1a
+77b0d64f7f8fd90392ecccff72286c19671a3fa6be6adb1225c82774e9ea6f65
+Trying to connect provider-small...
+Ncat: Version 7.60 ( https://nmap.org/ncat )
+Ncat: Connection refused.
+Trying to connect provider-medium...
+Ncat: Version 7.60 ( https://nmap.org/ncat )
+Ncat: Connection refused.
+Trying to connect provider-large...
+Ncat: Version 7.60 ( https://nmap.org/ncat )
+Ncat: Connected to 10.10.10.5:20880.
+Ncat: 0 bytes sent, 0 bytes received in 0.01 seconds.
+Waiting for 5 seconds... (1/12)
+Trying to connect provider-small...
+Ncat: Version 7.60 ( https://nmap.org/ncat )
+Ncat: Connected to 10.10.10.3:20880.
+Ncat: 0 bytes sent, 0 bytes received in 0.01 seconds.
+Trying to connect provider-medium...
+Ncat: Version 7.60 ( https://nmap.org/ncat )
+Ncat: Connected to 10.10.10.4:20880.
+Ncat: 0 bytes sent, 0 bytes received in 0.01 seconds.
+Trying to connect provider-large...
+Ncat: Version 7.60 ( https://nmap.org/ncat )
+Ncat: Connected to 10.10.10.5:20880.
+Ncat: 0 bytes sent, 0 bytes received in 0.01 seconds.
+
+[INFO] >>> Start consumer service.
+[DEBUG] Script to execute:
+
+            # noqa: E501
+
+            CONSUMER_HOME=~/workspace/shuke/150641/374183/consumer
+            rm -rf $CONSUMER_HOME
+            mkdir -p $CONSUMER_HOME/logs
+            cat ~/.passwd | sudo -S -p '' docker run -d                 --name=consumer                 --cidfile=$CONSUMER_HOME/run.cid                 --cpu-period=50000                 --cpu-quota=180000                 --memory=3g                 --network=benchmarker                 -v $CONSUMER_HOME/logs:/root/logs                 -p 80:8087                 registry.cn-hangzhou.aliyuncs.com/ocean18/dubbo-tianchi-agent-demo consumer
+
+            ATTEMPTS=0
+            MAX_ATTEMPTS=12
+            while true; do
+                echo "Trying to connect consumer..."
+                cat ~/.passwd | sudo -S -p ''                     docker run --rm --network=benchmarker registry.cn-hangzhou.aliyuncs.com/aliware2018/alpine-nmap-ncat                     ncat -v -w 1 --send-only consumer 8087
+                if [[ $? -eq 0 ]]; then
+                    exit 0
+                fi
+                if [[ $ATTEMPTS -eq $MAX_ATTEMPTS ]]; then
+                    echo "Cannot connect to consumer service after $ATTEMPTS attempts."
+                    exit 1
+                fi
+                ATTEMPTS=$((ATTEMPTS+1))
+                echo "Waiting for 5 seconds... ($ATTEMPTS/$MAX_ATTEMPTS)"
+                sleep 5
+            done
+
+[DEBUG] Return code = 0
+[DEBUG] The output is as following:
+0b5f9676b86257521ab469be86115c08ad1b3889dd72163c7f0ec05d516d640e
+Trying to connect consumer...
+Ncat: Version 7.60 ( https://nmap.org/ncat )
+Ncat: Connection refused.
+Waiting for 5 seconds... (1/12)
+Trying to connect consumer...
+Ncat: Version 7.60 ( https://nmap.org/ncat )
+Ncat: Connection refused.
+Waiting for 5 seconds... (2/12)
+Trying to connect consumer...
+Ncat: Version 7.60 ( https://nmap.org/ncat )
+Ncat: Connected to 10.10.10.6:8087.
+Ncat: 0 bytes sent, 0 bytes received in 0.01 seconds.
+
+[INFO] >>> Warmup.
+[DEBUG] Script to execute:
+
+            sleep 5
+            wrk -t2 -c256 -d20s -T5                 --script=./benchmark/wrk.lua                 --latency http://shuke.e100081000108.zmf/invoke
+            exit 0
+
+[DEBUG] Return code = 0
+[DEBUG] The output is as following:
+Running 20s test @ http://shuke.e100081000108.zmf/invoke
+  2 threads and 256 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency   575.53ms  793.77ms   4.91s    86.12%
+    Req/Sec   466.52    253.03     1.06k    60.17%
+  Latency Distribution
+     50%  222.07ms
+     75%  519.26ms
+     90%    1.83s 
+     99%    3.46s 
+  16240 requests in 20.02s, 2.18MB read
+Requests/sec:    811.18
+Transfer/sec:    111.70KB
+--------------------------
+Durations:       20.02s
+Requests:        16240
+Avg RT:          575.53ms
+Max RT:          4914.986ms
+Min RT:          56.671ms
+Error requests:  0
+Valid requests:  16240
+QPS:             811.18
+--------------------------
+
+[INFO] >>> Pressure with 64 connections.
+[DEBUG] Script to execute:
+
+            sleep 5
+            wrk -t2 -c64 -d60s -T5                 --script=./benchmark/wrk.lua                 --latency http://shuke.e100081000108.zmf/invoke
+            exit 0
+
+[DEBUG] Return code = 0
+[DEBUG] The output is as following:
+Running 1m test @ http://shuke.e100081000108.zmf/invoke
+  2 threads and 64 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency    57.30ms   11.35ms 205.92ms   89.41%
+    Req/Sec   561.90     76.46   646.00     77.42%
+  Latency Distribution
+     50%   52.92ms
+     75%   55.37ms
+     90%   71.94ms
+     99%   99.52ms
+  67165 requests in 1.00m, 9.03MB read
+Requests/sec:   1118.52
+Transfer/sec:    154.01KB
+--------------------------
+Durations:       60.05s
+Requests:        67165
+Avg RT:          57.30ms
+Max RT:          205.924ms
+Min RT:          51.694ms
+Error requests:  0
+Valid requests:  67165
+QPS:             1118.52
+--------------------------
+
+[INFO] QPS = 1118.52
+[INFO] >>> Pressure with 128 connections.
+[DEBUG] Script to execute:
+
+            sleep 5
+            wrk -t2 -c128 -d60s -T5                 --script=./benchmark/wrk.lua                 --latency http://shuke.e100081000108.zmf/invoke
+            exit 0
+
+[DEBUG] Return code = 0
+[DEBUG] The output is as following:
+Running 1m test @ http://shuke.e100081000108.zmf/invoke
+  2 threads and 128 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency    56.43ms    9.70ms 307.89ms   97.78%
+    Req/Sec     1.15k    80.93     1.29k    82.14%
+  Latency Distribution
+     50%   54.95ms
+     75%   57.21ms
+     90%   60.28ms
+     99%   70.79ms
+  136830 requests in 1.00m, 18.40MB read
+Requests/sec:   2279.35
+Transfer/sec:    313.86KB
+--------------------------
+Durations:       60.03s
+Requests:        136830
+Avg RT:          56.43ms
+Max RT:          307.887ms
+Min RT:          51.677ms
+Error requests:  0
+Valid requests:  136830
+QPS:             2279.35
+--------------------------
+
+[INFO] QPS = 2279.35
+[INFO] >>> Pressure with 256 connections.
+[DEBUG] Script to execute:
+
+            sleep 5
+            wrk -t2 -c256 -d60s -T5                 --script=./benchmark/wrk.lua                 --latency http://shuke.e100081000108.zmf/invoke
+            exit 0
+
+[DEBUG] Return code = 0
+[DEBUG] The output is as following:
+Running 1m test @ http://shuke.e100081000108.zmf/invoke
+  2 threads and 256 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency    71.36ms   19.26ms 408.02ms   93.82%
+    Req/Sec     1.82k   155.04     2.22k    78.43%
+  Latency Distribution
+     50%   67.79ms
+     75%   75.57ms
+     90%   85.25ms
+     99%  119.74ms
+  217226 requests in 1.00m, 29.21MB read
+Requests/sec:   3618.28
+Transfer/sec:    498.22KB
+--------------------------
+Durations:       60.04s
+Requests:        217226
+Avg RT:          71.36ms
+Max RT:          408.025ms
+Min RT:          52.11ms
+Error requests:  0
+Valid requests:  217226
+QPS:             3618.28
+--------------------------
+
+[INFO] QPS = 3618.28
+[INFO] >>> Stop consumer service.
+[DEBUG] Script to execute:
+
+            # noqa: E501
+
+            CID_FILE=~/workspace/shuke/150641/374183/consumer/run.cid
+            CID=$(cat $CID_FILE)
+            cat ~/.passwd | sudo -S -p '' docker stop $CID
+            cat ~/.passwd | sudo -S -p '' docker logs $CID > ~/workspace/shuke/150641/374183/consumer/logs/docker.log
+            cat ~/.passwd | sudo -S -p '' docker rm $CID
+            rm -f $CID_FILE
+            exit 0
+
+[DEBUG] Return code = 0
+[DEBUG] The output is as following:
+0b5f9676b86257521ab469be86115c08ad1b3889dd72163c7f0ec05d516d640e
+SLF4J: Class path contains multiple SLF4J bindings.
+SLF4J: Found binding in [jar:file:/root/dists/mesh-agent.jar!/BOOT-INF/lib/provider-agent-1.0-SNAPSHOT.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: Found binding in [jar:file:/root/dists/mesh-agent.jar!/BOOT-INF/lib/logback-classic-1.1.11.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: See http://www.slf4j.org/codes.html#multiple_bindings for an explanation.
+SLF4J: Actual binding is of type [ch.qos.logback.classic.util.ContextSelectorStaticBinder]
+0b5f9676b86257521ab469be86115c08ad1b3889dd72163c7f0ec05d516d640e
+
+[INFO] >>> Stop provider services.
+[DEBUG] Script to execute:
+
+            # noqa: E501
+
+            CID_FILE=~/workspace/shuke/150641/374183/provider-small/run.cid
+            CID=$(cat $CID_FILE)
+            cat ~/.passwd | sudo -S -p '' docker stop $CID
+            cat ~/.passwd | sudo -S -p '' docker logs $CID > ~/workspace/shuke/150641/374183/provider-small/logs/docker.log
+            cat ~/.passwd | sudo -S -p '' docker rm $CID
+            rm -f $CID_FILE
+            # noqa: E501
+
+            CID_FILE=~/workspace/shuke/150641/374183/provider-medium/run.cid
+            CID=$(cat $CID_FILE)
+            cat ~/.passwd | sudo -S -p '' docker stop $CID
+            cat ~/.passwd | sudo -S -p '' docker logs $CID > ~/workspace/shuke/150641/374183/provider-medium/logs/docker.log
+            cat ~/.passwd | sudo -S -p '' docker rm $CID
+            rm -f $CID_FILE
+            # noqa: E501
+
+            CID_FILE=~/workspace/shuke/150641/374183/provider-large/run.cid
+            CID=$(cat $CID_FILE)
+            cat ~/.passwd | sudo -S -p '' docker stop $CID
+            cat ~/.passwd | sudo -S -p '' docker logs $CID > ~/workspace/shuke/150641/374183/provider-large/logs/docker.log
+            cat ~/.passwd | sudo -S -p '' docker rm $CID
+            rm -f $CID_FILE
+            exit 0
+
+[DEBUG] Return code = 0
+[DEBUG] The output is as following:
+a6a416856ac1640aa76321b5fccb433c41c0ca1c2be54f61254fa21d83cab56e
+a6a416856ac1640aa76321b5fccb433c41c0ca1c2be54f61254fa21d83cab56e
+705f743af3f7c5a241d0efd181e37a35c532b9f3e6292582158a3d64b7c55e1a
+705f743af3f7c5a241d0efd181e37a35c532b9f3e6292582158a3d64b7c55e1a
+77b0d64f7f8fd90392ecccff72286c19671a3fa6be6adb1225c82774e9ea6f65
+77b0d64f7f8fd90392ecccff72286c19671a3fa6be6adb1225c82774e9ea6f65
+
+[INFO] >>> Stop etcd service.
+[DEBUG] Script to execute:
+
+            # noqa: E501
+
+            CID_FILE=~/workspace/shuke/150641/374183/etcd/run.cid
+            CID=$(cat $CID_FILE)
+            cat ~/.passwd | sudo -S -p '' docker stop $CID
+            cat ~/.passwd | sudo -S -p '' docker logs $CID > ~/workspace/shuke/150641/374183/etcd/logs/docker.log
+            cat ~/.passwd | sudo -S -p '' docker rm $CID
+            rm -f $CID_FILE
+
+[DEBUG] Return code = 0
+[DEBUG] The output is as following:
+0a1ed68a4412a857be20d24f9149183f910b6f5e2f8a3272ae22a02875785a4c
+0a1ed68a4412a857be20d24f9149183f910b6f5e2f8a3272ae22a02875785a4c
+
+[INFO] >>> Remove Docker images.
+[DEBUG] Script to execute:
+
+            cat ~/.passwd | sudo -S -p '' docker rmi -f registry.cn-hangzhou.aliyuncs.com/ocean18/dubbo-tianchi-agent-demo
+            cat ~/.passwd | sudo -S -p '' docker rmi -f registry.cn-hangzhou.aliyuncs.com/aliware2018/alpine-etcd
+            cat ~/.passwd | sudo -S -p '' docker rmi -f registry.cn-hangzhou.aliyuncs.com/aliware2018/alpine-nmap-ncat
+
+[DEBUG] Return code = 0
+[DEBUG] The output is as following:
+Untagged: registry.cn-hangzhou.aliyuncs.com/ocean18/dubbo-tianchi-agent-demo:latest
+Untagged: registry.cn-hangzhou.aliyuncs.com/ocean18/dubbo-tianchi-agent-demo@sha256:7f95579ada471d2084f7e178e855923330d6b7c4e4a6e57384d3800973b21637
+Deleted: sha256:a6617fef709e892545d73bbba5905d7d4b4475f61a9519568988165d14998cd8
+Deleted: sha256:fb1a3f0fe0b390a01bf5e24dcb7ed4d36d5fc7bcf98f5b68f7982d7c64e1438d
+Deleted: sha256:fce62ebcaf4c3346d37066bf23573776bf1d6665fc1f77e3c903ea8a0fac4faa
+Deleted: sha256:88930519878158fc71144da5d5e556c4d47d72246b4c57989e6da2c31940d3f1
+Deleted: sha256:7d7af207c90245c040541eb3184195a7dd6c9db2b84f5f0cd03b5570018acab8
+Deleted: sha256:ea96e3c11e4235f74d2c23b1375b66dd8e449e39faaf1b9586efa0807fd46947
+Deleted: sha256:addf348addbfcefb2d886aa87fc691398252aca75ef9611cfb7161e63a353ac3
+Deleted: sha256:2ccc5dac78d15c2fc272aae2a7c1622b4d21354ffb7a4d7cf5f14668462bf81e
+Deleted: sha256:6b292f24f389bbe7a233160126aac570bf919107bd71a25b1187045fdff5c3f4
+Deleted: sha256:0f3a12fef684003e8dc0dfdcea32789db2179c6f9ad1e1e89bc05754ac44c6c5
+Untagged: registry.cn-hangzhou.aliyuncs.com/aliware2018/alpine-etcd:latest
+Untagged: registry.cn-hangzhou.aliyuncs.com/aliware2018/alpine-etcd@sha256:aa6389d2ac369ef302c403873f4a9f9cdb9cba39678c9f53743d99296f6c04db
+Deleted: sha256:b0367cb6ecaf14d3a5e64e2ea7fb9b41e65caec36b5a8239104df475b90ef16b
+Deleted: sha256:6e4392531043ea06b23076709b4111e77dc7de57aaa7245715468157a3737aae
+Deleted: sha256:45f17cb34968a535693ef875abc4fbf4ff9f0bde26d1cd18d27fea1b611ba585
+Untagged: registry.cn-hangzhou.aliyuncs.com/aliware2018/alpine-nmap-ncat:latest
+Untagged: registry.cn-hangzhou.aliyuncs.com/aliware2018/alpine-nmap-ncat@sha256:d04328ee217f00e0c1d0f27452a55e816753225df47731575e2d041e8623fb35
+Deleted: sha256:cac8d8d67c97f92b7f84b485100fa7871c2b9e0973b641613818102303639912
+Deleted: sha256:455c9e995324854cc716efce96daaead86596c9aaaad9161e1acd4043b653be5
+Deleted: sha256:cd7100a72410606589a54b932cabd804a17f9ae5b42a1882bd56d263e02b6215
+
+[INFO] >>> Unlock remote task home.
+[DEBUG] Script to execute:
+
+            if [[ -f ~/workspace/shuke/150641/374183/.lock ]]; then
+                rm -f ~/workspace/shuke/150641/374183/.lock
+            fi
+            exit 0
+
+[DEBUG] Return code = 0
+[DEBUG] The output is as following:
+
+[INFO] >>> Unlock local workspace.
+[INFO] >>> Collect data.
+[INFO] Best result: 3618.28 QPS with 256 connections.
+[DEBUG] Script to execute:
+
+            cd ~/workspace/shuke/150641/374183
+            tar -czf ../logs.tar.gz *
+            exit 0
+
+[DEBUG] Return code = 0
+[DEBUG] The output is as following:
+
+[DEBUG] Script to execute:
+
+            # noqa: E501
+
+            scp mwrace2018@shuke.e100081000108.zmf:~/workspace/shuke/150641/374183/../logs.tar.gz /home/mwrace2018/workspace/shuke
+            echo 150641/374183 > /home/mwrace2018/workspace/shuke/.osspath
+            exit 0
+
+[DEBUG] Return code = 0
+[DEBUG] The output is as following:
+
+[INFO] Time used: 0:05:56.049853
+[INFO] >>> Update task.
+[DEBUG] fetch task url = https://tianchi.aliyun.com/race/task/updateTask
+[DEBUG] request data = {'token': '******', 'taskid': 374183, 'daemonid': 'e100081000108.zmf[QARDs51]', 'status': 0, 'isvalid': 1, 'message': 'Success', 'rank': 3618.28, 'scoreJson': {'qps': 3618.28}}
+[DEBUG] response data = {'errCode': 0, 'errName': None, 'errMsg': 'success', 'wrapped': True, 'data': 1}
