@@ -201,79 +201,15 @@ docker time wrong
 key:rudy
 07c970aa7bebce79f78b10601ca4c8f45b8efe8560f36ff80b76cb6d8539e845d46319aea061655290cc2dd75a4955bf821bd36c994f7bf4e283403812b5e78ea22430b70f5bd5b154cca4d7673ab4c39602d95243c5c7b92e4fb43bf60f8787e56052152369a0c840ac06e88e3e28b90934ee31eb3efdd317d5df8d34d376b0e46cdf8f6cef48cdf8ffd18541757ff2f93fa44e43b2a4c87a2cac3d51fb0424a632243818ab669fb116f140cfccffabdbcba0af4ba0d6d63c7a6c2ecb485120af69c468602a10bddc353a498b05e637f4e7f5574e566e16ee27f34026d6b011cbe4d7f627dcda2019d35dd414a8b7a765fcb4259c237a2e335c4c8f6761ffacd00fd006fb006e
 
--agentpath:/home/soft/YourKit-JavaProfiler-2017.02/bin/linux-x86-64/libyjpagent.so=disablestacktelemetry,exceptions=disable,delay=10000
+./etcdctl lease timetolive 18f63145f059315
 
 
-# balance index
-  -Ddispatch=0
-   taskId=368104,teamId=150641 Success
-  https://middlewarerace2018.oss-cn-hangzhou.aliyuncs.com/150641/368104/logs.tar.gz
-  taskId=368269,teamId=150641 Success
-  374183
-   https://middlewarerace2018.oss-cn-hangzhou.aliyuncs.com/150641/374183/logs.tar.gz
- 368528
+wrk -t2 -c256 -d20s -T5                 --script=./benchmark/wrk.lua                 --latency http://192.168.2.245:8087/invoke
+
+>>>>>>> 0d1daffaa33dfc48dc19958fdc51a2af15d346de
  -Dtype=provider -Dserver.port=30000 -Dcpu.period=50000 -Dprovider.cpu.quota=30000 -Dprovider.memory=2 -Ddubbo.protocol.port=20889 -Dlogs.dir=/home/middle2018/logs/provider -Detcd.url=http://140.143.90.42:2379
 
- -Dtype=consumer -Dserver.port=20000 -Dlogs.dir=/home/middle2018/logs/consumer -Ddispatch=0 -Detcd.url=http://140.143.90.42:2379
-
- http://provider.tcentos/invoke
-
- JVM ana:
--XX:+PrintGCDetails -Xloggc:/root/logs/gc.log -XX:+PrintGCTimeStamps
--Xloggc:/home/middle2018/logs/consumer/gc.log
- log desgin:
- consumer agent:
-
- provider agent:
-    waiting request:
-    per request in/out time,and
-    100 ms per :pending ,short term request distribution
-
-concurrent queue:
-local :
- provider -Xms2048M  -Xmx2048M \
- consumer -Xms2048M  -Xmx2048M
- consumer agent:-Xms1024M  -Xmx1024M
-awk '{ print "'\''"}'
- cat zh.txt |tr -s '\n'|awk '{position="'\''"$1"'\'',";print position}'clear
 
 
-
-curl -v -H "Content-Type: application/json" -H "User-Agent: JMQ-Python/0.0.1" -H "Accept: text/plain" -H "Timestamp: 1479965613" -H "Host: proxy.jmq.jd.com" -i -X POST -d '{"user":"user","password":"password","app":"app","topic":"topic"}' http://192.168.166.40:9090/1.0/auth
-
-
-agent demo:
-
-block in web filter
-
-
-zero copy:
- netty CompositeByteBuf
- Unpooled class wrap
- ByteBuff slice
- FileRegion
- netty ByteBuff allocator
- jmq303 522 523 579
-
-100   netty pooled
- option/childOption
-
- -Xms2048M  -Xmx2048M -Ddubbo.protocol.port=20889  -Dserver.port=30000 -Dtype=provider -Dcpu.period=50000 -Dprovider.cpu.quota=30000 -Dprovider.memory=2 -Dlogs.dir=/home/middle2018/logs/provider -Detcd.url=http://140.143.90.42:2379 -agentpath:/home/soft/YourKit-JavaProfiler-2017.02/bin/linux-x86-64/libyjpagent.so=disablestacktelemetry,exceptions=disable,delay=10000  -XX:+PrintGCDetails -Xloggc:/home/middle2018/logs/provider/gc.log
-101  netty EventExecutorGroup |DefaultEventExecutor|SingleThreadEventExecutor
-     concurrent execute business handler for one channel
-102  ChannelHandler.Sharable
-java  -jar  \
-     -Dtype=provider \
-     -Dcpu.period=50000 \
-     -Dprovider.cpu.quota=90000 \
-     -Dprovider.memory=6 \
-     -Dserver.port=30000 \
-     -Ddubbo.protocol.port=20880 \
-     -Detcd.url=$ETCD_URL \
-     -Dlogs.dir=/root/logs \
-      /root/dists/provider-agent.jar
-
-      java -Xms2048M -Xmx2048M -Ddubbo.protocol.port=20889 -Dtype=provider -Dserver.port=30000 -Dcpu.period=50000 -Dprovider.cpu.quota=30000 -Dprovider.memory=2 -Ddubbo.protocol.port=20889 -Dlogs.dir=/home/middle2018/logs/provider -Detcd.url=http://140.143.90.42:2379 -agentpath:/home/soft/YourKit-JavaProfiler-2017.02/bin/linux-x86-64/libyjpagent.so=disablestacktelemetry,exceptions=disable,delay=10000 -XX:+PrintGCDetails -Xloggc:/home/middle2018/logs/provider/gc.log
- jar -jar  /root/dists/mesh-agent.jar  ServerLauncher
-
- # cp /home/devspace/agent-demo/provider-agent/target/provider-agent-1.0-SNAPSHOT.jar  /root/dists/provider-agent-release.jar
+wrk -t2 -c64 -d5s -T5                 --script=./benchmark/wrk.lua                 --latency http://192.168.2.245:8087/invoke
+>>>>>>> 0d1daffaa33dfc48dc19958fdc51a2af15d346de

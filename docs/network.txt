@@ -1,0 +1,18 @@
+
+
+1 netty config
+
+ maxOneway:最大单向请求并发shu
+ maxAsync最大异步请求数
+
+ wokerThread
+ selectorThread
+ callbackThreads
+
+ Bootstrap
+
+ CountDownLatch&Semophore
+
+ 同步有latch,异步回调
+ ChannelFuture
+ FutureLisentner
