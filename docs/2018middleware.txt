@@ -116,7 +116,7 @@ docker build -t="image_name"
 docker build -t="wangjin/dubbo-tianchi-demo"  --no-cache .
 docker build -t="wangjin/dubbo-tianchi-demo" .
  docker image build and push:
- docker build -t="wangjin/dubbo-tianchi-agent-demo"  --no-cache .
+ docker build -t="wangjin/dubbo-tianchi-agent-demo"  .
  docker login --username=rudycto registry.cn-hangzhou.aliyuncs.com
  docker tag imageId registry.cn-hangzhou.aliyuncs.com/ocean18/dubbo-tianchi-agent-demo:latest
  docker push registry.cn-hangzhou.aliyuncs.com/ocean18/dubbo-tianchi-agent-demo:latest
@@ -206,10 +206,20 @@ key:rudy
 
 wrk -t2 -c256 -d20s -T5                 --script=./benchmark/wrk.lua                 --latency http://192.168.2.245:8087/invoke
 
->>>>>>> 0d1daffaa33dfc48dc19958fdc51a2af15d346de
  -Dtype=provider -Dserver.port=30000 -Dcpu.period=50000 -Dprovider.cpu.quota=30000 -Dprovider.memory=2 -Ddubbo.protocol.port=20889 -Dlogs.dir=/home/middle2018/logs/provider -Detcd.url=http://140.143.90.42:2379
 
 
 
 wrk -t2 -c64 -d5s -T5                 --script=./benchmark/wrk.lua                 --latency http://192.168.2.245:8087/invoke
->>>>>>> 0d1daffaa33dfc48dc19958fdc51a2af15d346de
+
+-Xms1024M  -Xmx1024M -Dtype=consumer -Dserver.port=20000 -Dlogs.dir=/home/middle2018/logs/consumer -Ddispatch=0 -Detcd.url=http://140.143.90.42:2379 -agentpath:/home/soft/YourKit-JavaProfiler-2017.02/bin/linux-x86-64/libyjpagent.so=disablestacktelemetry,exceptions=disable,delay=10000
+ taskId=378464,teamId=150641 Success
+
+https://middlewarerace2018.oss-cn-hangzhou.aliyuncs.com/150641/378488/logs.tar.gz
+
+ cp  /home/wangjin18/Downloads/logs\ \(2\).tar.gz /home/devspace/aliware/tianchi_logs/6/
+
+ls /home/wangjin18/Downloads/logs\ \(2\).tar.gz
+200 ChannelHandlerContext|Channel|ChannelFuture|ContentLength|ChannelOutboundHandlerAdapter
+201 ChannelHandlerContext|Channel write difference
+202 ChannelOption|Option
