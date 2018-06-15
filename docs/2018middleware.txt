@@ -136,9 +136,13 @@ remove ever runned container:
 
 docker stop  $(docker ps -a|grep none |awk '{print $1}')
 docker rm  $(docker ps -a|awk '{print $1}')
+
+
 docker rmi  $(docker ps |grep none |awk '{print $3}')
 remove images:
+
 docker rmi $(docker images|awk '{print $2}')
+docker rmi $(docker images|grep none |awk '{print $2}')
 git config --global user.name "rudy"
 git config --global user.email "rudysteiner@163.com"
 ssh-keygen -t rsa -C "rudysteiner@163.com"
@@ -214,12 +218,40 @@ wrk -t2 -c64 -d5s -T5                 --script=./benchmark/wrk.lua              
 
 -Xms1024M  -Xmx1024M -Dtype=consumer -Dserver.port=20000 -Dlogs.dir=/home/middle2018/logs/consumer -Ddispatch=0 -Detcd.url=http://140.143.90.42:2379 -agentpath:/home/soft/YourKit-JavaProfiler-2017.02/bin/linux-x86-64/libyjpagent.so=disablestacktelemetry,exceptions=disable,delay=10000
  taskId=378464,teamId=150641 Success
+384834
+https://middlewarerace2018.oss-cn-hangzhou.aliyuncs.com/150641/391456/logs.tar.gz
 
-https://middlewarerace2018.oss-cn-hangzhou.aliyuncs.com/150641/378488/logs.tar.gz
-
- cp  /home/wangjin18/Downloads/logs\ \(2\).tar.gz /home/devspace/aliware/tianchi_logs/6/
-
-ls /home/wangjin18/Downloads/logs\ \(2\).tar.gz
+ cp  /home/wangjin18/Downloads/logs\ \(13\).tar.gz /home/devspace/aliware/tianchi_logs/16
+tar -zxvf  /home/devspace/aliware/tianchi_logs/16/logs\ \(13\).tar.gz -C /home/devspace/aliware/tianchi_logs/16
+mkdir /home/devspace/aliware/tianchi_logs/12
 200 ChannelHandlerContext|Channel|ChannelFuture|ContentLength|ChannelOutboundHandlerAdapter
 201 ChannelHandlerContext|Channel write difference
 202 ChannelOption|Option
+
+203 ByteBuf
+    Retain
+rpcInvocation:
+content:
+"2.0.1"
+"com.alibaba.dubbo.performance.demo.provider.IHelloService"
+null
+"hash"
+"Ljava/lang/String;"
+"XLMpAQu2y8Gx6LjetKEM4ouBAwGLDFVMBkEU8Cbqcc8wuSaaHnkczjthdBAl2ArnGeHEaM8pEjyuQ9bouFUF9W9ro3MKdvXNQpmWihjVSJlAZWcX2464pcXNxN0ll2oDomMB39KJHbWL8Wh6xoLZi6K8EtQQKbQO2taNQFovOnia54nwzqlv2fEYUTbFvRBGhTm5puV7eXppKkBYZ2aGKN7i4q2tsGZAiygtZAx88sQwU6x6zheMckRbLzMR3epdxkPaDGpNFtSPaxwsWukdO7Y7507hk1svtK0Xhh8PesZebIQPxCv8MRTKTfVinjhzNm4076uzviNYFkzpDobdBWw49PHjJxwiFKTCgnOJub1j5UfD4n6u70BGLH20DFAY6M7vUI4Fkm8qzYsgPp8hpVsiaGiwUBzom03eL8Fj0i5vi8J7t39OudxR8DKoWkrYZp4L33NbpOGTxmeRdqKEOlxHKyvmU2zCYmGF4ssGXjLd6mFUnc9fwFBUc3zDN8h280ClauKucdptCwpO9iHmGQvjDOorRVh1zL5bl7ypnEHwqpxF5ZajPGHOVGCH4IJze0TctbbEQKFjzvO4nj3BrL918jgsaMXDSrb2kWjxuAIlocKGZKt4Rcnb28JhBooWI1JWemwOoTtJzhK8L67QSg5865WheRoZXDwdAfski1kDl7KsTCoHq30KhgDSKDsmniYB8FcZVZuZZkt9XjtFVN4U3To767OE4srX9mO9gjRV"
+{"path":"com.alibaba.dubbo.performance.demo.provider.IHelloService"}
+curl  http://provider.tcentos/invoke
+curl  http://provider.tcentos:8087/invoke
+-------------
+docker build -t="wangjin/dubbo-tianchi-agent-demo"  .
+docker tag $(docker images|grep wangjin/dubbo-tianchi-agent-demo|awk '{print $3}') registry.cn-hangzhou.aliyuncs.com/ocean18/dubbo-tianchi-agent-demo
+docker rmi -f $(docker images|grep none|awk '{print $3}')
+docker push  registry.cn-hangzhou.aliyuncs.com/ocean18/dubbo-tianchi-agent-demo
+-----------------------------
+
+393667|
+
+qgGKpQPozL3EvJ5sB14e7NQjLgY2Ykh6fx38g6ZpY16uWjtwRl7mtfm9tIdOya9AKGZCqpaEOXHOdKj0PFcrmMblzTqkGNAmmPlEGcLgG2NM6Y7g6S7EsF2RH2wBHnDCGTIwMm5KBTb1C0F4j8xwF1fdMLyJH1MV83TVZtP41mIwsX3dktDs2BGhQxpgNMXAMZ3fnjyiCmILTYn36H6BYRqGDsMq3Y6SNDDNQNqfqzBHqXAcjdpcik7Np7HipeH5wqj9ucdH3V5BFSz7eIYbSrhQ88ZVNy935CksBxpHq6FdjuEyR6oyVOt6YNZmQ6W1qjURTI8BHANT3xWdByPr7Zf27jUXLpNtkK4re0BdOjpS52ruj4jc9W4jGqkj5Z1DHcU3c0xK3ZLpuL3KIYCpj1BRM5rDwDNWl0Y
+2:5:6 local 7k
+
+Yv2Ct6VNLJERIMTBXM7OmwoWnuOnKug7qbQWXuFyrXJgDEOtHSR3GzClXBWcXw1CbZKjCq8jb1Sxau3wpI3baYYRy4FdxhEOHcegTuzXE2XdSchPETDV4THANli01R1Ko8P1whMCTIGRcPiNWtIAWBAofl6UQW72MqRMdoRsmeu69p4OV79QL3SA2rimbsgO2D4kUzCZetNWb0p2yqLBCZdAJcQAbZaAu74kAIfHjpyjpY8uPkAaCmFXLru6AW081Scej10snEBde9oRMD4zP0T7J5tqLtngadIms4uvddYjwZ3ZsUQNzhvF1FLokncGqzxFcwqCRi0U93WKJ8Z198YMMCqjmfQYrCF6mRTs11rXxcEoKym69fEOdCkB95yjA7BVLDoDpxdB9iJGt9hZSZYo7yC79CnVgLo
+80:200:240
